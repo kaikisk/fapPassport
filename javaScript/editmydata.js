@@ -5,7 +5,7 @@ $(function() {
     for(var i = 0; i < keys.length; i++) {
         load(keys[i]);
     }
-    $('#b').click(function(e){
+    $('#update').click(function(e){
         for(var i = 0; i < keys.length; i++) {
             save(keys[i]);
         }
