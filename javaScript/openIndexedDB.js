@@ -15,6 +15,7 @@ openRequest.onupgradeneeded = function(event) {
     
 openRequest.onsuccess = function(event) {
         db = event.target.result;
+        console.log("success");
     }
 } else {
 window.alert("このブラウザではIndexed DataBase API は使えません。");
