@@ -1,4 +1,4 @@
-var ORIGIN = location.protocol + '//' + location.hostname + '/hhswaIndexedDB';
+var ORIGIN = location.protocol + '//' + location.hostname + '/fapPassport';
 var STATIC_CACHE_NAME = 'static_v1';
 console.log('ORIGIN : ' + ORIGIN);
 var STATIC_FILES = [

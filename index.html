@@ -1,92 +1,50 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-    <head>
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="white">
-        <meta name="apple-mobile-web-app-title" content="HHSW">
-        <link rel="apple-touch-icon" href="/revealweb-144.png" sizes="144x144">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <link rel="manifest" href="manifest.json" />
-        <link rel="stylesheet" href="ratchet.min.css" />
-        <title>健康手帳(HealthHandbook)</title>
-        <script src="./jquery-2.2.4.min.js"></script>
-        <script src="./javaScript/login.js"></script>
-        <script src="./javaScript/notification.js"></script>
-        <script src="./javaScript/openIndexedDB.js"></script>
-        <script>
-            function handle(){
-                const data = localStorage.getItem('appointments');
-                const storageName = ["anam","results","appointments","medi1","medi2","medi3",
-                                    "medi4","medi5","txtMail","telFam","height","weight",
-                                    "bloodType","txtPass","txtName","telAtten"];
-                const jsonData = {};
-                for(var name of storageName){
-                    console.log("name: " + name);
-                    if(localStorage.getItem(name) != null){
-                        jsonData[name] = localStorage.getItem(name);
-                        console.log(jsonData[name]);
-                    }
-                    else {
-                        console.log("no item");
-                    }
-                }
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="HHSW">
+    <link rel="apple-touch-icon" href="/revealweb-144.png" sizes="144x144">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="ratchet.min.css" />
+    <title>健康手帳(HealthHandbook)</title>
+    <script src="./jquery-2.2.4.min.js"></script>
+    <script src="./javaScript/login.js"></script>
+    <script src="./javaScript/openIndexedDB.js"></script>
+    <script>
+        console.log('loading serviceworker');
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("./serviceworker.js");
+        }
+    </script>
+</head>
 
-                const blob = new Blob([JSON.stringify(jsonData, null, '')], {type: 'application/json'});
-
-                console.log(blob);
-
-                document.getElementById("download").href = window.URL.createObjectURL(blob);
-            }
-        </script>
-	<script>
-		function temporary(){
-			var file = document.getElementById("myfile").files[0];
-			const reader = new FileReader();
-			console.log();
-
-			reader.onload = function(e){
-			  result.innerText = e.target.result;
-				console.log(e.target.result);
-				register(e.target.result);
-			};
-			reader.readAsText(file);
-		//var temp = document.forms.myform
-		}
-	function register(e){
-	    const data = JSON.parse(e);
-	    console.log(data);
-	    for(var name in data){
-		console.log(name);
-	    }
-	}
-        </script>
-    </head>
-
-    <body>
-        <header class="bar bar-nav">
-            <h1 class="title">FAP Passport</h1>
-        </header>
-            <br />
-            <br />
-            <br />
-            <div>ユーザーID
-                <input type="text" id="txtUserID" class="txt">
-            </div>
-            <div>パスワード
-                <input type="password" id="txtPass" class="txt">
-            </div>
-            <button id="signin" class="btn-square-shadow btn_center" onclick="clickLoginButton()">ログイン Sign in</button>
-            <button id="signup" class="btn-square-shadow btn_center" onclick="location.href='newlogin.html'">新規登録 Sign up</button>
-            <div>
-                <p>
-                    <textarea rows="5">- 更新履歴(Change log)  - </textarea>
-                </p>
-                <p>
-                    <textarea rows="5">- 更新予定(Update) - </textarea>
-                </p>
-            </div>
-    </body>
+<body>
+    <header class="bar bar-nav">
+        <h1 class="title">FAP Passport</h1>
+    </header>
+    <br />
+    <br />
+    <br />
+    <div>ユーザーID
+        <input type="text" id="txtUserID" class="txt">
+    </div>
+    <div>パスワード
+        <input type="password" id="txtPass" class="txt">
+    </div>
+    <button id="signin" class="btn-square-shadow btn_center" onclick="clickLoginButton()">ログイン</button>
+    <button id="signup" class="btn-square-shadow btn_center" onclick="location.href='newlogin.html'">新規登録</button>
+    <div>
+        <p>
+            <textarea rows="5">- 更新履歴(Change log)  - </textarea>
+        </p>
+        <p>
+            <textarea rows="5">- 更新予定(Update) - </textarea>
+        </p>
+    </div>
+</body>
 
 </html>

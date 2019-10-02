@@ -1,7 +1,8 @@
 $(function() {
-    var keys = ['telFam', 'telAtten','bloodType','height',
-    'weight','medi1','medi2','medi3','medi4','medi5',
-    'anam','txtName','txtMail','txtPass'];
+    var keys = ['telFam', 'telAtten','bloodType','height','weight',
+    'medi1','medi2','medi3',
+    'anam','anam2','anam3',
+    'txtName','txtMail','txtPass'];
     for(var i = 0; i < keys.length; i++) {
         load(keys[i]);
     }
@@ -16,7 +17,7 @@ function save(x) {
     //localStorage.setItem(x, $('#'+x).val());
 
     var db;
-    var request = indexedDB.open('hhsw');
+    var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
         db = event.target.result;
         var ts = db.transaction(["store1"], "readwrite");
@@ -35,7 +36,7 @@ function load(download1) {
     //$( "#"+download1 ).val(localStorage.getItem(download1));
 
     var db;
-    var request = indexedDB.open('hhsw');
+    var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
         db = event.target.result;
         var ts = db.transaction(["store1"], "readwrite");
