@@ -11,6 +11,7 @@ openRequest.onupgradeneeded = function(event) {
     db = event.target.result;
     var store = db.createObjectStore("store1", { keyPath: "mykey"});
     store.createIndex("myvalueIndex", "myvalue");
+    console.log("pass onupgradeneeded");
 }
     
 openRequest.onsuccess = function(event) {
