@@ -11,7 +11,7 @@ function load(download1) {
     // $( "#"+download1 ).text(localStorage.getItem(download1));
 
     var db;
-    var request = indexedDB.open('hhsw');
+    var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
         db = event.target.result;
         var ts = db.transaction(["store1"], "readwrite");
