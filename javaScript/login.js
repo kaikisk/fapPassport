@@ -9,10 +9,12 @@ request.onsuccess = function (event){
     var store = ts.objectStore("fapPass");
     var requestName = store.get('txtName');
     requestName.onsuccess = function(event){
+        console.dir(event);
         txtName = event.target.result.myvalue;
     }
     var requestPass = store.get('txtPass');
     requestPass.onsuccess = function(event){
+        console.dir(event);
         txtPass = event.target.result.myvalue;
     }
 }
