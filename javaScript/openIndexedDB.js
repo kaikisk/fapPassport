@@ -20,6 +20,7 @@ openRequest.onsuccess = function(event) {
         db = event.target.result;
         console.log("success");
         console.dir(db);
+        db.close();
     }
 } else {
 window.alert("このブラウザではIndexed DataBase API は使えません。");
