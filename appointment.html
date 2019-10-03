@@ -8,14 +8,17 @@
         <title>健康手帳(HealthHandbook)</title>
         <script src="./jquery-2.2.4.min.js"></script>
         <script src="./javaScript/appointment.js"></script>
+        <script src="./javaScript/checkAppointment.js"></script>
     </head>
 
     <body>
         <header class="bar bar-nav">
-            <button class="btn pull-left" onclick="location.href='menu.html'">戻る(Back)</button>
-            <h1 class="title">健康手帳(HealthHandbook)</h1>
+            <h1 class="title">FAP Passport</h1>
         </header>
-            <div>
+        
+        <br /><br /><br />
+        <button class="btn-square-shadow btn_center" onclick="location.href='menu.html'">戻る</button>
+        <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
                 <br /><br /><br /> 日付を入力してください(Please input date)
                 <br />
                 <input type="date" id="txtDate" class="txt" /><br />
@@ -42,8 +45,21 @@
                 <br />
                 <button class="btn btn-primary btn-block" onclick="appointmentRegistration()">登録(Register)</button>
                 <br />
-
             </div>
+
+            <form>
+                    <br />
+                    <br />
+                    <div>
+                        <table id="Table1" class="table">
+                            <tr>
+                                <th>日付Date</th>
+                                <th>検査項目ConsultationType</th>
+                                <th>備考Detail</th>
+                            </tr>
+                        </table>
+                    </div>
+                </form>            
     </body>
 
 </html>

@@ -8,8 +8,9 @@ var openRequest = indexedDB.open("fapPassport");
     
 openRequest.onupgradeneeded = function(event) {
     // データベースのバージョンに変更があった場合(初めての場合もここを通ります。)
+    console.dir(event);
     db = event.target.result;
-    var store = db.createObjectStore("store1", { keyPath: "mykey"});
+    var store = db.createObjectStore("store1", { keyPath: "id"});
     store.createIndex("myvalueIndex", "myvalue");
     console.log("pass onupgradeneeded");
 }
