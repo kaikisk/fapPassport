@@ -25,7 +25,9 @@ function save(x) {
     console.log("point2")
 
     var db;
+    console.log("pass1");
     var request = indexedDB.open('fapPassport');
+    console.log("pass2");
     request.onsuccess = function (event){
         console.log("pass onsuccess");
         db = event.target.result;
@@ -39,6 +41,7 @@ function save(x) {
             console.log("エラーが発生しました。");
         }
     }
+    console.log("pass3");
 }
 
 function load(download1) {
