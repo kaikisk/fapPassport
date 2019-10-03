@@ -1,25 +1,25 @@
-var idb;
-var indexeddb = window.indexeddb || window.mozIndexeddb || window.msIndexeddb;
+var db;
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.msIndexedDB;
 
-if (indexeddb) {
+if (indexedDB) {
     // データベースを削除したい場合はコメントを外します。
-    //indexedidb.deleteDatabase("myidb");
-    var openRequest = indexeddb.open("fapPassport", 1.0);
+    //indexedDB.deleteDatabase("mydb");
+    var openRequest = indexedDB.open("fapPassport", 1.0);
 
     openRequest.onupgradeneeded = function (event) {
         // データベースのバージョンに変更があった場合(初めての場合もここを通ります。)
         console.dir(event);
-        idb = event.target.result;
-        var store = idb.createObjectStore("fapPass", { keyPath: "id" });
+        db = event.target.result;
+        var store = db.createObjectStore("fapPass", { keyPath: "id" });
         store.createIndex("myvalueIndex", "myvalue");
         console.log("pass onupgradeneeded");
     }
 
 
     openRequest.onsuccess = function (event) {
-        idb = event.target.result;
+        db = event.target.result;
         console.log("pass onsuccess");
-        console.dir(idb);
+        console.dir(db);
     }
 } else {
     window.alert("このブラウザではIndexed DataBase API は使えません。");
