@@ -36,6 +36,10 @@
   overflow: hidden;
 }
 
+.green_color{
+  background: #5cb85c /*緑*/
+}
+
 table , td, th {
 	border: 1px solid #595959;
   border-collapse: collapse;

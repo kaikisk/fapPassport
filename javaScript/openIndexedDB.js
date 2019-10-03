@@ -4,7 +4,7 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.msIndexedDB;
 if (indexedDB) {
 // データベースを削除したい場合はコメントを外します。
 //indexedDB.deleteDatabase("mydb");
-var openRequest = indexedDB.open("fapPassport");
+var openRequest = indexedDB.open("fapPassport", 2);
     
 openRequest.onupgradeneeded = function(event) {
     // データベースのバージョンに変更があった場合(初めての場合もここを通ります。)
