@@ -15,11 +15,11 @@ function clickRegister(index) {
     recordString = JSON.stringify(appointments[index]);
     //localStorage.setItem('tempAppointment',recordString);
     var db;
-    var request = indexedDB.open('hhsw');
+    var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
         db = event.target.result;
-        var ts = db.transaction(["store1"], "readwrite");
-        var store = ts.objectStore("store1");
+        var ts = db.transaction(["fapPass"], "readwrite");
+        var store = ts.objectStore("fapPass");
         var request = store.put({mykey: 'tempAppointment', myvalue: recordString,});
         request.onsuccess = function(event){
             console.log("成功しました");

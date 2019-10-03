@@ -25,11 +25,11 @@ function appointmentRegistration(){
     appointmentsString = JSON.stringify(appointments);
     //localStorage.setItem('appointments',appointmentsString);
     var db;
-    var request = indexedDB.open('hhsw');
+    var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
         db = event.target.result;
-        var ts = db.transaction(["store1"], "readwrite");
-        var store = ts.objectStore("store1");
+        var ts = db.transaction(["fapPass"], "readwrite");
+        var store = ts.objectStore("fapPass");
         var request = store.put({mykey: 'appointments', myvalue: appointmentsString});
         request.onsuccess = function(event){
             console.log("成功しました");

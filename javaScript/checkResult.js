@@ -2,11 +2,11 @@ $(function() {
     var resultsString;
 
     var db;
-    var request = indexedDB.open('hhsw');
+    var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
         db = event.target.result;
-        var ts = db.transaction(["store1"], "readwrite");
-        var store = ts.objectStore("store1");
+        var ts = db.transaction(["fapPass"], "readwrite");
+        var store = ts.objectStore("fapPass");
         var request = store.get('results');
         request.onsuccess = function(event){
             resultsString = event.target.result.myvalue;

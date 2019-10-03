@@ -24,11 +24,11 @@ function save(x) {
     //localStorage.setItem(x, $('#'+x).val());
 
     var db;
-    var request = indexedDB.open('hhsw');
+    var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
         db = event.target.result;
-        var ts = db.transaction(["store1"], "readwrite");
-        var store = ts.objectStore("store1");
+        var ts = db.transaction(["fapPass"], "readwrite");
+        var store = ts.objectStore("fapPass");
         var request = store.put({mykey: x, myvalue: $('#'+x).val()});
         request.onsuccess = function(event){
             console.log("成功しました");
@@ -43,11 +43,11 @@ function load(download1) {
     //$( "#"+download1 ).val(localStorage.getItem(download1));
 
     var db;
-    var request = indexedDB.open('hhsw');
+    var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
         db = event.target.result;
-        var ts = db.transaction(["store1"], "readwrite");
-        var store = ts.objectStore("store1");
+        var ts = db.transaction(["fapPass"], "readwrite");
+        var store = ts.objectStore("fapPass");
         var request = store.get(download1);
         request.onsuccess = function(event){
             $( "#"+download1 ).val(event.target.result.myvalue);
