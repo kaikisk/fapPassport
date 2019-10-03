@@ -14,10 +14,12 @@ openRequest.onupgradeneeded = function(event) {
     store.createIndex("myvalueIndex", "myvalue");
     console.log("pass onupgradeneeded");
 }
+
     
 openRequest.onsuccess = function(event) {
         db = event.target.result;
         console.log("success");
+        db.close();
     }
 } else {
 window.alert("このブラウザではIndexed DataBase API は使えません。");
