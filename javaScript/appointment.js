@@ -30,7 +30,7 @@ function appointmentRegistration(){
         db = event.target.result;
         var ts = db.transaction(["fapPass"], "readwrite");
         var store = ts.objectStore("fapPass");
-        var request = store.put({mykey: 'appointments', myvalue: appointmentsString});
+        var request = store.put({id: 'appointments', myvalue: appointmentsString});
         request.onsuccess = function(event){
             console.log("成功しました");
             db.close();
