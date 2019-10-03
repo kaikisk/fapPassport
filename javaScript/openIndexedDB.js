@@ -20,6 +20,7 @@ if (indexedDB) {
         db = event.target.result;
         console.log("pass onsuccess");
         console.dir(db);
+        db.close();
     }
 } else {
     window.alert("このブラウザではIndexed DataBase API は使えません。");

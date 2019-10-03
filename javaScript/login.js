@@ -17,6 +17,7 @@ request.onsuccess = function (event){
         console.dir(event);
         txtPass = event.target.result.myvalue;
     }
+    db.close();
 }
 
 $(function () {

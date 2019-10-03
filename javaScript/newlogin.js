@@ -22,7 +22,6 @@ $(function() {
     });
 });
 function save(x) {
-    //localStorage.setItem(x, $('#'+x).val());
     console.log("point2")
 
     var db;
@@ -32,7 +31,7 @@ function save(x) {
         db = event.target.result;
         var ts = db.transaction(["fapPass"], "readwrite");
         var store = ts.objectStore("fapPass");
-        var request = store.put({mykey: x, myvalue: $('#'+x).val()});
+        var request = store.put({id: x, myvalue: $('#'+x).val()});
         request.onsuccess = function(event){
             console.log("成功しました");
         }
