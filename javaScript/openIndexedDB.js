@@ -21,6 +21,7 @@ if (indexedDB) {
         console.log("pass onsuccess");
         console.dir(db);
         db.close();
+        console.log("dbを閉じました");
     }
 } else {
     window.alert("このブラウザではIndexed DataBase API は使えません。");

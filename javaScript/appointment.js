@@ -4,7 +4,7 @@ function appointmentRegistration(){
     var detail = $('#txtdetail').val();
     var val = '';
     for (var i=1; i<=7; i++) {
-        if (document.getElementById("RblExamination"+i).checked) {
+        if (document.getElementById("RblExamination"+i).selected) {
             val = $('#RblExamination'+i).val();
             break;
         }
