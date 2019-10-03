@@ -13,7 +13,7 @@ $(function() {
         }
         var keys = ['txtName','txtMail','txtPass'];
         for(var i = 0; i < keys.length; i++) {
-            console.log("a")
+            console.log("point1")
             save(keys[i]);
         }
         alert(`ユーザーを登録しました
@@ -23,6 +23,7 @@ $(function() {
 });
 function save(x) {
     //localStorage.setItem(x, $('#'+x).val());
+    console.log("point2")
 
     var db;
     var request = indexedDB.open('fapPassport');
