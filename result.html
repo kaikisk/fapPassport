@@ -1,57 +1,74 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <link rel="stylesheet" href="ratchet.min.css" />
-        <title>健康手帳(HealthHandbook)</title>
-        <script src="./jquery-2.2.4.min.js"></script>
-        <script src="./javaScript/result.js"></script>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="ratchet.min.css" />
+    <title>FAP Passport</title>
+    <script src="./jquery-2.2.4.min.js"></script>
+    <script src="./javaScript/result.js"></script>
+    <script src="./javaScript/checkAppointment.js"></script>
+</head>
 
-    <body>
-        <header class="bar bar-nav">
-            <button class="btn pull-left" onclick="location.href='menu.html'">戻る(Back)</button>
-            <h1 class="title">健康手帳(HealthHandbook)</h1>
-        </header>
-            <br />
-            <br />
-            <br />
-            <div>日付を入力してください。(Please input date)
-                <input type="date" id="txtDate" class="txt" />
-            </div>
-            <br />
-            <div>検査項目を選択してください(Please select ConsultationType)
-                <br />
-                <input id="RblExamination1" type="radio" name="RblExamination" value="Stomach camera" />胃(食道)カメラStomach camera
-                <br />
-                <input id="RblExamination2" type="radio" name="RblExamination" value="Colon camera" />大腸カメラ Colon camera
-                <br />
-                <input id="RblExamination3" type="radio" name="RblExamination" value="Abdominal echo" />腹部エコーAbdominal echo
-                <br />
-                <input id="RblExamination4" type="radio" name="RblExamination" value="Abdominal CT" />腹部CT Abdominal CT
-                <br />
-                <input id="RblExamination5" type="radio" name="RblExamination" value="Mammography" />マンモグラフィー Mammography
-                <br />
-                <input id="RblExamination6" type="radio" name="RblExamination" value="Kidney echo" />腎エコー Kidney echo
-                <br />
-                <input id="RblExamination7" type="radio" name="RblExamination" value="Other" />その他 Other
-            </div>
-            <br />
-            <div>結果(Result)
-                <br />
-                <input id="RblResult1" type="radio" name="RblResult" value="1" />OK
-                <br />
-                <input id="RblResult2" type="radio" name="RblResult" value="2" />要治療(Need treatment)
-            </div>
-            <br />
-            <div>備考(Detail)
-                <br />
-                <input type="text" id="txtdetail" class="txt" />
-            </div>
-            <button class="btn btn-primary btn-block" onclick="resultRegistration()">登録(Register)</button>
-            </div>
-    </body>
+<body>
+    <header class="bar bar-nav">
+        <h1 class="title">FAP Passport</h1>
+    </header>
+
+    <br /><br /><br />
+    <button class="btn-square-shadow btn_center" onclick="location.href='menu.html'">戻る</button>
+    <br>
+    <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+        <p style="text-align: center">検診予約</p> <br />
+        予定日<br>
+        <input type="date" id="txtDate" class="txt" /><br />
+
+        <br /><br />
+        <div id="RblExamination">
+            受信科目<br>
+            <select name="type" size="1">
+                <option id="RblExamination1" value="胃(食堂)カメラ">胃(食堂)カメラ</option>
+                <option id="RblExamination2" value="大腸カメラ">大腸カメラ</option>
+                <option id="RblExamination3" value="腹部エコー">腹部エコー</option>
+                <option id="RblExamination4" value="腹部CT"></option>
+                <option id="RblExamination5" value="マンモグラフィー">マンモグラフィー</option>
+                <option id="RblExamination6" value="腎エコー">腎エコー</option>
+                <option id="RblExamination7" value="その他">その他</option>
+            </select>
+        </div> 
+
+        <div id="RblExamination">
+                受信結果<br>
+                <select name="type" size="1">
+                    <option id="RblResult1" value="OK">OK</option>
+                    <option id="RblResult2" value="要治療">要治療</option>
+                    <option id="RblResult3" value="その他">その他</option>
+                </select>
+            </div> 
+
+        <br /> 備考(Detail)
+        <br />
+        <input type="text" id="txtdetail" class="txt" />
+        <br />
+        <br />
+        <button class="btn-square-shadow btn_center green_color" onclick="appointmentRegistration()">登録</button>
+        <br />
+    </div>
+
+    <form>
+        <br />
+        <br />
+        <div>
+            <table id="Table1" class="table">
+                <tr>
+                    <th>日付Date</th>
+                    <th>検査項目ConsultationType</th>
+                    <th>備考Detail</th>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
 
 </html>
