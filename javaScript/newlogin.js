@@ -13,6 +13,7 @@ $(function() {
         }
         var keys = ['txtName','txtMail','txtPass'];
         for(var i = 0; i < keys.length; i++) {
+            console.log("a")
             save(keys[i]);
         }
         alert(`ユーザーを登録しました
@@ -26,6 +27,7 @@ function save(x) {
     var db;
     var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event){
+        console.log("pass save");
         db = event.target.result;
         var ts = db.transaction(["fapPass"], "readwrite");
         var store = ts.objectStore("fapPass");
