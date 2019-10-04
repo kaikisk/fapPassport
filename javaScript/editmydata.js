@@ -19,6 +19,7 @@ function save(x) {
     var db;
     var request = indexedDB.open("fapPassport");
     request.onsuccess = function (event){
+        
         db = event.target.result;
         var ts = db.transaction(["fapPass"], "readwrite");
         var store = ts.objectStore("fapPass");

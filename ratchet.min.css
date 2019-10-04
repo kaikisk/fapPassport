@@ -36,6 +36,15 @@
   overflow: hidden;
 }
 
+.btn_sixty{
+  padding: 2%;
+  margin-left:10%;
+  text-align: center;
+  width: 60%;
+  display: block;
+  overflow: hidden;
+}
+
 .green_color{
   background: #5cb85c /*緑*/
 }
