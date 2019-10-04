@@ -18,6 +18,7 @@ $(function() {
         }
         alert(`ユーザーを登録しました
             Registered new account`);
+        setTimeout(5000)
         location.href='menu.html';
     });
 });
@@ -25,9 +26,7 @@ function save(x) {
     console.log("point2");
 
     var db;
-    // console.log("pass1");
     var request = indexedDB.open("fapPassport");
-    // console.log("pass2");
     request.onsuccess = function (event){
         console.log("pass onsuccess");
         db = event.target.result;
@@ -44,7 +43,6 @@ function save(x) {
     request.onerror = function(){
         console.log("indexedDBを開くのに失敗しました");
     }
-    // console.log("pass3");
 }
 
 function load(download1) {
