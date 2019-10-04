@@ -24,7 +24,7 @@ $(function () {
     if (txtName == null) {
         document.getElementById("signin").disabled = true;
     } else {
-        document.getElementById("signup").disabled = true;
+        document.getElementById("signup").disabled = false;
     }
 })
 function clickLoginButton () {
