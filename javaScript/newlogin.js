@@ -11,7 +11,7 @@ $(function() {
                 Password is not confirmed`);
             return;
         }
-        var keys = ['txtName','txtMail','txtPass'];
+        var keys = ['txtName','txtPass'];
         for(var i = 0; i < keys.length; i++) {
             console.log("point1")
             save(keys[i]);

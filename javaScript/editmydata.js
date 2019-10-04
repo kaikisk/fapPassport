@@ -17,7 +17,7 @@ function save(x) {
     //localStorage.setItem(x, $('#'+x).val());
 
     var db;
-    var request = indexedDB.open('fapPassport');
+    var request = indexedDB.open("fapPassport");
     request.onsuccess = function (event){
         db = event.target.result;
         var ts = db.transaction(["fapPass"], "readwrite");

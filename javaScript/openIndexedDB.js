@@ -13,6 +13,8 @@ if (indexedDB) {
         var store = db.createObjectStore("fapPass", { keyPath: "id" });
         store.createIndex("myvalueIndex", "myvalue");
         console.log("pass onupgradeneeded");
+        var store1 = db.createObjectStore("photo", {keyPath: "id"});
+        store1.createIndex("myvalueIndex", "myvalue");
     }
 
 

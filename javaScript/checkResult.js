@@ -15,7 +15,7 @@ $(function() {
             console.log("エラーが発生しました。");
         }
     }
-    //var resultsString = localStorage.getItem('results');
+
     if (resultsString) {
         var results = JSON.parse(resultsString);
         for(var i = 0; i < results.length; i++) {
