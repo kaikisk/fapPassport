@@ -9,22 +9,25 @@ request.onsuccess = function (event){
     var store = ts.objectStore("fapPass");
     var requestName = store.get('txtName');
     requestName.onsuccess = function(event){
-        console.dir(event);
+        console.dir("success get txtName");
         txtName = event.target.result.myvalue;
     }
     var requestPass = store.get('txtPass');
     requestPass.onsuccess = function(event){
-        console.dir(event);
+        console.dir("success get txtPass");
         txtPass = event.target.result.myvalue;
     }
     db.close();
 }
 
 $(function () {
-    if (txtName == null) {
-        document.getElementById("signin").disabled = true;
+    console.log("txtName: " + txtName);
+    console.log("txtPass: " + txtPass);
+    if (txtName == null && txtPass == null) {
+        document.getElementById("signin").style.display = "block";
+        console.log("")
     } else {
-        document.getElementById("signup").disabled = false;
+        document.getElementById("signup").style.display = "none";
     }
 })
 function clickLoginButton () {

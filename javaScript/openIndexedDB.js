@@ -21,9 +21,7 @@ if (indexedDB) {
     openRequest.onsuccess = function (event) {
         db = event.target.result;
         console.log("pass onsuccess");
-        console.dir(db);
-        db.close();
-        console.log("dbを閉じました");
+        console.dir("db: " + db);
     }
 } else {
     window.alert("このブラウザではIndexed DataBase API は使えません。");

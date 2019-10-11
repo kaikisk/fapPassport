@@ -35,7 +35,7 @@ function save(x) {
         var store = ts.objectStore("fapPass");
         var request = store.put({id: x, myvalue: $('#'+x).val()});
         request.onsuccess = function(event){
-            console.log("成功しました");
+            console.log("success put key: " + x + " ,value: " + $('#'+x).val());
         }
         request.onerror = function(event){
             console.log("エラーが発生しました。");
