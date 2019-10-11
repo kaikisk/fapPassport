@@ -1,6 +1,3 @@
-var txtName;
-var txtPass;
-
 var db;
 var request = indexedDB.open('fapPassport');
 request.onsuccess = function (event){
@@ -11,13 +8,13 @@ request.onsuccess = function (event){
     requestName.onsuccess = function(event){
         console.dir("success get txtName");
         console.log("event.target.result.myvalue is " + event.target.result.myvalue);
-        txtName = event.target.result.myvalue;
+        const txtName = event.target.result.myvalue;
     }
     var requestPass = store.get("txtPass");
     requestPass.onsuccess = function(event){
         console.dir("success get txtPass");
         console.log("event.target.result.myvalue is " + event.target.result.myvalue);
-        txtPass = event.target.result.myvalue;
+        const txtPass = event.target.result.myvalue;
         console.log("onsuccess txtPass: "+txtPass)
     }
     console.log("txtName: " + txtName + " ,txtPass: " + txtPass);
