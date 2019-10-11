@@ -1,6 +1,6 @@
 function getID() {
-    const txtName;
-    const txtPass;
+    var txtName = "";
+    var txtPass = "";
 
     var db;
     var request = indexedDB.open('fapPassport');
