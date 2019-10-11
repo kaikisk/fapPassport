@@ -17,6 +17,7 @@ request.onsuccess = function (event){
         console.dir("success get txtPass");
         txtPass = event.target.result.myvalue;
     }
+    console.log("txtName: " + txtName + " ,txtPass: " + txtPass);
     db.close();
 }
 
