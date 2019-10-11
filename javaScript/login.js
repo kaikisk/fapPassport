@@ -1,34 +1,23 @@
-function getID() {
-    var txtName = "";
-    var txtPass = "";
-
+function getUserData(key) {
     var db;
     var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event) {
         db = event.target.result;
         var ts = db.transaction(["fapPass"], "readwrite");
         var store = ts.objectStore("fapPass");
-        var requestName = store.get("txtName");
+        var requestName = store.get(key);
         requestName.onsuccess = function (event) {
-            console.dir("success get txtName");
-            console.log("event.target.result.myvalue is " + event.target.result.myvalue);
-            txtName = event.target.result.myvalue;
+            console.log("key: " + key + "value: " + event.target.result.myvalue);
+            return event.target.result.myvalue;
         }
-        var requestPass = store.get("txtPass");
-        requestPass.onsuccess = function (event) {
-            console.dir("success get txtPass");
-            console.log("event.target.result.myvalue is " + event.target.result.myvalue);
-            txtPass = event.target.result.myvalue;
-            console.log("onsuccess txtPass: " + txtPass)
-        }
-        console.log("txtName: " + txtName + " ,txtPass: " + txtPass);
         db.close();
     }
 
 }
 
 $(function () {
-    getID();
+    const txtName = getUserData("txtName");
+    const txtPass = getUserData("txtPass");
     console.log("txtName: " + txtName);
     console.log("txtPass: " + txtPass);
     if (txtName == null && txtPass == null) {
