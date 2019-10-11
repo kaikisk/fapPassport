@@ -28,6 +28,8 @@ $(function () {
     }
 })
 function clickLoginButton() {
+    const txtName = getUserData("txtName");
+    const txtPass = getUserData("txtPass");
     if ($('#txtUserName').val() != txtName) {
         alert('Not registered');
         return;
