@@ -5,6 +5,7 @@ function getUserData(key) {
         db = event.target.result;
         var ts = db.transaction(["fapPass"], "readwrite");
         var store = ts.objectStore("fapPass");
+        console.log("key: " + key);
         var requestName = store.get(key);
         requestName.onsuccess = function (event) {
             console.log("key: " + key + "value: " + event.target.result.myvalue);
@@ -31,7 +32,10 @@ $(function () {
 function clickLoginButton() {
     const txtName = getUserData("txtName");
     const txtPass = getUserData("txtPass");
-    
+    console.log("txtName: " + txtName);
+    console.log("txtPass: " + txtPass);
+    console.log("UserID: " + $('#txtUserID').val());
+    console.log("pass: " + $('#txtPass').val());
     if ($('#txtUserID').val() != txtName) {
         alert('Not registered');
         return;
