@@ -5,10 +5,9 @@ function getUserData(key) {
         db = event.target.result;
         var ts = db.transaction(["fapPass"], "readwrite");
         var store = ts.objectStore("fapPass");
-        console.log("key: " + key);
         var requestName = store.get(key);
         requestName.onsuccess = function (event) {
-            console.log("key: " + key + "value: " + event.target.result.myvalue);
+            console.log("key: " + key + ", value: " + event.target.result.myvalue);
             return event.target.result.myvalue;
         }
         db.close();
