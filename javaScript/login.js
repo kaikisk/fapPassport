@@ -27,10 +27,12 @@ $(function () {
         document.getElementById("signup").style.display = "none";
     }
 })
+
 function clickLoginButton() {
     const txtName = getUserData("txtName");
     const txtPass = getUserData("txtPass");
-    if ($('#txtUserName').val() != txtName) {
+    
+    if ($('#txtUserID').val() != txtName) {
         alert('Not registered');
         return;
     }
