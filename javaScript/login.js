@@ -73,8 +73,8 @@ function getUserData(key) {
 $(function () {
     txtName = getUserData("txtName");
     txtPass = getUserData("txtPass");
-    console.log("txtName1: " + txtName);
-    console.log("txtPass1: " + txtPass);
+    console.log("txtName1: " + txtName.resolve);
+    console.log("txtPass1: " + txtPass.resolve);
     if (txtName == null && txtPass == null) {
         document.getElementById("signin").style.display = "block";
         console.log("")
