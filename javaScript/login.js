@@ -44,10 +44,17 @@ if (indexedDB) {
     window.alert("このブラウザではIndexed DataBase API は使えません。");
 }
 
+setTimeout(function(){
+    console.log("5sの遅延を作成")
+},5000)
+
 function getUserData(key) {
     console.log("p0");
     var db;
     var request = indexedDB.open('fapPassport');
+    setTimeout(function(){
+        console.log("5sの遅延を作成")
+    },5000);
     request.onerror = function(){
         alert("インデックスDBのエラーが起こっています");
     }
