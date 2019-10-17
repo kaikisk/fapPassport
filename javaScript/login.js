@@ -45,7 +45,7 @@ if (indexedDB) {
 }
 
 function getUserData(key) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(resolve => {
         console.log("p0");
         var db;
         var request = indexedDB.open('fapPassport');
@@ -71,9 +71,8 @@ function getUserData(key) {
 
 
 $(function () {
-    getUserData("txtName").then((temp) => {txtName = temp})
-    // txtName = getUserData("txtName")
-    txtPass = getUserData("txtPass")
+    txtName = getUserData("txtName");
+    txtPass = getUserData("txtPass");
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
     if (txtName == null && txtPass == null) {
