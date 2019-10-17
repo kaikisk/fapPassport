@@ -46,21 +46,19 @@ if (indexedDB) {
 
 function getUserData(key) {
     return new Promise(function (resolve, reject) {
-        console.log("p0");
         var db;
         var request = indexedDB.open('fapPassport');
         request.onsuccess = function (event) {
-            console.log("p1");
             db = event.target.result;
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
-            console.log("p2");
             requestName.onsuccess = function (event) {
-                console.log("key: " + key + ", value: " + event.target.result.myvalue);
+                // console.log("key: " + key + ", value: " + event.target.result.myvalue);
                 resolve(event.target.result.myvalue);
             }
             db.close();
+            console.log("db is closed");
         }
         request.onerror = function () {
             alert("インデックスDBのエラーが起こっています");
@@ -76,30 +74,39 @@ $(function () {
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
     if (txtName == null && txtPass == null) {
-        document.getElementById("signin").style.display = "block";
+        document.getElementById("signin").style.display = "none";
         console.log("")
     } else {
         document.getElementById("signup").style.display = "none";
     }
+
 })
 
 function clickLoginButton() {
-    txtName = getUserData("txtName");
-    txtPass = getUserData("txtPass");
-    console.log("tN: " + getUserData("txtName"));
-    console.log("tP: " + getUserData("txtPass"));
     console.log("txtName2: " + txtName);
     console.log("txtPass2: " + txtPass);
     console.log("UserID: " + $('#txtUserID').val());
     console.log("pass: " + $('#txtPass').val());
-    if ($('#txtUserID').val() != txtName) {
-        alert('Not registered');
-        return;
-    }
-    if ($('#txtPass').val() != txtPass) {
-        alert('Password is not confirmed');
-        return;
-    }
+    txtName.then((name) => {
+        if ($('#txtUserID').val() != name) {
+            alert('Not registered');
+            return;
+        }
+    })
+    // if ($('#txtUserID').val() != txtName) {
+    //     alert('Not registered');
+    //     return;
+    // }
+    txtPass.then((pass) => {
+        if ($('#txtPass').val() != pass) {
+            alert('Password is not confirmed');
+            return;
+        }
+    })
+    // if ($('#txtPass').val() != txtPass) {
+    //     alert('Password is not confirmed');
+    //     return;
+    // }
     location.href = 'menu.html';
 }
 
