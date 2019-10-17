@@ -14,6 +14,8 @@
 //     }
 
 // }
+txtName;
+txtPass;
 
 var db;
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.msIndexedDB;
@@ -71,8 +73,9 @@ function getUserData(key) {
 
 
 $(function () {
-    txtName = getUserData("txtName").then(function (temp) { return temp });
-    txtPass = getUserData("txtPass").then((temp) => temp);
+    getUserData("txtName").then((temp) => {txtName = temp})
+    // txtName = getUserData("txtName")
+    txtPass = getUserData("txtPass")
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
     if (txtName == null && txtPass == null) {
