@@ -57,6 +57,9 @@ function getUserData(key) {
                 // console.log("key: " + key + ", value: " + event.target.result.myvalue);
                 resolve(event.target.result.myvalue);
             }
+            requestName.onerror = function(){
+                reject("失敗");
+            }
             db.close();
             console.log("db is closed");
         }
@@ -75,6 +78,7 @@ $(function () {
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
     console.log("ErrText: " + ErrText);
+    console.log("判断: " + txtName.isFulfilled());
     if (txtName == null && txtPass == null) {
         document.getElementById("signin").style.display = "none";
         console.log("")
