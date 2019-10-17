@@ -1,3 +1,6 @@
+import { resolve } from "url";
+import { rejects } from "assert";
+
 // function getUserData(key) {
 //     var db;
 //     var request = indexedDB.open('fapPassport');
@@ -44,39 +47,35 @@ if (indexedDB) {
     window.alert("このブラウザではIndexed DataBase API は使えません。");
 }
 
-setTimeout(function(){
-    console.log("5sの遅延を作成")
-},5000)
-
 function getUserData(key) {
-    console.log("p0");
-    var db;
-    var request = indexedDB.open('fapPassport');
-    setTimeout(function(){
-        console.log("5sの遅延を作成")
-    },5000);
-    request.onerror = function(){
+    return new Promise(function(resolve, reject){
+        console.log("p0");
+        var db;
+        var request = indexedDB.open('fapPassport');
+        request.onsuccess = function (event) {
+            console.log("p1");
+            db = event.target.result;
+            var ts = db.transaction(["fapPass"], "readwrite");
+            var store = ts.objectStore("fapPass");
+            var requestName = store.get(key);
+            console.log("p2");
+            requestName.onsuccess = function (event) {
+                console.log("key: " + key + ", value: " + event.target.result.myvalue);
+                resolve(event.target.result.myvalue);
+            }
+            db.close();
+        }
+    request.onerror = function () {
         alert("インデックスDBのエラーが起こっています");
     }
-    request.onsuccess = function (event) {
-        console.log("p1");
-        db = event.target.result;
-        var ts = db.transaction(["fapPass"], "readwrite");
-        var store = ts.objectStore("fapPass");
-        var requestName = store.get(key);
-        console.log("p2");
-        requestName.onsuccess = function (event) {
-            console.log("key: " + key + ", value: " + event.target.result.myvalue);
-            return event.target.result.myvalue;
-        }
-        db.close();
-    }
+    })
+    
 }
 
 
 $(function () {
-    const txtName = getUserData("txtName");
-    const txtPass = getUserData("txtPass");
+    txtName = getUserData("txtName");
+    txtPass = getUserData("txtPass");
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
     if (txtName == null && txtPass == null) {
@@ -88,8 +87,8 @@ $(function () {
 })
 
 function clickLoginButton() {
-    const txtName = getUserData("txtName");
-    const txtPass = getUserData("txtPass");
+    txtName = getUserData("txtName");
+    txtPass = getUserData("txtPass");
     console.log("tN: " + getUserData("txtName"));
     console.log("tP: " + getUserData("txtPass"));
     console.log("txtName2: " + txtName);
