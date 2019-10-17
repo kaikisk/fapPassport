@@ -45,7 +45,7 @@ if (indexedDB) {
 }
 
 function getUserData(key) {
-    return new Promise(function(resolve, reject){
+    return new Promise(function (resolve, reject) {
         console.log("p0");
         var db;
         var request = indexedDB.open('fapPassport');
@@ -62,17 +62,17 @@ function getUserData(key) {
             }
             db.close();
         }
-    request.onerror = function () {
-        alert("インデックスDBのエラーが起こっています");
-    }
+        request.onerror = function () {
+            alert("インデックスDBのエラーが起こっています");
+        }
     })
-    
+
 }
 
 
 $(function () {
-    txtName = getUserData("txtName").then(function(temp){return temp});
-    txtPass = getUserData("txtPass").then((temp) => {return temp});
+    txtName = getUserData("txtName").then(function (temp) { return temp });
+    txtPass = getUserData("txtPass").then((temp) => temp);
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
     if (txtName == null && txtPass == null) {
@@ -81,6 +81,20 @@ $(function () {
     } else {
         document.getElementById("signup").style.display = "none";
     }
+
+    const resolvedProm = Promise.resolve(33);
+
+    let thenProm = resolvedProm.then((value) => {
+        console.log("this gets called after the end of the main stack. the value received and returned is: " + value);
+        return value;
+    });
+    // instantly logging the value of thenProm
+    console.log(thenProm);
+
+    // using setTimeout we can postpone the execution of a function to the moment the stack is empty
+    setTimeout(() => {
+        console.log(thenProm);
+    });ß
 })
 
 function clickLoginButton() {
