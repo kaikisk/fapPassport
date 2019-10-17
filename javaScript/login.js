@@ -71,8 +71,10 @@ function getUserData(key) {
 $(function () {
     txtName = getUserData("txtName");
     txtPass = getUserData("txtPass");
+    ErrText = getUserData("txtAAA");
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
+    console.log("ErrText: " + ErrText);
     if (txtName == null && txtPass == null) {
         document.getElementById("signin").style.display = "none";
         console.log("")
