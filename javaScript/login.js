@@ -45,7 +45,7 @@ if (indexedDB) {
 }
 
 function getUserData(key) {
-    return new Promise(resolve => {
+    return new Promise(function (resolve, reject) {
         console.log("p0");
         var db;
         var request = indexedDB.open('fapPassport');
@@ -58,7 +58,7 @@ function getUserData(key) {
             console.log("p2");
             requestName.onsuccess = function (event) {
                 console.log("key: " + key + ", value: " + event.target.result.myvalue);
-                resolve(event.target.result.myvalue);
+                return Promise.resolve(event.target.result.myvalue);
             }
             db.close();
         }
