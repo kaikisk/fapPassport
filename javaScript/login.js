@@ -71,13 +71,10 @@ function getUserData(key) {
 
 
 $(function () {
-    txtName = getUserData("txtName");
-    txtPass = getUserData("txtPass");
+    txtName = getUserData("txtName").then((txtName)=> {return txtName});
+    txtPass = getUserData("txtPass").then((txtPass) => {return txtPass});
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
-    txtName.then(function(txtName){
-        console.log("txtName.resolve()" + txtName);
-    })
     if (txtName == null && txtPass == null) {
         document.getElementById("signin").style.display = "block";
         console.log("")
