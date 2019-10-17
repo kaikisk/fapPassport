@@ -71,7 +71,7 @@ function getUserData(key) {
 
 
 $(function () {
-    txtName = getUserData("txtName").then((txtName)=> {return txtName});
+    txtName = getUserData("txtName").then(function(txtName){return txtName});
     txtPass = getUserData("txtPass").then((txtPass) => {return txtPass});
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
