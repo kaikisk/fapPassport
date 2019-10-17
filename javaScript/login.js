@@ -71,8 +71,6 @@ function getUserData(key) {
 
 
 $(function () {
-    txtName;
-    txtPass;
     getUserData("txtName").then((temp) => {txtName = temp})
     // txtName = getUserData("txtName")
     txtPass = getUserData("txtPass")
