@@ -71,8 +71,8 @@ function getUserData(key) {
 
 
 $(function () {
-    txtName = getUserData("txtName").then(function(txtName){return txtName});
-    txtPass = getUserData("txtPass").then((txtPass) => {return txtPass});
+    txtName = getUserData("txtName").then(function(temp){return temp});
+    txtPass = getUserData("txtPass").then((temp) => {return temp});
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
     if (txtName == null && txtPass == null) {
