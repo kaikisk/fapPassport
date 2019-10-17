@@ -1,6 +1,3 @@
-import { resolve } from "url";
-import { rejects } from "assert";
-
 // function getUserData(key) {
 //     var db;
 //     var request = indexedDB.open('fapPassport');
