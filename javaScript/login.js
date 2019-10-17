@@ -83,6 +83,8 @@ $(function () {
 function clickLoginButton() {
     const txtName = getUserData("txtName");
     const txtPass = getUserData("txtPass");
+    console.log("tN: " + getUserData("txtName"));
+    console.log("tP: " + getUserData("txtPass"));
     console.log("txtName2: " + txtName);
     console.log("txtPass2: " + txtPass);
     console.log("UserID: " + $('#txtUserID').val());
