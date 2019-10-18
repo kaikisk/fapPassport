@@ -1,3 +1,5 @@
+import { exists } from "fs";
+
 // function getUserData(key) {
 //     var db;
 //     var request = indexedDB.open('fapPassport');
@@ -62,12 +64,14 @@ function getUserData(key) {
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
             requestName.onsuccess = function (event) {
-                if(event.target.result.myvalue){
+                // if(event.target.result.myvalue){
                 
                     console.log("in onsuccess");
+                    console.log("event.target.result: " + event.target.result);
+                    console.dir(event.target.result);
                     console.log("key: " + key + ", value: " + event.target.result.myvalue);
                     resolve(event.target.result.myvalue);
-                }
+                // }
             }
         }
         request.onerror = function () {
@@ -103,7 +107,7 @@ function clickLoginButton() {
     txtName.then((name) => {
         if ($('#txtUserID').val() != name) {
             alert('Not registered');
-            return;
+            
         }
     })
     // if ($('#txtUserID').val() != txtName) {
