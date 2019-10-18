@@ -35,7 +35,7 @@ function getUserData(key) {
         request.onerror = function () {
             alert("インデックスDBのエラーが起こっています");
         }
-    })
+    }
 
 }
 
