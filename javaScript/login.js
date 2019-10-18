@@ -32,11 +32,11 @@ function getUserData(key) {
                 alert("indexedDB is error");
                 reject("失敗");
             }
-        request.onerror = function () {
-            alert("インデックスDBのエラーが起こっています");
+            request.onerror = function () {
+                alert("インデックスDBのエラーが起こっています");
+            }
         }
-    }
-
+    });
 }
 
 
@@ -112,4 +112,3 @@ function clickLoginButton() {
     // }
     location.href = 'menu.html';
 }
-
