@@ -24,6 +24,7 @@ function getUserData(key) {
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
             requestName.onerror = function () {
+                // 失敗した時
                 alert("indexedDB is error");
                 reject("失敗");
             }
