@@ -60,7 +60,7 @@ function getUserData(key) {
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
-            requestName.onerror = function () {
+            requestName.onerror = function (event) {
                 // 失敗した時
                 alert("indexedDB is error");
                 reject("失敗");
