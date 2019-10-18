@@ -1,5 +1,3 @@
-import { exists } from "fs";
-
 // function getUserData(key) {
 //     var db;
 //     var request = indexedDB.open('fapPassport');
