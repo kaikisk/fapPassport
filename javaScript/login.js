@@ -61,15 +61,13 @@ function getUserData(key) {
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
-            requestName.onerror = function (event) {
-                // 失敗した時
-                alert("indexedDB is error");
-                reject("失敗");
-            }
             requestName.onsuccess = function (event) {
-                console.log("in onsuccess");
-                console.log("key: " + key + ", value: " + event.target.result.myvalue);
-                resolve(event.target.result.myvalue);
+                if(event.target.result.myvalue){
+                
+                    console.log("in onsuccess");
+                    console.log("key: " + key + ", value: " + event.target.result.myvalue);
+                    resolve(event.target.result.myvalue);
+                }
             }
         }
         request.onerror = function () {
