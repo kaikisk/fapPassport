@@ -54,7 +54,7 @@ function getUserData(key) {
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
             requestName.onsuccess = function (event) {
-                // console.log("key: " + key + ", value: " + event.target.result.myvalue);
+                console.log("key: " + key + ", value: " + event.target.result.myvalue);
                 resolve(event.target.result.myvalue);
             }
             requestName.onerror = function(){
