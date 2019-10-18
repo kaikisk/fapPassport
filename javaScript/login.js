@@ -83,6 +83,9 @@ $(function () {
     txtName = getUserData("txtName");
     txtPass = getUserData("txtPass");
     ErrText = getUserData("txtAAA");
+    ErrText.catch((err) => {
+        console.log("indexeddb is not" + err);
+    })
     console.log("txtName1: " + txtName);
     console.log("txtPass1: " + txtPass);
     console.log("ErrText: " + ErrText);
