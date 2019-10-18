@@ -29,12 +29,9 @@ function getUserData(key) {
                 resolve(event.target.result.myvalue);
             }
             requestName.onerror = function () {
-                console.log("失敗");
+                alert("indexedDB is error");
                 reject("失敗");
             }
-            db.close();
-            console.log("db is closed");
-        }
         request.onerror = function () {
             alert("インデックスDBのエラーが起こっています");
         }
