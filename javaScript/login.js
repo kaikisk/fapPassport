@@ -63,6 +63,8 @@ function getUserData(key) {
             var requestName = store.get(key);
             requestName.onsuccess = function (event) {
                 // if(event.target.result.myvalue){
+                    console.log("event:");
+                    console.dir(event);
                 
                     console.log("in onsuccess");
                     console.log("event.target.result: " + event.target.result);
