@@ -93,10 +93,10 @@ $(function () {
     } else {
         document.getElementById("signup").style.display = "none";
     }
-
 })
 
 function clickLoginButton() {
+    var flag = 0;
     console.log("txtName2: " + txtName);
     console.log("txtPass2: " + txtPass);
     console.log("UserID: " + $('#txtUserID').val());
@@ -104,9 +104,13 @@ function clickLoginButton() {
     txtName.then((name) => {
         if ($('#txtUserID').val() != name) {
             alert('Not registered');
-            
+            flag = 1;
+            return;
         }
     })
+    if(flag != 0){
+        return;
+    }
     // if ($('#txtUserID').val() != txtName) {
     //     alert('Not registered');
     //     return;
@@ -114,9 +118,13 @@ function clickLoginButton() {
     txtPass.then((pass) => {
         if ($('#txtPass').val() != pass) {
             alert('Password is not confirmed');
+            flag = 1;
             return;
         }
     })
+    if(flag != 0){
+        return;
+    }
     // if ($('#txtPass').val() != txtPass) {
     //     alert('Password is not confirmed');
     //     return;
