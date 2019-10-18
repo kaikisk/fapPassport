@@ -62,16 +62,13 @@ function getUserData(key) {
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
             requestName.onsuccess = function (event) {
-                // if(event.target.result.myvalue){
-                    console.log("event:");
-                    console.dir(event);
-                
-                    console.log("in onsuccess");
-                    console.log("event.target.result: " + event.target.result);
-                    console.dir(event.target.result);
+                if(event.target.result !== undefined){
                     console.log("key: " + key + ", value: " + event.target.result.myvalue);
                     resolve(event.target.result.myvalue);
-                // }
+                }else{
+                    console.log(key + " は登録されていません");
+                    reject("失敗")
+                }
             }
         }
         request.onerror = function () {
