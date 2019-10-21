@@ -136,11 +136,21 @@
 //         }
 // }
 
+function getNamePass(){
+    txtName.then((name) => {
+        txtPass.then((pass) => {
+            return {name, pass};
+        })
+    })
+}
+
 $(function () {
     createDatabase();
     txtName = getUserData("txtName");
     txtPass = getUserData("txtPass");
     ErrText = getUserData("txtAAA");
+    const {name, pass} = getNamePass();
+    console.log("name+pass = " + name + pass);
 
     ErrText.catch((err) => {
         console.log("indexeddb is not" + err);
