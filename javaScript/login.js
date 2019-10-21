@@ -138,10 +138,10 @@
 
 $(function () {
     createDatabase();
-    txtName = await getUserData("txtName");
-    txtPass = await getUserData("txtPass");
-    ErrText = await getUserData("txtAAA");
-    
+    txtName = getUserData("txtName");
+    txtPass = getUserData("txtPass");
+    ErrText = getUserData("txtAAA");
+
     console.log("txtName1: " + txtName);
     console.dir(txtName);
     console.log("txtPass1: " + txtPass);
