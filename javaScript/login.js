@@ -138,9 +138,16 @@
 
 $(function () {
     createDatabase();
-    txtName = getUserData("txtName");
-    txtPass = getUserData("txtPass");
-    ErrText = getUserData("txtAAA");
+    txtName = await getUserData("txtName");
+    txtPass = await getUserData("txtPass");
+    ErrText = await getUserData("txtAAA");
+    
+    console.log("txtName1: " + txtName);
+    console.dir(txtName);
+    console.log("txtPass1: " + txtPass);
+    console.dir(txtPass);
+    console.log("ErrText: " + ErrText);
+
 
     txtName.then(name => console.log(name));
 
@@ -165,10 +172,6 @@ $(function () {
             }
         })
     })
-
-    console.log("txtName1: " + txtName);
-    console.log("txtPass1: " + txtPass);
-    console.log("ErrText: " + ErrText);
 
     // if (txtName == null && txtPass == null) {
     //     document.getElementById("signin").style.display = "none";
