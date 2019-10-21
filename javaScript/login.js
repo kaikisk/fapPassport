@@ -166,9 +166,9 @@ $(function () {
         })
     })
 
-    // console.log("txtName1: " + txtName);
-    // console.log("txtPass1: " + txtPass);
-    // console.log("ErrText: " + ErrText);
+    console.log("txtName1: " + txtName);
+    console.log("txtPass1: " + txtPass);
+    console.log("ErrText: " + ErrText);
 
     // if (txtName == null && txtPass == null) {
     //     document.getElementById("signin").style.display = "none";
