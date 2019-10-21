@@ -136,20 +136,12 @@
 //         }
 // }
 
-function getNamePass(){
-    txtName.then((name) => {
-        txtPass.then((pass) => {
-            return {name, pass};
-        })
-    })
-}
-
 $(function () {
     createDatabase();
     txtName = getUserData("txtName");
     txtPass = getUserData("txtPass");
     ErrText = getUserData("txtAAA");
-    getNamePass().then((name,pass) => console.log("name: " + name + " ,pass: " + pass))
+    getNamePass().then((name, pass) => console.log("name: " + name + " ,pass: " + pass))
 
     ErrText.catch((err) => {
         console.log("indexeddb is not" + err);
@@ -191,11 +183,18 @@ function clickLoginButton() {
     console.log("UserID: " + $('#txtUserID').val());
     console.log("pass: " + $('#txtPass').val());
     txtName.then((name) => {
-        if ($('#txtUserID').val() != name) {
-            alert('Not registered');
-            flag = 1;
-            return;
-        }
+        txtPass.then((pass) => {
+            if ($('#txtUserID').val() != name) {
+                alert('Not registered');
+                flag = 1;
+                return;
+            } 
+            if ($('#txtPass').val() != pass) {
+                alert('Password is not confirmed');
+                flag = 1;
+                return;
+            }
+        })
     })
     if (flag != 0) {
         return;
@@ -204,16 +203,7 @@ function clickLoginButton() {
     //     alert('Not registered');
     //     return;
     // }
-    txtPass.then((pass) => {
-        if ($('#txtPass').val() != pass) {
-            alert('Password is not confirmed');
-            flag = 1;
-            return;
-        }
-    })
-    if (flag != 0) {
-        return;
-    }
+
     // if ($('#txtPass').val() != txtPass) {
     //     alert('Password is not confirmed');
     //     return;
