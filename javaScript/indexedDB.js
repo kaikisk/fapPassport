@@ -51,7 +51,7 @@ async function getUserData(key) {
                 return event.target.result.myvalue;
             }else{
                 console.log(key + " は登録されていません");
-                throw new Error(key + "の取得の失敗");
+                return new Error(key + "の取得の失敗");
             }
         }
     }
