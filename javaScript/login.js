@@ -142,6 +142,8 @@ $(function () {
     txtPass = getUserData("txtPass");
     ErrText = getUserData("txtAAA");
 
+    txtName.then(name => console.log(name));
+
     ErrText.catch((err) => {
         console.log("indexeddb is not" + err);
     });
@@ -154,7 +156,7 @@ $(function () {
 
     txtName.then((name) => {
         txtPass.then((pass) => {
-            console.log("name: " + name + ", pass" + pass);
+            console.log("name: " + name + ", pass: " + pass);
             if (name == null && pass == null) {
                 document.getElementById("signin").style.display = "none";
                 console.log("");
