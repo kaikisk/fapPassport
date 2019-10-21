@@ -149,8 +149,7 @@ $(function () {
     txtName = getUserData("txtName");
     txtPass = getUserData("txtPass");
     ErrText = getUserData("txtAAA");
-    const {name, pass} = getNamePass();
-    console.log("name+pass = " + name + pass);
+    getNamePass().then((name,pass) => console.log("name: " + name + " ,pass: " + pass))
 
     ErrText.catch((err) => {
         console.log("indexeddb is not" + err);
