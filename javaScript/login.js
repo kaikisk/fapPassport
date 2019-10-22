@@ -117,13 +117,13 @@ $(function () {
         console.log(value);
         txtPass1 = getUserData("txtPass");
 
-        console.log("txtName1: " + txtName);
+        console.log("txtName: " + txtName);
         console.dir(txtName);
-        console.log("txtPass1: " + txtPass);
+        console.log("txtPass: " + txtPass);
         console.dir(txtPass);
         console.log("ErrText: " + ErrText);
         console.log("")
-        console.log("txtPass1: " + txtPass1);
+        console.log("txtPass: " + txtPass1);
         console.dir(txtPass1);
 
 
