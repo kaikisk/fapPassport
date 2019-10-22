@@ -138,9 +138,6 @@ $(function () {
         console.log("");
     });
 
-    console.log("temp1");
-
-
     // if (txtName == null && txtPass == null) {
     //     document.getElementById("signin").style.display = "none";
     //     console.log("")
@@ -157,21 +154,17 @@ function clickLoginButton() {
     console.log("pass: " + $('#txtPass').val());
     txtName.then((name) => {
         txtPass.then((pass) => {
+            if($('#txtUserID').val() == name && $('#txtPass').val() == pass){
+                location.href = 'menu.html';
+            }
             if ($('#txtUserID').val() != name) {
-                alert('Not registered');
-                flag = 1;
-                return;
+                alert('ユーザーIDが違います');
             }
             if ($('#txtPass').val() != pass) {
-                alert('Password is not confirmed');
-                flag = 1;
-                return;
+                alert('パスワードが違います');
             }
-        })
-    })
-    if (flag != 0) {
-        return;
-    }
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
     // if ($('#txtUserID').val() != txtName) {
     //     alert('Not registered');
     //     return;
@@ -181,5 +174,5 @@ function clickLoginButton() {
     //     alert('Password is not confirmed');
     //     return;
     // }
-    location.href = 'menu.html';
+    
 }

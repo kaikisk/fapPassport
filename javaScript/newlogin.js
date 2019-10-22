@@ -1,6 +1,4 @@
 $(function () {
-    save1;
-    save2;
     $('#registration').click(function (e) {
         if ($('#txtName').val() == "" || $('#txtMail').val() == "" ||
             $('#txtPass').val() == "") {
@@ -15,17 +13,15 @@ $(function () {
         var keys = ['txtName', 'txtPass'];
         for (var i = 0; i < keys.length; i++) {
             console.log("point1")
-            save = save(key[i]);   
+            save(key[i]);
+            if(i == key.length - 1){
+                save(key[i]).then(() => {
+                    alert(`ユーザーを登録しました
+                    Registered new account`);           
+                    location.href = 'menu.html'    
+                }).catch(err => console.log(err));
+            }   
         }
-        alert(`ユーザーを登録しました
-            Registered new account`);
-        save1.then(name => {
-            save2.then(pass => {
-                console.log(name);
-                console.log(pass);
-                location.href = 'menu.html'
-            }).catch(err => console.log(err))
-        }).catch(err => console.log(err))
     });
 });
 
