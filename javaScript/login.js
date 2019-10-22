@@ -133,7 +133,7 @@ $(function () {
         })
     }).catch(err => {
         console.log(err);
-        alert("ユーザーIDが登録されていません");
+        alert("ユーザー登録がされていません");
         document.getElementById("signin").style.display = "none";
         console.log("");
     });
