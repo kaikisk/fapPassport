@@ -78,14 +78,19 @@
 //     });
 // }
 
-
-
-$(async function () {
-    console.log("loading");
-    createDatabase();
+async function getUser(){
+    await createDatabase();
     txtName = await getUserData("txtName");
     txtPass = await getUserData("txtPass");
     ErrText = await getUserData("txtAAA");
+    return console.log("success");
+}
+
+
+$(function () {
+    console.log("loading");
+    createDatabase();
+    getUser();
     txtPass1 = getUserData("txtPass");
 
     console.log("txtName1: " + txtName);
