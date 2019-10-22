@@ -118,8 +118,6 @@ $(function () {
 
         txtName.then(name => console.log(name));
 
-        
-
         txtName.then((name) => {
             txtPass.then((pass) => {
                 console.log("name: " + name + ", pass: " + pass);
@@ -131,7 +129,7 @@ $(function () {
                 }
             })
         })
-    });
+    }).catch(err => console.log(err));
 
 
     // if (txtName == null && txtPass == null) {
