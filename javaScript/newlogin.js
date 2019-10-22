@@ -2,8 +2,7 @@ $(function() {
     $('#registration').click(function(e){
         if ($('#txtName').val()==""||$('#txtMail').val()==""||
             $('#txtPass').val()=="") {
-            alert(`名前, メールアドレス, パスワードを全て入力してください
-                Please, input your name, e-mail and password`);
+            alert(`名前, メールアドレス, パスワードを全て入力してください`);
             return;
         }
         if ($('#txtPass').val()!=$('#txtPassCheck').val()) {
@@ -18,10 +17,10 @@ $(function() {
         }
         alert(`ユーザーを登録しました
             Registered new account`);
-        setTimeout(function(){},5000);
         location.href='menu.html';
     });
 });
+
 function save(x) {
     console.log("point2");
 
