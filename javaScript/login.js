@@ -119,9 +119,7 @@ $(function () {
     console.log("txtPass: " + txtPass);
     console.dir(txtPass);
     console.log("ErrText: " + ErrText);
-    console.log("")
-
-    txtName.then(name => console.log(name));
+    console.log("");
 
     txtName.then((name) => {
         txtPass.then((pass) => {
