@@ -83,14 +83,14 @@ async function getUser() {
     txtName = await getUserData("txtName");
     txtPass = await getUserData("txtPass");
     ErrText = await getUserData("txtAAA");
-    return console.log("success");
+    return "success";
 }
 
 
 $(function () {
     console.log("loading");
-    createDatabase();
     getUser().then(value => {
+        console.log(value);
         txtPass1 = getUserData("txtPass");
 
         console.log("txtName1: " + txtName);
