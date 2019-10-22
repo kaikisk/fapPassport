@@ -85,10 +85,10 @@ function errorhundling(promise){
 async function getUser() {
     createDatabase();
     txtName = await getUserData("txtName");
-    txtPass = await getUserData("txtPass");
-    ErrText = await getUserData("txtAAA");
     errorhundling(txtName);
+    txtPass = await getUserData("txtPass");
     errorhundling(txtPass);
+    ErrText = await getUserData("txtAAA");
     errorhundling(ErrText);
     return "success";
 }
