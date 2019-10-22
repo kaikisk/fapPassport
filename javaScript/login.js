@@ -78,11 +78,18 @@
 //     });
 // }
 
+function errorhundling(promise){
+    promise.catch(err => console.error(err));
+}
+
 async function getUser() {
     createDatabase();
     txtName = await getUserData("txtName");
     txtPass = await getUserData("txtPass");
     ErrText = await getUserData("txtAAA");
+    errorhundling(txtName);
+    errorhundling(txtPass);
+    errorhundling(ErrText);
     return "success";
 }
 
