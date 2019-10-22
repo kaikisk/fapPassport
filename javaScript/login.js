@@ -101,42 +101,35 @@
 
 $(function () {
     async function getUser() {
-        txtName = await getUserData("txtName");
-        txtPass = await getUserData("txtPass");
-        ErrText = await getUserData("txtAAA");
-        ErrText.catch((err) => {
-            console.log("indexeddb is not" + err);
-        });
-        txtName.catch((err) => {
-            console.log(err);
-        });
-        txtPass.catch((err) => {
-            console.log(err);
-        });
+
         return "success";
     }
-    console.log("loading");
-    var txtName1 = getUserData("txtName");
-    var txtPass2 = getUserData("txtPass");
-    var ErrText1 = getUserData("txtAAA");
 
-    console.log("txtName1: " + txtName1);
-    console.dir(txtName1);
-    console.log("txtPass1: " + txtPass2);
-    console.dir(txtPass2);
-    console.log("ErrText: " + ErrText1);
+    txtName = await getUserData("txtName");
+    txtPass = await getUserData("txtPass");
+    ErrText = await getUserData("txtAAA");
+
+    ErrText.catch((err) => {
+        console.log("indexeddb is not" + err);
+    });
+    txtName.catch((err) => {
+        console.log(err);
+    });
+    txtPass.catch((err) => {
+        console.log(err);
+    });
+
+    console.log("txtName: " + txtName);
+    console.dir(txtName);
+    console.log("txtPass: " + txtPass);
+    console.dir(txtPass);
+    console.log("ErrText: " + ErrText);
     console.log("")
 
     getUser().then(value => {
         console.log(value);
         txtPass1 = getUserData("txtPass");
 
-        console.log("txtName: " + txtName);
-        console.dir(txtName);
-        console.log("txtPass: " + txtPass);
-        console.dir(txtPass);
-        console.log("ErrText: " + ErrText);
-        console.log("")
         console.log("txtPass: " + txtPass1);
         console.dir(txtPass1);
 
