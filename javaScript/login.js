@@ -78,31 +78,42 @@
 //     });
 // }
 
-function errorhundling(promise) {
-    promise.catch(err => console.error(err));
-}
+// function errorhundling(promise) {
+//     promise.catch(err => console.error(err));
+// }
 
-async function getUser() {
-    createDatabase();
-    txtName = await getUserData("txtName");
-    txtPass = await getUserData("txtPass");
-    ErrText = await getUserData("txtAAA");
-    ErrText.catch((err) => {
-        console.log("indexeddb is not" + err);
-    });
-    txtName.catch((err) => {
-        console.log(err);
-    });
-    txtPass.catch((err) => {
-        console.log(err);
-    });
-    return "success";
-}
+// async function getUser() {
+//     txtName = await getUserData("txtName");
+//     txtPass = await getUserData("txtPass");
+//     ErrText = await getUserData("txtAAA");
+//     ErrText.catch((err) => {
+//         console.log("indexeddb is not" + err);
+//     });
+//     txtName.catch((err) => {
+//         console.log(err);
+//     });
+//     txtPass.catch((err) => {
+//         console.log(err);
+//     });
+//     return "success";
+// }
 
 
 $(function () {
-    async function getUser(){
-        
+    async function getUser() {
+        txtName = await getUserData("txtName");
+        txtPass = await getUserData("txtPass");
+        ErrText = await getUserData("txtAAA");
+        ErrText.catch((err) => {
+            console.log("indexeddb is not" + err);
+        });
+        txtName.catch((err) => {
+            console.log(err);
+        });
+        txtPass.catch((err) => {
+            console.log(err);
+        });
+        return "success";
     }
     console.log("loading");
     var txtName1 = getUserData("txtName");

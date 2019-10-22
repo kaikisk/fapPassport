@@ -33,7 +33,7 @@ $(function createDatabase() {
     })
 });
 
-$(function getUserData(key) {
+function getUserData(key) {
     return new Promise(function (resolve, reject) {
         var db;
         var request = indexedDB.open('fapPassport');
@@ -59,7 +59,7 @@ $(function getUserData(key) {
             alert("インデックスDBのエラーが起こっています");
         }
     });
-});
+};
 
 // async function createDatabase() {
 //     var db;
