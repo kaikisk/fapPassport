@@ -25,6 +25,7 @@ function createDatabase() {
                 console.log("pass onsuccess");
                 console.dir("db: " + db);
                 db.close();
+                return;
             }
         } else {
             window.alert("このブラウザではIndexed DataBase API は使えません。");
@@ -38,8 +39,8 @@ function getUserData(key) {
         var request = indexedDB.open('fapPassport');
         request.onsuccess = function (event) {
             db = event.target.result;
-            console.log("confirm db: ");
-            console.dir(db);
+            // console.log("confirm db: ");
+            // console.dir(db);
             console.log("key: " + key);
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
