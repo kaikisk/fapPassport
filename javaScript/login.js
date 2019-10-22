@@ -131,6 +131,8 @@ $(function () {
         })
     }).catch(err => console.log(err));
 
+    console.log("temp1");
+
 
     // if (txtName == null && txtPass == null) {
     //     document.getElementById("signin").style.display = "none";
