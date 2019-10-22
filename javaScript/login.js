@@ -159,11 +159,11 @@ function clickLoginButton() {
             }
             if ($('#txtUserID').val() != name) {
                 alert('ユーザーIDが違います');
-                $('#txtUserID').val() = '';
+                $('#txtUserID').val("");
             }
             if ($('#txtPass').val() != pass) {
                 alert('パスワードが違います');
-                $('#txtPass').val() = '';
+                $('#txtPass').val("");
             }
         }).catch(err => console.log(err));
     }).catch(err => console.log(err));
