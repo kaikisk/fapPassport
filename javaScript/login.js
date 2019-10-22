@@ -105,9 +105,9 @@ $(function () {
         return "success";
     }
 
-    txtName = await getUserData("txtName");
-    txtPass = await getUserData("txtPass");
-    ErrText = await getUserData("txtAAA");
+    txtName = getUserData("txtName");
+    txtPass = getUserData("txtPass");
+    ErrText = getUserData("txtAAA");
 
     ErrText.catch((err) => {
         console.log("indexeddb is not" + err);
