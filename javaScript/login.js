@@ -78,7 +78,7 @@
 //     });
 // }
 
-async function getUser(){
+async function getUser() {
     await createDatabase();
     txtName = await getUserData("txtName");
     txtPass = await getUserData("txtPass");
@@ -90,42 +90,44 @@ async function getUser(){
 $(function () {
     console.log("loading");
     createDatabase();
-    getUser();
-    txtPass1 = getUserData("txtPass");
+    getUser().then(value => {
+        txtPass1 = getUserData("txtPass");
 
-    console.log("txtName1: " + txtName);
-    console.dir(txtName);
-    console.log("txtPass1: " + txtPass);
-    console.dir(txtPass);
-    console.log("ErrText: " + ErrText);
-    console.log("")
-    console.log("txtPass1: " + txtPass1);
-    console.dir(txtPass1);
+        console.log("txtName1: " + txtName);
+        console.dir(txtName);
+        console.log("txtPass1: " + txtPass);
+        console.dir(txtPass);
+        console.log("ErrText: " + ErrText);
+        console.log("")
+        console.log("txtPass1: " + txtPass1);
+        console.dir(txtPass1);
 
 
-    txtName.then(name => console.log(name));
+        txtName.then(name => console.log(name));
 
-    ErrText.catch((err) => {
-        console.log("indexeddb is not" + err);
-    });
-    txtName.catch((err) => {
-        console.log(err);
-    });
-    txtPass.catch((err) => {
-        console.log(err);
-    });
+        ErrText.catch((err) => {
+            console.log("indexeddb is not" + err);
+        });
+        txtName.catch((err) => {
+            console.log(err);
+        });
+        txtPass.catch((err) => {
+            console.log(err);
+        });
 
-    txtName.then((name) => {
-        txtPass.then((pass) => {
-            console.log("name: " + name + ", pass: " + pass);
-            if (name == null && pass == null) {
-                document.getElementById("signin").style.display = "none";
-                console.log("");
-            } else {
-                document.getElementById("signup").style.display = "none";
-            }
+        txtName.then((name) => {
+            txtPass.then((pass) => {
+                console.log("name: " + name + ", pass: " + pass);
+                if (name == null && pass == null) {
+                    document.getElementById("signin").style.display = "none";
+                    console.log("");
+                } else {
+                    document.getElementById("signup").style.display = "none";
+                }
+            })
         })
-    })
+    });
+
 
     // if (txtName == null && txtPass == null) {
     //     document.getElementById("signin").style.display = "none";
@@ -147,7 +149,7 @@ function clickLoginButton() {
                 alert('Not registered');
                 flag = 1;
                 return;
-            } 
+            }
             if ($('#txtPass').val() != pass) {
                 alert('Password is not confirmed');
                 flag = 1;
