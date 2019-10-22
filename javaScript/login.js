@@ -100,11 +100,6 @@
 
 
 $(function () {
-    async function getUser() {
-
-        return "success";
-    }
-
     txtName = getUserData("txtName");
     txtPass = getUserData("txtPass");
     ErrText = getUserData("txtAAA");
@@ -126,30 +121,18 @@ $(function () {
     console.log("ErrText: " + ErrText);
     console.log("")
 
-    getUser().then(value => {
-        console.log(value);
-        txtPass1 = getUserData("txtPass");
+    txtName.then(name => console.log(name));
 
-        console.log("txtPass: " + txtPass1);
-        console.dir(txtPass1);
-
-
-        txtName.then(name => console.log(name));
-
-        txtName.then((name) => {
-            txtPass.then((pass) => {
-                console.log("name: " + name + ", pass: " + pass);
-                if (name == null && pass == null) {
-                    document.getElementById("signin").style.display = "none";
-                    console.log("");
-                } else {
-                    document.getElementById("signup").style.display = "none";
-                }
-            })
+    txtName.then((name) => {
+        txtPass.then((pass) => {
+            console.log("name: " + name + ", pass: " + pass);
+            if (name == null && pass == null) {
+                document.getElementById("signin").style.display = "none";
+                console.log("");
+            } else {
+                document.getElementById("signup").style.display = "none";
+            }
         })
-    }).catch(err => {
-        console.log("Error getUser: ");
-        console.log(err)
     });
 
     console.log("temp1");
