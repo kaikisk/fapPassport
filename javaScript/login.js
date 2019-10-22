@@ -79,7 +79,7 @@
 // }
 
 async function getUser() {
-    await createDatabase();
+    createDatabase();
     txtName = await getUserData("txtName");
     txtPass = await getUserData("txtPass");
     ErrText = await getUserData("txtAAA");
