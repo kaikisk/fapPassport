@@ -81,16 +81,21 @@
 
 
 $(async function () {
+    console.log("loading");
     createDatabase();
     txtName = await getUserData("txtName");
     txtPass = await getUserData("txtPass");
     ErrText = await getUserData("txtAAA");
+    txtPass1 = getUserData("txtPass");
 
     console.log("txtName1: " + txtName);
     console.dir(txtName);
     console.log("txtPass1: " + txtPass);
     console.dir(txtPass);
     console.log("ErrText: " + ErrText);
+    console.log("")
+    console.log("txtPass1: " + txtPass1);
+    console.dir(txtPass1);
 
 
     txtName.then(name => console.log(name));
