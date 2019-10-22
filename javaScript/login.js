@@ -85,11 +85,17 @@ function errorhundling(promise){
 async function getUser() {
     createDatabase();
     txtName = await getUserData("txtName");
-    errorhundling(txtName);
     txtPass = await getUserData("txtPass");
-    errorhundling(txtPass);
     ErrText = await getUserData("txtAAA");
-    errorhundling(ErrText);
+    ErrText.catch((err) => {
+        console.log("indexeddb is not" + err);
+    });
+    txtName.catch((err) => {
+        console.log(err);
+    });
+    txtPass.catch((err) => {
+        console.log(err);
+    });
     return "success";
 }
 
@@ -112,15 +118,7 @@ $(function () {
 
         txtName.then(name => console.log(name));
 
-        ErrText.catch((err) => {
-            console.log("indexeddb is not" + err);
-        });
-        txtName.catch((err) => {
-            console.log(err);
-        });
-        txtPass.catch((err) => {
-            console.log(err);
-        });
+        
 
         txtName.then((name) => {
             txtPass.then((pass) => {
