@@ -133,7 +133,7 @@ $(function () {
         })
     }).catch(err => {
         console.log(err);
-        alert("ユーザーIDが登録されていません");
+        alert("ユーザーPWが登録されていません");
         document.getElementById("signin").style.display = "none";
         console.log("");
     });

@@ -50,7 +50,6 @@ function getUserData(key) {
                     console.log("key: " + key + ", value: " + event.target.result.myvalue);
                     resolve(event.target.result.myvalue);
                 }else{
-                    console.log(key + " は登録されていません");
                     reject(key + "の取得の失敗")
                 }
             }
