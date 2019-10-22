@@ -126,13 +126,18 @@ $(function () {
     txtName.then((name) => {
         txtPass.then((pass) => {
             console.log("name: " + name + ", pass: " + pass);
-            if (name == null && pass == null) {
-                document.getElementById("signin").style.display = "none";
-                console.log("");
-            } else {
-                document.getElementById("signup").style.display = "none";
-            }
+            document.getElementById("signup").style.display = "none";
+        }).catch(err => {
+            console.log(err);
+            alert("ユーザーIDが登録されていません");
+            document.getElementById("signin").style.display = "none";
+            console.log("");
         })
+    }).catch(err => {
+        console.log(err);
+        alert("ユーザーIDが登録されていません");
+        document.getElementById("signin").style.display = "none";
+        console.log("");
     });
 
     console.log("temp1");
