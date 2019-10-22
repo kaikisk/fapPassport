@@ -78,7 +78,7 @@
 //     });
 // }
 
-function errorhundling(promise){
+function errorhundling(promise) {
     promise.catch(err => console.error(err));
 }
 
@@ -102,6 +102,17 @@ async function getUser() {
 
 $(function () {
     console.log("loading");
+    var txtName1 = getUserData("txtName");
+    var txtPass2 = getUserData("txtPass");
+    var ErrText1 = getUserData("txtAAA");
+
+    console.log("txtName1: " + txtName1);
+    console.dir(txtName1);
+    console.log("txtPass1: " + txtPass2);
+    console.dir(txtPass2);
+    console.log("ErrText: " + ErrText1);
+    console.log("")
+
     getUser().then(value => {
         console.log(value);
         txtPass1 = getUserData("txtPass");
@@ -129,7 +140,10 @@ $(function () {
                 }
             })
         })
-    }).catch(err => console.log(err));
+    }).catch(err => {
+        console.log("Error getUser: ");
+        console.log(err)
+    });
 
     console.log("temp1");
 
