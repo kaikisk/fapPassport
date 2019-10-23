@@ -98,7 +98,7 @@ function load(key) {
                 console.log("key: " + key + ", value: " + event.target.result.myvalue);
                 $("#" + key).val(event.target.result.myvalue);
             }else{
-                console.erro(key + "の取得の失敗");
+                console.error(key + "の取得の失敗");
             }
         }
         request.onerror = function (event) {
