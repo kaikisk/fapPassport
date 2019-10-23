@@ -9,30 +9,22 @@ $(function () {
             console.log(i + " : " + appointments[i])
             $('#Table1').append('<tr><td>' + appointments[i].dateClient +
                 '</td><td>' + appointments[i].valClient + '</td><td>' + appointments[i].detailClient
-                + '</td><td><button type="button" class="btn pull-left" onclick="clickRegister(' +
-                i + ')">Register the result</button></td></tr>')
+                + '</td><td><button type="button" class="btn-square-shadow" onclick="clickRegister(' +
+                i + ')">更新</button></td></tr>');
         }
     }).catch(err => console.error(err));
 })
 
-// function clickRegister(index) {
-//     recordString = JSON.stringify(appointments[index]);
 
-//     //localStorage.setItem('tempAppointment',recordString);
 
-//     // var db;
-//     // var request = indexedDB.open('fapPassport');
-//     // request.onsuccess = function (event){
-//     //     db = event.target.result;
-//     //     var ts = db.transaction(["fapPass"], "readwrite");
-//     //     var store = ts.objectStore("fapPass");
-//     //     var request = store.put({id: 'tempAppointment', myvalue: recordString,});
-//     //     request.onsuccess = function(event){
-//     //         console.log("成功しました");
-//     //     }
-//     //     request.onerror = function(event){
-//     //         console.log("エラーが発生しました。");
-//     //     }
-//     // }
-//     location.href = 'result.html';
-// }
+function clickRegister(index) {
+    var appointmentsString = getData("appointments");
+    appointmentsString.then(ap => {
+        var appointments = JSON.parse(ap);
+        var target = appointments[index];
+        $('#txtDate').val(target.dateClient);
+        $('#txtdetail').val(target.detailClient);
+        $('select[name="type"]').val(target.valClient);
+        $('#submit').text('更新');
+    }).catch(err => console.error(err));
+}

@@ -30,7 +30,7 @@ function appointmentRegistration() {
                         '</td><td>' + appointments[i].valClient + '</td><td>' + appointments[i].resClient +
                         '</td><td>' + appointments[i].detailClient + '</td></tr>');
                 }
-                console.log("表示完了")
+                console.log("表示完了");
             }).catch(err => alert(err));
         }
     }).catch(err => {
