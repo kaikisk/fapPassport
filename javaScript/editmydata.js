@@ -1,5 +1,3 @@
-import { promises } from "fs";
-
 $(function() {
     var keys = ['telFam', 'telAtten','bloodType','height','weight',
     'medi1','medi2','medi3',
