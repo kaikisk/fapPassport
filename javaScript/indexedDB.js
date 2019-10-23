@@ -1,9 +1,9 @@
 $(function createDatabase() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         var db;
         var indexedDB = window.indexedDB || window.mozIndexedDB || window.msIndexedDB;
 
-        if(indexedDB) {
+        if (indexedDB) {
             // データベースを削除したい場合はコメントを外します。
             //indexedDB.deleteDatabase("mydb");
             var openRequest = indexedDB.open("fapPassport");
@@ -46,10 +46,10 @@ function getData(key) {
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
             requestName.onsuccess = function (event) {
-                if(event.target.result !== undefined){
+                if (event.target.result !== undefined) {
                     console.log("key: " + key + ", value: " + event.target.result.myvalue);
                     resolve(event.target.result.myvalue);
-                }else{
+                } else {
                     reject(key + "の取得の失敗")
                 }
             }
@@ -61,13 +61,11 @@ function getData(key) {
 };
 
 function save(key) {
-    console.log("point2");
     return new Promise((resolve, reject) => {
         var db;
         var request = indexedDB.open("fapPassport");
-        console.log("point3");
         request.onsuccess = function (event) {
-            console.log("pass onsuccess");
+            console.log("indexedDB.open pass onsuccess");
             db = event.target.result;
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
@@ -94,10 +92,10 @@ function load(key) {
         var store = ts.objectStore("fapPass");
         var request = store.get(key);
         request.onsuccess = function (event) {
-            if(event.target.result !== undefined){
+            if (event.target.result !== undefined) {
                 console.log("key: " + key + ", value: " + event.target.result.myvalue);
-                $("#" + key).val(event.target.result.myvalue);
-            }else{
+                $("#" + key).text(event.target.result.myvalue);
+            } else {
                 console.error(key + "の取得の失敗");
             }
         }
