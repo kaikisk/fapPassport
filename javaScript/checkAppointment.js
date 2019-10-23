@@ -1,6 +1,6 @@
 var appointments;
 $(function() {
-    var appointmentsString = localStorage.getItem('appointments');
+    var appointmentsString = 
     if (appointmentsString) {
         appointments = JSON.parse(appointmentsString);
         for(var i = 0; i < appointments.length; i++) {
@@ -11,6 +11,7 @@ i+')">Register the result</button></td></tr>')
         }
     }
 })
+
 function clickRegister(index) {
     recordString = JSON.stringify(appointments[index]);
     //localStorage.setItem('tempAppointment',recordString);

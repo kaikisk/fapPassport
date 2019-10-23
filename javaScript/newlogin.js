@@ -13,6 +13,7 @@ $(function () {
         var keys = ['txtName', 'txtPass'];
         Promise.all([save(keys[0]), save(keys[1])]).then(values => {
             console.log(values);
+            alert(values);
             location.href = "menu.html";
         }).catch(errs => {
             console.log(errs);
@@ -31,7 +32,7 @@ $(function () {
     });
 });
 
-function save(x) {
+function save(key) {
     console.log("point2");
     return new Promise((resolve, reject) => {
         var db;
@@ -42,9 +43,9 @@ function save(x) {
             db = event.target.result;
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
-            var request = store.put({ id: x, myvalue: $('#' + x).val() });
+            var request = store.put({ id: key, myvalue: $('#' + key).val() });
             request.onsuccess = function (event) {
-                resolve("success put key: " + x + " ,value: " + $('#' + x).val());
+                resolve(key + " : " + $('#' + key).val());
             }
             request.onerror = function (event) {
                 reject("エラーが発生しました。");
