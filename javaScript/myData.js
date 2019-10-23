@@ -6,22 +6,3 @@ $(function() {
         load(keys[i]);
     }
 });
-
-function load(download1) {
-    // $( "#"+download1 ).text(localStorage.getItem(download1));
-
-    var db;
-    var request = indexedDB.open('fapPassport');
-    request.onsuccess = function (event){
-        db = event.target.result;
-        var ts = db.transaction(["fapPass"], "readwrite");
-        var store = ts.objectStore("fapPass");
-        var request = store.get(download1);
-        request.onsuccess = function(event){
-            $( "#"+download1 ).text(event.target.result.myvalue);
-        }
-        request.onerror = function(event){
-            console.log("エラーが発生しました。");
-        }
-    }
-}

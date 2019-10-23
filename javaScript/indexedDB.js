@@ -33,7 +33,7 @@ $(function createDatabase() {
     })
 });
 
-function getUserData(key) {
+function getData(key) {
     return new Promise(function (resolve, reject) {
         var db;
         var request = indexedDB.open('fapPassport');
@@ -83,14 +83,9 @@ function save(key) {
             console.log("indexedDBを開くのに失敗しました");
         }
     });
-    
-    promise.then(success => console.log(success))
-    .catch(err => console.log(err));
 }
 
 function load(key) {
-    //$( "#"+download1 ).val(localStorage.getItem(download1));
-
     var db;
     var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event) {
@@ -99,7 +94,12 @@ function load(key) {
         var store = ts.objectStore("fapPass");
         var request = store.get(key);
         request.onsuccess = function (event) {
-            $("#" + key).val(event.target.result.myvalue);
+            if(event.target.result !== undefined){
+                console.log("key: " + key + ", value: " + event.target.result.myvalue);
+                $("#" + key).val(event.target.result.myvalue);
+            }else{
+                console.erro(key + "の取得の失敗");
+            }
         }
         request.onerror = function (event) {
             console.log("エラーが発生しました。");
