@@ -1,5 +1,5 @@
 function appointmentRegistration() {
-    //if ()
+    // $('#Table1').empty();
     var date = $('#txtDate').val();
     var detail = $('#txtdetail').val();
     var val = '';
@@ -25,11 +25,11 @@ function appointmentRegistration() {
             console.log(temp);
             saveAppointment(temp).then(() => {
                 alert("登録が完了しました");
-                for (var i = 0; i < appointments.length; i++) {
-                    $('#Table1').append('<tr><td>' + appointments[i].dateClient +
-                        '</td><td>' + appointments[i].valClient + '</td><td>' + appointments[i].resClient +
-                        '</td><td>' + appointments[i].detailClient + '</td></tr>');
-                }
+                $('#Table1').append('<tr id=table' + L + '><td>' + appointments[L].dateClient +
+                    '</td><td>' + appointments[L].valClient + '</td><td>' + appointments[L].detailClient
+                    + '</td><td><button type="button" class="btn-square-shadow" onclick="clickRegister(' +
+                    L + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow" onclick="deleteAppointment(' +
+                    L + ')">削除</button></td></tr>');
                 console.log("表示完了");
             }).catch(err => alert(err));
         }
@@ -39,11 +39,11 @@ function appointmentRegistration() {
         var temp = JSON.stringify(appointments);
         saveAppointment(temp).then(() => {
             alert("登録が完了しました");
-            for (var i = 0; i < appointments.length; i++) {
-                $('#Table1').append('<tr><td>' + appointments[i].dateClient +
-                    '</td><td>' + appointments[i].valClient + '</td><td>' + appointments[i].resClient +
-                    '</td><td>' + appointments[i].detailClient + '</td></tr>');
-            }
+            $('#Table1').append('<tr id=table' + 0 + '><td>' + appointments.dateClient +
+                '</td><td>' + appointments.valClient + '</td><td>' + appointments.detailClient
+                + '</td><td><button type="button" class="btn-square-shadow" onclick="clickRegister(' +
+                i + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow" onclick="deleteAppointment(' +
+                i + ')">削除</button></td></tr>');
         }).catch(err => alert(err));
     })
 
@@ -71,4 +71,24 @@ function saveAppointment(appoint) {
             console.log("indexedDBを開くのに失敗しました");
         }
     });
+}
+
+function deleteAppointment(index) {
+    var appointmentsString = getData("appointments");
+    appointmentsString.then(ap => {
+        if (ap) {
+            var appointments = JSON.parse(ap);
+            appointments.splice(index, 1);
+            console.log("削除後のappointments");
+            console.dir(appointments);
+            var temp = JSON.stringify(appointments);
+            saveAppointment(temp).then(() => {
+                $('#table' + index).remove();
+                console.log("削除成功");
+            }).catch(err => {
+                console.error("削除後のappointmentsの更新失敗");
+            });
+            console.log(temp);
+        }
+    })
 }

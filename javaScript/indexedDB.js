@@ -94,7 +94,7 @@ function load(key) {
         request.onsuccess = function (event) {
             if (event.target.result !== undefined) {
                 console.log("key: " + key + ", value: " + event.target.result.myvalue);
-                $("#" + key).text(event.target.result.myvalue);
+                $("#" + key).val(event.target.result.myvalue);
             } else {
                 console.error(key + "の取得の失敗");
             }
