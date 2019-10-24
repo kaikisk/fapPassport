@@ -39,11 +39,11 @@ function appointmentRegistration() {
         var temp = JSON.stringify(appointments);
         saveAppointment(temp).then(() => {
             alert("登録が完了しました");
-            $('#Table1').append('<tr id=table' + 0 + '><td>' + appointments.dateClient +
-                '</td><td>' + appointments.valClient + '</td><td>' + appointments.detailClient
+            $('#Table1').append('<tr id=table' + 0 + '><td>' + appointments[0].dateClient +
+                '</td><td>' + appointments[0].valClient + '</td><td>' + appointments[0].detailClient
                 + '</td><td><button type="button" class="btn-square-shadow" onclick="clickRegister(' +
-                i + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow" onclick="deleteAppointment(' +
-                i + ')">削除</button></td></tr>');
+                0 + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow" onclick="deleteAppointment(' +
+                0 + ')">削除</button></td></tr>');
         }).catch(err => alert(err));
     })
 
