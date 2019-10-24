@@ -1,6 +1,6 @@
 $(function () {
-    txtName = getData("txtName");
-    txtPass = getData("txtPass");
+    txtName = getData("userID");
+    txtPass = getData("userPass");
     // ErrText = getUserData("txtAAA");
 
     // ErrText.catch((err) => {
