@@ -1,7 +1,6 @@
 var appointments;
 $(function () {
     var appointmentsString = getData("appointments");
-    alert(appointmentsString);
     appointmentsString.then(ap => {
         appointments = JSON.parse(ap);
         for (var i = 0; i < appointments.length; i++) {
