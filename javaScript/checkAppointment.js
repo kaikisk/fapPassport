@@ -8,8 +8,8 @@ $(function () {
             console.log(i + " : " + appointments[i])
             $('#Table1').append('<tr id=table' + i + '><td>' + appointments[i].dateClient +
                 '</td><td>' + appointments[i].valClient + '</td><td>' + appointments[i].detailClient
-                + '</td><td><button type="button" class="btn-square-shadow" onclick="clickRegister(' +
-                i + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow" onclick="deleteAppointment(' +
+                + '</td><td><button type="button" class="btn-square-shadow btn_center" onclick="clickRegister(' +
+                i + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow btn_center" onclick="deleteAppointment(' +
                 i + ')">削除</button></td></tr>');
         }
     }).catch(err => console.error(err));
