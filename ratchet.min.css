@@ -36,6 +36,20 @@
   overflow: hidden;
 }
 
+.btn_left{
+  text-align: left;
+  width: 50%;
+  display: block;
+  overflow: hidden;
+}
+
+.btn_right{
+  text-align: right;
+  width: 50%;
+  display: block;
+  overflow: hidden;
+}
+
 .btn_delAndup{
   margin-left: 5%;
   text-align: center;
@@ -55,6 +69,10 @@
 
 .green_color{
   background: #5cb85c /*緑*/
+}
+
+.yellow_color{
+  background:  #ccc016 /*黄色*/;
 }
 
 table , td, th {

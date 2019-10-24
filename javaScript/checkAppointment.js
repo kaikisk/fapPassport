@@ -24,8 +24,9 @@ function clickRegister(index) {
         $('#txtDate').val(target.dateClient);
         $('#txtdetail').val(target.detailClient);
         $('select[name="type"]').val(target.valClient);
-        $('#submit').text('更新');
-        $('#submit').click(() => {
+        $('#btn_update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>' 
+        + '\n' + '<button class="btn-square-shadow btn_right yellow_color" id="cancel">キャンセル</button>');
+        $('#update').click(() => {
             target.dateClient = $('#txtDate').val();
             target.detailClient = $('#txtdetail').val();
             for (var i = 1; i <= 7; i++) {
@@ -45,6 +46,13 @@ function clickRegister(index) {
                 index + ')">削除</button></td></tr>');
                 console.log("更新が成功しました");
             }).catch(err => console.error("更新が失敗しました"));
+        });
+        $('#cancel').click(() => {
+            $('#txtDate').val("");
+            $('#txtdetail').val("");
+            $('select[name="type"]').val("");
+            $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="appointmentRegistration()">登録</button>');
+            return;
         })
     }).catch(err => console.error(err));
 }
