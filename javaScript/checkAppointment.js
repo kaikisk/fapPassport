@@ -7,11 +7,11 @@ $(function () {
             console.log(i + " : " + appointments[i])
             $('#Table1').append('<tr id=table' + i + '><td>' + appointments[i].dateClient +
                 '</td><td>' + appointments[i].valClient + '</td><td>' + appointments[i].detailClient
-                + '</td><td><button type="button" class="btn-square-shadow btn_center" onclick="clickRegister(' +
-                i + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow btn_center" onclick="deleteAppointment(' +
+                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' +
+                i + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' +
                 i + ')">削除</button></td></tr>');
         }
-    }).catch(err => console.error(err));
+    }).catch(err => console.log(err));
 })
 
 
@@ -40,8 +40,8 @@ function clickRegister(index) {
             saveAppointment(temp).then(() => {
                 $('#table' + index).html('<tr id=table' + index + '><td>' + appointments[index].dateClient +
                 '</td><td>' + appointments[index].valClient + '</td><td>' + appointments[index].detailClient
-                + '</td><td><button type="button" class="btn-square-shadow" onclick="clickRegister(' +
-                index + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow" onclick="deleteAppointment(' +
+                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' +
+                index + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' +
                 index + ')">削除</button></td></tr>');
                 console.log("更新が成功しました");
             }).catch(err => console.error("更新が失敗しました"));

@@ -36,6 +36,14 @@
   overflow: hidden;
 }
 
+.btn_delAndup{
+  margin-left: 5%;
+  text-align: center;
+  width: 90%;
+  display: block;
+  overflow: hidden;
+}
+
 .btn_sixty{
   padding: 2%;
   margin-left:10%;
