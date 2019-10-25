@@ -24,18 +24,20 @@ function clickRegister(index) {
         $('#txtDate').val(target.dateClient);
         $('#txtdetail').val(target.detailClient);
         $('select[name="type"]').val(target.valClient);
-        $('#btn_Update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>'
-            + '\'n' 
+        $('#btn_Update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>' 
             + '<button class="btn-square-shadow btn_right yellow_color" id="cancel">キャンセル</button>');
         $('#update').click(() => {
             target.dateClient = $('#txtDate').val();
             target.detailClient = $('#txtdetail').val();
+
             for (var i = 1; i <= 7; i++) {
                 if (document.getElementById("RblExamination" + i).selected) {
                     target.valClient = $('#RblExamination' + i).val();
                     break;
                 }
             }
+
+            console.dir()
             appointments[index] = target;
             var temp = JSON.stringify(appointments);
             console.log(temp);
