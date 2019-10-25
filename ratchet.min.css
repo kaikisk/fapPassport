@@ -36,17 +36,15 @@
   overflow: hidden;
 }
 
-.btn_left{
-  text-align: left;
+.btn_center{
   width: 50%;
-  display: block;
+  display: inline-block;
   overflow: hidden;
 }
 
 .btn_right{
-  text-align: right;
   width: 50%;
-  display: block;
+  display: inline-block;
   overflow: hidden;
 }
 
@@ -54,7 +52,7 @@
   margin-left: 5%;
   text-align: center;
   width: 90%;
-  display: block;
+  display: inline-block;
   overflow: hidden;
 }
 

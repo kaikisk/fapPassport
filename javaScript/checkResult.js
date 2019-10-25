@@ -1,27 +1,22 @@
 $(function() {
     var resultsString;
 
-    var db;
-    var request = indexedDB.open('fapPassport');
-    request.onsuccess = function (event){
-        db = event.target.result;
-        var ts = db.transaction(["fapPass"], "readwrite");
-        var store = ts.objectStore("fapPass");
-        var request = store.get('results');
-        request.onsuccess = function(event){
-            resultsString = event.target.result.myvalue;
-        }
-        request.onerror = function(event){
-            console.log("エラーが発生しました。");
-        }
-    }
+    var appointments = getData("appointments");
 
-    if (resultsString) {
-        var results = JSON.parse(resultsString);
-        for(var i = 0; i < results.length; i++) {
-            $('#Table1').append( '<tr><td>' + results[i].dateClient + 
-'</td><td>' + results[i].valClient + '</td><td>' + results[i].resClient + 
-'</td><td>' + results[i].detailClient + '</td></tr>')
+    appointments.then(ap => {
+        resultsString = ap;
+        if (resultsString) {
+            var results = JSON.parse(resultsString);
+            for(var i = 0; i < results.length; i++) {
+                $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
+                '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
+                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' +
+                i + ')">結果</button></td></tr>');
+            }
         }
-    }
+    }).catch(() => console.log("診察予約、結果が登録されていません"));
 })
+
+function clickResult(index){
+
+}

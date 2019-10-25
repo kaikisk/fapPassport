@@ -9,7 +9,7 @@
     <script src="./jquery-2.2.4.min.js"></script>
     <script src="./javaScript/indexedDB.js"></script>
     <script src="./javaScript/result.js"></script>
-    <script src="./javaScript/checkAppointment.js"></script>
+    <script src="./javaScript/checkResult.js"></script>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         <br /><br />
         <div id="RblExamination">
             受信科目<br>
-            <select name="type" size="1">
+            <select id="RblExamination" name="type" size="1">
                 <option id="RblExamination1" value="胃(食堂)カメラ">胃(食堂)カメラ</option>
                 <option id="RblExamination2" value="大腸カメラ">大腸カメラ</option>
                 <option id="RblExamination3" value="腹部エコー">腹部エコー</option>
@@ -64,9 +64,10 @@
         <div>
             <table id="Table1" class="table">
                 <tr>
-                    <th>日付Date</th>
-                    <th>検査項目ConsultationType</th>
-                    <th>備考Detail</th>
+                    <th>日付</th>
+                    <th>検査項目</th>
+                    <th>備考</th>
+                    <th>結果</th>
                 </tr>
             </table>
         </div>
