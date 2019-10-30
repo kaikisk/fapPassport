@@ -1,6 +1,7 @@
 $(function() {
     var query = decodeURI(location.search.slice(1).split("&"));
     var queries = {};
+    console.log(typeof query);
     console.dir(query);
     query.forEach(query => {
         var queryArr = query.split('=');
