@@ -1,5 +1,5 @@
 $(function() {
-    var query = location.search;
+    var query = decodeURI(location.search);
     console.log(query);
 });
 

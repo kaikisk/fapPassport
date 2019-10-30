@@ -65,6 +65,7 @@ function clickResult(index) {
         var target = appointments[index];
         var resultPage = "result.html" + "?date=" + target.dateClient
             + "&detail=" + target.detailClient + "&val=" + target.valClient;
+            resultPage = encodeURI(resultPage);
         location.href = resultPage;
     }).catch((err) => alert(err));
 }
