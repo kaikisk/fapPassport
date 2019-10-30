@@ -18,5 +18,5 @@ $(function() {
 })
 
 function clickResult(index){
-
+   
 }

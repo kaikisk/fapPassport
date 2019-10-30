@@ -1,13 +1,6 @@
 $(function() {
-    if (localStorage.getItem("tempAppointment")==null) {
-        return;
-    }
-    console.log('test');
-    var rec = JSON.parse(localStorage.getItem("tempAppointment"));
-    $('#txtDate').val(rec.dateClient);
-    $('input[value="'+rec.valClient+'"]').prop("checked",true);
-    $('#txtdetail').val(rec.detailClient);
-    localStorage.removeItem("tempAppointment");
+    var query = location.search;
+    console.log(query);
 });
 
 function resultRegistration(){

@@ -24,7 +24,7 @@ function clickRegister(index) {
         $('#txtDate').val(target.dateClient);
         $('#txtdetail').val(target.detailClient);
         $('select[name="type"]').val(target.valClient);
-        $('#btn_Update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>' 
+        $('#btn_Update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_right yellow_color" id="cancel">キャンセル</button>');
         $('#update').click(() => {
             target.dateClient = $('#txtDate').val();
@@ -42,10 +42,11 @@ function clickRegister(index) {
             var temp = JSON.stringify(appointments);
             console.log(temp);
             saveAppointment(temp).then(() => {
-                $('#table' + index).html('<tr id=table' + index + '><td>' + appointments[index].dateClient +
+                $('#table' + index).html('<td>' + appointments[index].dateClient +
                     '</td><td>' + appointments[index].valClient + '</td><td>' + appointments[index].detailClient
-                    + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' +
-                    index + ')">更新</button></td>' + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' +
+                    + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + index + ')">更新</button></td>'
+                    + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + index + ')">結果</button></td>'
+                    + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' +
                     index + ')">削除</button></td></tr>');
                 console.log("更新が成功しました");
             }).catch(err => console.error("更新が失敗しました"));
@@ -58,8 +59,15 @@ function clickRegister(index) {
     }).catch(err => console.error(err));
 }
 
-function clickResult() {
-
+function clickResult(index) {
+    var appointment = getData("appointments");
+    appointment.then(ap => {
+        var appointments = JSON.parse(ap);
+        var target = appointments[index];
+        var resultPage = "result.html" + "?date=" + target.dateClient
+            + "&detail=" + target.detailClient + "&val=" + target.valClient;
+        location.href = resultPage;
+    }).catch((err) => alert(err));
 }
 
 function resetElement() {
