@@ -5,6 +5,7 @@ $(function() {
     console.log(typeof query);
     console.log("queryStr" + typeof queryStr);
     console.log("query" + query);
+    console.dir(queryStr);
 
     if(query){
         $('#txtDate').val("");
