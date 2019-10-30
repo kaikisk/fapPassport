@@ -42,7 +42,7 @@ function appointmentRegistration() {
             $('#Table1').append('<tr id=table' + 0 + '><td>' + appointments[0].dateClient +
                 '</td><td>' + appointments[0].valClient + '</td><td>' + appointments[0].detailClient
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + 0 + ')">更新</button></td>' 
-                + + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + 0 + ')">結果</button></td>' 
+                + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + 0 + ')">結果</button></td>' 
                 + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' + 0 + ')">削除</button></td></tr>');
         }).catch(err => alert(err));
     })
