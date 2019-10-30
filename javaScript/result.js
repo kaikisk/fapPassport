@@ -1,6 +1,14 @@
 $(function() {
-    var query = decodeURI(location.search);
-    console.log(query);
+    var query = decodeURI(location.search.slice(1).split("&"));
+    console.dir(query);
+
+    if(query){
+        $('#txtDate').val("");
+        $('#txtdetail').val("test");
+        $('select[name="type"]').val();
+    }else{
+        return;
+    }
 });
 
 function resultRegistration(){
