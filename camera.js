@@ -104,11 +104,12 @@ function saveImg(key, val) {
     });
 }
 
-// function changesize(){
-//     var width = $("#width1").val();
-//     var height = $("#height1").val();
+function changesize(){
+    var width = $(".video").width();
+    var height = $("#height1").height();
+    console.log("width: "  + width + ", height: " + height);
     
-//     var video = $("#myvideo");
-//     video.width = width;
-//     video.height = height;
-// }
+    var video = $("#myvideo");
+    video.width = width;
+    video.height = height;
+}
