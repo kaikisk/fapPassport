@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="ratchet.min.css" />
     <title>FAP Passport</title>
-
+    <script type="text/javascript" src="camera.js"></script>
     <script src="./jquery-2.2.4.min.js"></script>
     <script src="./javaScript/indexedDB.js"></script>
 
@@ -19,8 +19,6 @@
 </head>
 
 <body>
-    <button id="takePhoto" onclick="takePhoto()">写真撮影</button>
-    <br>
     <!-- <div class="select">
         <label for="videoSource">Video source: </label>
         <select id="videoSource" onchange="changeVideo()"></select>
@@ -28,7 +26,13 @@
     <div class="video">
         <video id="myVideo" width="720" height="1280" autoplay="1"></video>
     </div>
-    <script type="text/javascript" src="camera.js"></script>
+
+    <br />
+
+    <div id="btn_update">
+        <button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="takePhoto()">写真撮影</button>
+    </div>
+
 
     <p1>indexedDBへの保存</p1>
     <img>

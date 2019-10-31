@@ -58,8 +58,9 @@ function takePhoto() {
         console.log('Photo taken: ' + blob.type + ', ' + blob.size + 'B');
         tempImage = blob;
 
-        const image = document.querySelector('img');
-        image.src = URL.createObjectURL(blob);
+        console.log(tempImage);
+        var temp = $(".video").html()
+        $(".video").html(temp + '<img src="' + URL.createObjectURL(blob));
     })
     .catch(err => console.error('takePhoto() failed: ', err));
 }

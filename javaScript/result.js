@@ -55,7 +55,10 @@ function resultRegistration() {
     resultsString.then(result => {
         var results = JSON.parse(result);
         var L = results.length;
+        client.index = L;
         results[L] = client;
+        console.log("client: ");
+        console.dir(client);
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
             alert("登録が完了しました");
@@ -68,6 +71,7 @@ function resultRegistration() {
         }).catch(() => alert("error saveReservation"));
     }).catch(err => {
         console.log(err);
+        client.index = 0;
         var results = [client];
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
