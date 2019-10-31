@@ -1,6 +1,6 @@
 $(function () {
     var resultsString = getData("results");
-
+    
     resultsString.then(result => {
         var results = JSON.parse(result);
         console.log("pass results");
@@ -10,6 +10,7 @@ $(function () {
                 + "</td><td>" + results.resClient[i]
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' +
                 i + ')">結果</button></td></tr>');
+                console.log("pass for results : " + results[i].dateClient);
         }
     }).catch(() => console.log("診察予約、結果が登録されていません"));
 })
