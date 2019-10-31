@@ -59,10 +59,12 @@ function resultRegistration() {
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
             alert("登録が完了しました");
-            $('#Table1').append('<tr id=table' + L + '><td>' + results[L].dateClient +
-                '</td><td>' + results[L].valClient + '</td><td>' + results[L].detailClient
-                + "</td><td>" + results[L].resClient
+            for (var i = 0; i < results.length; i++) {
+            $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
+                '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
+                + "</td><td>" + results[i].resClient
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
+            }
         }).catch(() => alert("error saveReservation"));
     }).catch(err => {
         console.log(err);
