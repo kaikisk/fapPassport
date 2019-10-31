@@ -65,9 +65,10 @@ function takePhoto() {
     canvas.setAttribute("height", h);
     ctx.drawImage(video, 0, 0, w, h);
     var temp = $(".video").html()
-    console.log("temp: " + temp);
-    console.log("url: " + URL.createObjectURL(blob));
-    $(".video").html(temp + '<img src="' + URL.createObjectURL(blob));
+    var img = canvas.toDataURL('image/jpeg');
+    console.log(img);
+    saveImg("img", img).then(() => alert("success save img")).catch(err => alert(err));
+
 
     // imageCapture.takePhoto().then(blob => {
     //     console.log('Photo taken: ' + blob.type + ', ' + blob.size + 'B');
@@ -80,20 +81,25 @@ function takePhoto() {
     // .catch(err => console.error('takePhoto() failed: ', err));
 }
 
-function save() {
-    var db;
-    var request = indexedDB.open("camera");
-    request.onsuccess = function (event) {
-        db = event.target.result;
-        var keyName = document.getElementById("key").value; // キー名を取ってくる
-        var ts = db.transaction(["store1"], "readwrite");
-        var store = ts.objectStore("store1");
-        var request = store.put({ mykey: keyName, mayvalue: tempImage });
-        request.onsuccess = function () {
-            console.log("success put img");
+function saveImg(key, val) {
+    return new Promise((resolve, reject) => {
+        var db;
+        var request = indexedDB.open("fapPassport");
+        request.onsuccess = function (event) {
+            console.log("indexedDB.open pass onsuccess");
+            db = event.target.result;
+            var ts = db.transaction(["fapPass"], "readwrite");
+            var store = ts.objectStore("fapPass");
+            var request = store.put({ id: key, myvalue: val });
+            request.onsuccess = function (event) {
+                resolve(key + " : " + val);
+            }
+            request.onerror = function (event) {
+                reject("エラーが発生しました。");
+            }
         }
         request.onerror = function () {
-            console.log("error put img");
+            console.log("indexedDBを開くのに失敗しました");
         }
-    }
+    });
 }
