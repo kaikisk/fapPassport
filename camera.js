@@ -32,7 +32,7 @@ function gotStream(stream) {
     video.srcObject = stream; // streamはユーザーのカメラとマイクの情報で、これをvideoの入力ソースにする
 
     const track = stream.getVideoTracks()[0];
-    console.log(track);
+    // console.log(track);
     imageCapture = new ImageCapture(track);
 
     alert("succsess");
@@ -68,7 +68,7 @@ function takePhoto() {
     ctx.drawImage(video, 0, 0, w, h);
     var img = canvas.toDataURL('image/jpeg');
     console.log(img);
-    $(".video").html('<img src="' + img + '"');
+    $(".video").html('<canvas id="canvas"></canvas>');
     saveImg("img", img).then(() => alert("success save img")).catch(err => alert(err));
 
 
