@@ -98,12 +98,8 @@ th {
 }
 
 .video{
-  width: 80%;
-  height: 70%;
-  margin: 10%;
-}
-
-#myvideo{
-  object-fit: fill;
+  border: 1px solid #e41414;
+  width: 720px;
   height: 1280px;
+  margin: 10%;
 }
