@@ -3,7 +3,7 @@ $(function () {
 
     resultsString.then(result => {
         var results = JSON.parse(result);
-        console.log()
+        console.log("pass results");
         for (var i = 0; i < results.length; i++) {
             $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
                 '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient

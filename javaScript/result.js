@@ -26,8 +26,8 @@ $(function () {
 function resultRegistration() {
     var date = $('#txtDate').val();
     var detail = $('#txtdetail').val();
-    var val = $('#RblExamination').val();
-    var res = $("#RblResult").val();
+    var val = $('#Examination').val();
+    var res = $("#rblresult").val();
 
     // for (var i = 1; i <= 7; i++) {
     //     if ($("#RblExamination" + i).selected) {
