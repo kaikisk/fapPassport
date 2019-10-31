@@ -7,7 +7,7 @@ $(function () {
         for (var i = 0; i < results.length; i++) {
             $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
                 '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
-                + "</td><td>" + results.resClient[i]
+                + "</td><td>" + results[i].resClient
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' +
                 i + ')">結果</button></td></tr>');
                 console.log("pass for results : " + + results[i].dateClient);

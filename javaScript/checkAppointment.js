@@ -65,7 +65,8 @@ function clickResult(index) {
         var appointments = JSON.parse(ap);
         var target = appointments[index];
         var resultPage = "result.html" + "?date=" + target.dateClient
-            + "&detail=" + target.detailClient + "&val=" + target.valClient;
+            + "&detail=" + target.detailClient + "&val=" + target.valClient
+            + "&index=" + index;
 
         resultPage = encodeURI(resultPage);
         location.href = resultPage;

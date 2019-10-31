@@ -1,6 +1,7 @@
 $(function () {
     var queryStr = decodeURI(location.search);
     var result = {};
+    index;
 
     if (queryStr) {
         var queryArr = queryStr.slice(1).split("&");
@@ -13,6 +14,7 @@ $(function () {
         console.log("result: " + result);
         console.dir(result);
 
+        index = result.index;
         $('#txtDate').val(result.date);
         $('#txtdetail').val(result.detail);
         $('#RblExamination').val(result.val);
@@ -74,6 +76,9 @@ function resultRegistration() {
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + 0 + ')">結果</button></td></tr>');
         }).catch(err => alert(err));
     });
+    if(index){
+        deleteAppointment(index);
+    }
 }
 
 function resetElement(){
