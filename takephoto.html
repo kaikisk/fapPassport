@@ -4,10 +4,12 @@
 <head>
     <meta http-equiv="content-type" ; charset="utf-8">
     <title>Self Camera</title>
-    <script type="text/javascript" src="indexedDB.js"></script>
+    <script src="indexedDB.js"></script>
+    <script src="./jquery-2.2.4.min.js"></script>
+    <script src="./javaScript/indexedDB.js"></script>
+
     <style type="text/css">
         img {
-            
             max-width: 100%;
             height: auto;
         }
@@ -21,7 +23,9 @@
         <label for="videoSource">Video source: </label>
         <select id="videoSource" onchange="changeVideo()"></select>
     </div> -->
-    <video id="myVideo" width="720" height="1280" autoplay="1"></video>
+    <div class="video">
+        <video id="myVideo" width="720" height="1280" autoplay="1"></video>
+    </div>
     <script type="text/javascript" src="camera.js"></script>
 
     <p1>indexedDBへの保存</p1>
