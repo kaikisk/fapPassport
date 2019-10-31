@@ -106,7 +106,7 @@ function saveImg(key, val) {
 
 function changesize(){
     var width = $(".video").width();
-    var height = $("#height1").height();
+    var height = $(".video").height();
     console.log("width: "  + width + ", height: " + height);
     
     var video = $("#myvideo");
