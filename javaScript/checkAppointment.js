@@ -42,6 +42,7 @@ function clickRegister(index) {
             var temp = JSON.stringify(appointments);
             console.log(temp);
             saveAppointment(temp).then(() => {
+                resetElement();
                 $('#table' + index).html('<td>' + appointments[index].dateClient +
                     '</td><td>' + appointments[index].valClient + '</td><td>' + appointments[index].detailClient
                     + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + index + ')">更新</button></td>'
