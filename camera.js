@@ -2,7 +2,7 @@ var imageCapture;
 var tempImage;
 var video = document.getElementById("myVideo"); // 適当にvideoタグのオブジェクトを取得
 // var constrains = { video:{facingMode: { exact: "environment" }, width: "720", height: "1280"}, audio: false }; // 映像・音声を取得するかの設定
-var constrains = { video: tarue, width: "720", height: "1280", audio: false }; // 映像・音声を取得するかの設定
+var constrains = { video: { width: "720", height: "1280"}, audio: false }; // 映像・音声を取得するかの設定
 
 
 // navigator.mediaDevices.enumerateDevices()
