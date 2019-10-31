@@ -37,16 +37,16 @@
                 <option id="RblExamination6" value="腎エコー">腎エコー</option>
                 <option id="RblExamination7" value="その他">その他</option>
             </select>
-        </div> 
+        </div>
 
         <div id="RblResult">
-                受信結果<br>
-                <select id="rblresult" name="type" size="1">
-                    <option id="RblResult1" value="OK">OK</option>
-                    <option id="RblResult2" value="要治療">要治療</option>
-                    <option id="RblResult3" value="その他">その他</option>
-                </select>
-            </div> 
+            受信結果<br>
+            <select id="rblresult" name="type" size="1">
+                <option id="RblResult1" value="OK">OK</option>
+                <option id="RblResult2" value="要治療">要治療</option>
+                <option id="RblResult3" value="その他">その他</option>
+            </select>
+        </div>
 
         <br /> 備考(Detail)
         <br />
@@ -54,7 +54,9 @@
         <br />
         <br />
         <button class="btn-square-shadow btn_sixty green_color" onclick="location.href='takephoto.html'">写真の添付</button>
-        <button class="btn-square-shadow btn_center green_color" onclick="resultRegistration()">登録</button>
+        <div id="btn_update">
+            <button class="btn-square-shadow btn_center green_color" onclick="resultRegistration()">登録</button>
+        </div>
         <br />
     </div>
 
