@@ -67,6 +67,8 @@ function takePhoto() {
     var temp = $(".video").html()
     var img = canvas.toDataURL('image/jpeg');
     console.log(img);
+    var temp = $(".video").html()
+    $(".video").html(temp + '<img src="' + img);
     saveImg("img", img).then(() => alert("success save img")).catch(err => alert(err));
 
 
