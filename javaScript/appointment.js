@@ -73,6 +73,7 @@ function saveAppointment(appoint) {
     });
 }
 
+
 function deleteAppointment(index) {
     var appointmentsString = getData("appointments");
     appointmentsString.then(ap => {

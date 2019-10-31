@@ -24,7 +24,7 @@ function clickRegister(index) {
         $('#txtDate').val(target.dateClient);
         $('#txtdetail').val(target.detailClient);
         $('select[name="type"]').val(target.valClient);
-        $('#btn_Update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>'
+        $('#btn_update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_right yellow_color" id="cancel">キャンセル</button>');
         $('#update').click(() => {
             target.dateClient = $('#txtDate').val();
@@ -65,7 +65,8 @@ function clickResult(index) {
         var target = appointments[index];
         var resultPage = "result.html" + "?date=" + target.dateClient
             + "&detail=" + target.detailClient + "&val=" + target.valClient;
-            resultPage = encodeURI(resultPage);
+
+        resultPage = encodeURI(resultPage);
         location.href = resultPage;
     }).catch((err) => alert(err));
 }

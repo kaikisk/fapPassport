@@ -106,6 +106,29 @@ function load(key) {
     }
 }
 
+function saveReservation(key, appoint) {
+    return new Promise((resolve, reject) => {
+        var db;
+        var request = indexedDB.open("fapPassport");
+        request.onsuccess = function (event) {
+            console.log("pass onsuccess");
+            db = event.target.result;
+            var ts = db.transaction(["fapPass"], "readwrite");
+            var store = ts.objectStore("fapPass");
+            var request = store.put({ id: key, myvalue: appoint });
+            request.onsuccess = function (event) {
+                resolve(key + " : " + $('#' + key).val());
+            }
+            request.onerror = function (event) {
+                reject("エラーが発生しました。");
+            }
+        }
+        request.onerror = function () {
+            console.log("indexedDBを開くのに失敗しました");
+        }
+    });
+}
+
 // async function createDatabase() {
 //     var db;
 //     var indexedDB = window.indexedDB || window.mozIndexedDB || window.msIndexedDB;
