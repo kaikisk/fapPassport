@@ -36,14 +36,15 @@
   overflow: hidden;
 }
 
-.btn_right{
+.btn_fifty{
+  margin: 2px;
   width: 50%;
   display: inline-block;
   overflow: hidden;
 }
 
 .btn_delAndup{
-  margin-left: 5%;
+  margin-left: 2%;
   text-align: center;
   width: 90%;
   display: inline-block;
@@ -52,7 +53,8 @@
 
 .btn_sixty{
   padding: 2%;
-  margin:10%;
+  margin-left: 10%;
+  margin-bottom: 3px;
   text-align: center;
   width: 60%;
   display: block;

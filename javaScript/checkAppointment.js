@@ -24,8 +24,8 @@ function clickRegister(index) {
         $('#txtDate').val(target.dateClient);
         $('#txtdetail').val(target.detailClient);
         $('select[name="type"]').val(target.valClient);
-        $('#btn_update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>'
-            + '<button class="btn-square-shadow btn_right yellow_color" id="cancel">キャンセル</button>');
+        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
+            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
         $('#update').click(() => {
             target.dateClient = $('#txtDate').val();
             target.detailClient = $('#txtdetail').val();
