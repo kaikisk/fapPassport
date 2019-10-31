@@ -1,7 +1,6 @@
 $(function () {
     var queryStr = decodeURI(location.search);
     var result = {};
-    index;
 
     if (queryStr) {
         var queryArr = queryStr.slice(1).split("&");
@@ -76,6 +75,7 @@ function resultRegistration() {
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + 0 + ')">結果</button></td></tr>');
         }).catch(err => alert(err));
     });
+    console.log("index" + index);
     if(index){
         deleteAppointment(index);
     }
