@@ -7,9 +7,9 @@ $(function () {
             console.log(i + " : " + appointments[i])
             $('#Table1').append('<tr id=table' + i + '><td>' + appointments[i].dateClient +
                 '</td><td>' + appointments[i].valClient + '</td><td>' + appointments[i].detailClient
-                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + i + ')">更新</button></td>'
-                + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + i + ')">結果</button></td>'
-                + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' + i + ')">削除</button></td></tr>');
+                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + i + ')">更新</button>'
+                + '<button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + i + ')">結果</button>'
+                + '<button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' + i + ')">削除</button></td></tr>');
         }
     }).catch(err => console.log("検診予約が登録されていません"));
 })
