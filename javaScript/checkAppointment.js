@@ -45,9 +45,9 @@ function clickRegister(index) {
                 resetElement();
                 $('#table' + index).html('<td>' + appointments[index].dateClient +
                     '</td><td>' + appointments[index].valClient + '</td><td>' + appointments[index].detailClient
-                    + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + index + ')">更新</button></td>'
-                    + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + index + ')">結果</button></td>'
-                    + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' + index + ')">削除</button></td></tr>');
+                    + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + index + ')">更新</button>'
+                    + '<button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + index + ')">結果</button>'
+                    + '<button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' + index + ')">削除</button></td></tr>');
                 console.log("更新が成功しました");
             }).catch(err => console.error("更新が失敗しました"));
         });
