@@ -4,7 +4,7 @@ var width = $(".video").width();
 var height = $(".video").height();
 var video = document.getElementById("myVideo"); // 適当にvideoタグのオブジェクトを取得
 // var constrains = { video:{facingMode: { exact: "environment" }, width: "720", height: "1280"}, audio: false }; // 映像・音声を取得するかの設定
-var constrains = { video: { width: width, height: height}, audio: false }; // 映像・音声を取得するかの設定
+var constrains = { video: { width: width, height: height }, audio: false }; // 映像・音声を取得するかの設定
 
 
 // navigator.mediaDevices.enumerateDevices()
@@ -68,7 +68,14 @@ function takePhoto() {
     ctx.drawImage(video, 0, 0, w, h);
     var img = canvas.toDataURL('image/jpeg');
     console.log(img);
-    $(".video").html('<canvas id="canvas"></canvas>');
+    $(".video").html('<canvas id="canvas1"></canvas>');
+    var canvas1 = document.getElementById('canvas1');
+    var ctx1 = canvas1.getContext('2d');
+    var img1 = new Image;
+    img1.onload = function () {
+        ctx1.drawImage(img1, 0, 0); // Or at whatever offset you like
+    };
+    img1.src = img;
     saveImg("img", img).then(() => alert("success save img")).catch(err => alert(err));
 
 
@@ -106,11 +113,11 @@ function saveImg(key, val) {
     });
 }
 
-function changesize(){
+function changesize() {
     var width = $(".video").width();
     var height = $(".video").height();
-    console.log("width: "  + width + ", height: " + height);
-    
+    console.log("width: " + width + ", height: " + height);
+
     var video = $("#myvideo");
     video.width = width;
     video.height = height;
