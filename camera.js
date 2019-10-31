@@ -103,3 +103,12 @@ function saveImg(key, val) {
         }
     });
 }
+
+function changesize(){
+    var width = $("#width1").val();
+    var height = $("#height1").val();
+    
+    var video = $("#myvideo");
+    video.width = width;
+    video.height = height;
+}
