@@ -19,6 +19,7 @@ function clickResult1(index) {
     var resultsString = getData("results");
 
     resultsString.then(result => {
+        $("#index").val(index);
         var results = JSON.parse(result);
         var target = results[index];
         $('#txtDate').val(target.dateClient);
@@ -32,6 +33,7 @@ function clickResult1(index) {
             target.detailClient = $('#txtdetail').val();
             target.valClient = $('#RblExamination').val();
             target.resClient = $("#RblResult").val();
+            target.index = index;
             results[index] = target;
             var temp = JSON.stringify(results);
             saveReservation("results", temp).then(() => {

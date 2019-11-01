@@ -15,8 +15,10 @@ $(function createDatabase() {
                 var store = db.createObjectStore("fapPass", { keyPath: "id" });
                 store.createIndex("myvalueIndex", "myvalue");
                 console.log("pass onupgradeneeded");
-                var store1 = db.createObjectStore("photo", { keyPath: "id" });
+                var store1 = db.createObjectStore("photo", { keyPath: "id", autoIncrement: true});
                 store1.createIndex("myvalueIndex", "myvalue");
+                var store2 = db.createObjectStore("tempPhoto", { keyPath: "id", autoIncrement: true});
+                store2.createIndex("myvalueIndex", "myvalue");
             }
 
 

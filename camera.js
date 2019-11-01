@@ -3,25 +3,9 @@ var tempImage;
 var width = $(".video").width();
 var height = $(".video").height();
 var video = document.getElementById("myVideo"); // 適当にvideoタグのオブジェクトを取得
-// var constrains = { video:{facingMode: { exact: "environment" }, width: "720", height: "1280"}, audio: false }; // 映像・音声を取得するかの設定
+// var constrains = { video:{facingMode: { exact: "environment" }, width: width, height: height}, audio: false }; // 映像・音声を取得するかの設定
 var constrains = { video: { width: width, height: height }, audio: false }; // 映像・音声を取得するかの設定
 
-
-// navigator.mediaDevices.enumerateDevices()
-// .then(devices => {
-//     var videoSelect = document.getElementById("videoSource");
-//     console.log(devices);
-//     console.dir(devices);
-//     for (let i = 0; i !== devices.length; ++i) {
-//         const deviceInfo = devices[i];
-//         const option = document.createElement('option');
-//         option.value = deviceInfo.deviceId;
-//         if (deviceInfo.kind === 'videoinput') {
-//             option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
-//             videoSelect.appendChild(option);
-//         }
-//     }
-// });
 
 navigator.mediaDevices.getUserMedia(constrains)
     .then(gotStream).catch(function (err) {
@@ -38,26 +22,9 @@ function gotStream(stream) {
     alert("succsess");
 }
 
-// function changeVideo(){
-//     alert('start change');
-//     if(stream){
-//         stream.getVideoTracks().forEach(track => {
-//             track.stop();
-//         });
-//     }
-//     alert("change VideoDevice");
-
-//     var deviceID = document.getElementById("videoSource").option.value();
-//     alert(deviceID);
-//     constrains = {video: {deviceId: deviceID}, audio: false};
-
-//     navigator.mediaDevices.getUserMedia(constrains)
-//     .then(gotStream).catch(function(err) {
-//         console.log("An error occured! " + err);
-//     });
-// }
 
 function takePhoto() {
+    var photo = {}
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
     //videoの縦幅横幅を取得
@@ -70,13 +37,37 @@ function takePhoto() {
     console.log(img);
     $(".video").html('<canvas id="canvas1"></canvas>');
     var canvas1 = document.getElementById('canvas1');
+    canvas1.width = w;
+    canvas1.height = h;
     var ctx1 = canvas1.getContext('2d');
     var img1 = new Image;
     img1.onload = function () {
         ctx1.drawImage(img1, 0, 0); // Or at whatever offset you like
     };
     img1.src = img;
-    saveImg("img", img).then(() => alert("success save img")).catch(err => alert(err));
+    $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="ok">OK</button>'
+        + '<button class="btn-square-shadow btn_fifty green_color" id="cancel">取り直し</button>');
+    $("#ok").click(() => {
+        getData("tempResult").then(clt => {
+          photo.index = clt.index;  
+          console.log("photo index: " + photo.index);
+        }).catch(err => console.log(err));
+        photo.img = img;
+        saveImg(photo).then(() => {
+            console.log("写真を保存しました");
+            location.href = "previewPhoto.html";
+        }).catch(err => alert(err));
+    });
+    $("#cancel").click(() => {
+        $(".video").html('<video class="myVideo" id="myVideo" width="720" autoplay="1"></video>'
+        + '<script type="text/javascript" src="camera.js"></script>'
+        + '<canvas id="canvas" style="display:none;"></canvas>');
+        $('#btn_update').html('<button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="takePhoto()">写真撮影</button>');
+        navigator.mediaDevices.getUserMedia(constrains)
+            .then(gotStream).catch(function (err) {
+                console.log("An error occured! " + err);
+            });
+    })
 
 
     // imageCapture.takePhoto().then(blob => {
@@ -90,18 +81,18 @@ function takePhoto() {
     // .catch(err => console.error('takePhoto() failed: ', err));
 }
 
-function saveImg(key, val) {
+function saveImg(val) {
     return new Promise((resolve, reject) => {
         var db;
         var request = indexedDB.open("fapPassport");
         request.onsuccess = function (event) {
             console.log("indexedDB.open pass onsuccess");
             db = event.target.result;
-            var ts = db.transaction(["fapPass"], "readwrite");
-            var store = ts.objectStore("fapPass");
-            var request = store.put({ id: key, myvalue: val });
+            var ts = db.transaction(["photo"], "readwrite");
+            var store = ts.objectStore("photo");
+            var request = store.put( {myvalue: val});
             request.onsuccess = function (event) {
-                resolve(key + " : " + val);
+                resolve("success put img");
             }
             request.onerror = function (event) {
                 reject("エラーが発生しました。");

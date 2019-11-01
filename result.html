@@ -48,12 +48,16 @@
             </select>
         </div>
 
+
         <br /> 備考(Detail)
         <br />
         <input type="text" id="txtdetail" class="txt" />
         <br />
         <br />
-        <button class="btn-square-shadow btn_sixty green_color" onclick="location.href='previewPhoto.html'">写真の添付</button>
+
+        <li id="index" style="display: none;"></li>
+
+        <button class="btn-square-shadow btn_sixty green_color" onclick="movePhoto()">写真の添付</button>
         <div id="btn_update">
             <button class="btn-square-shadow btn_center green_color" onclick="resultRegistration()">登録</button>
         </div>

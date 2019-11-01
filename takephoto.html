@@ -19,14 +19,17 @@
 </head>
 
 <body>
-    <!-- <div class="select">
-        <label for="videoSource">Video source: </label>
-        <select id="videoSource" onchange="changeVideo()"></select>
-    </div> -->
+    <header class="bar bar-nav">
+        <h1 class="title">FAP Passport</h1>
+    </header>
+
+    <br /><br /><br />
+    <button class="btn-square-shadow btn_center" onclick="location.href='previewPhoto.html'">戻る</button>
+    <br>
     <div class="video">
         <video class="myVideo" id="myVideo" width="720" autoplay="1"></video>
         <script type="text/javascript" src="camera.js"></script>
-        <!-- <canvas id="canvas" style="display:none;"></canvas> -->
+        <canvas id="canvas" style="display:none;"></canvas>
     </div>
     <br />
 
@@ -34,27 +37,6 @@
         <button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="takePhoto()">写真撮影</button>
     </div>
     <br />
-    <!-- width
-    <br />
-    <input type="text" id="width1" class="txt" />
-    <br />
-    height
-    <br />
-    <input type="text" id="height1" class="txt" /> -->
-    <button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="changesize()">サイズ確認</button>
-    <br />
-    <canvas id="canvas"></canvas>
-
-
-    <p1>indexedDBへの保存</p1>
-    <img>
-    <br>
-    <br>
-    キー： <input type="text" id="key">
-    <button id="savePhoto" onclick="save()">写真保存</button>
-
-    <br>
-    <button id="nextpage" onclick="location.href='previewPhoto.html'">保存写真表示</button>
 </body>
 
 </html>
