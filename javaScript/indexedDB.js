@@ -77,6 +77,8 @@ function getPhoto(index) {
                 console.log("event: ");
                 console.dir(event);
                 var cursor = event.target.result;
+                console.log("cursor");
+                console.dir(cursor);
                 if(cursor.value.index == index){
                     results[i] = cursor.value;
                     canvas.append('<canvas class="cnv" id="canvas'+ i + '" style="display:none;"></canvas>');
