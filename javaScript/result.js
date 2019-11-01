@@ -27,8 +27,8 @@ $(function () {
             $("#index").val(result.index);
             console.log(err);
         });
-        $('#btn_update').html('<button class="btn-square-shadow btn_left green_color" id="update" onclick="resultRegistration()">更新</button>'
-            + '<button class="btn-square-shadow btn_right yellow_color" id="cancel">キャンセル</button>');
+        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
+            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
     } else {
         return;
     }
