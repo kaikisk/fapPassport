@@ -15,10 +15,7 @@ $(function createDatabase() {
                 var store = db.createObjectStore("fapPass", { keyPath: "id" });
                 store.createIndex("myvalueIndex", "myvalue");
                 console.log("pass onupgradeneeded");
-                var store1 = db.createObjectStore("photo", { keyPath: "id", autoIncrement: true});
-                store1.createIndex("myvalueIndex", "myvalue");
-                var store2 = db.createObjectStore("tempPhoto", { keyPath: "id", autoIncrement: true});
-                store2.createIndex("myvalueIndex", "myvalue");
+                db.createObjectStore("photo", { keyPath: "id", autoIncrement: true});
             }
 
 
@@ -77,7 +74,7 @@ function getPhoto(index) {
             requestName.onsuccess = function (event) {
                 var cursor = event.target.result;
                 if(cursor.value.index == index){
-                    results[i].img = cursor.value;
+                    results[i] = cursor.value;
                     canvas.append('<canvas class="cnv" id="canvas'+ i + '" style="display:none;"></canvas>');
                     i++;
                     cursor.continue();
