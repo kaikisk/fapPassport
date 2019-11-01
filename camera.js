@@ -49,19 +49,21 @@ function takePhoto() {
         + '<button class="btn-square-shadow btn_fifty green_color" id="cancel">取り直し</button>');
     $("#ok").click(() => {
         getData("tempResult").then(clt => {
-          photo.index = clt.index;  
-          console.log("photo index: " + photo.index);
+            photo.index = clt.index;
+            console.log("photo index: " + photo.index);
+            photo.img = img;
+            saveImg(photo).then(() => {
+                console.log("写真を保存しました");
+                location.href = "previewPhoto.html";
+            }).catch(err => alert(err));
         }).catch(err => console.log(err));
-        photo.img = img;
-        saveImg(photo).then(() => {
-            console.log("写真を保存しました");
-            location.href = "previewPhoto.html";
-        }).catch(err => alert(err));
+
+
     });
     $("#cancel").click(() => {
         $(".video").html('<video class="myVideo" id="myVideo" width="720" autoplay="1"></video>'
-        + '<script type="text/javascript" src="camera.js"></script>'
-        + '<canvas id="canvas" style="display:none;"></canvas>');
+            + '<script type="text/javascript" src="camera.js"></script>'
+            + '<canvas id="canvas" style="display:none;"></canvas>');
         $('#btn_update').html('<button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="takePhoto()">写真撮影</button>');
         navigator.mediaDevices.getUserMedia(constrains)
             .then(gotStream).catch(function (err) {
@@ -90,7 +92,7 @@ function saveImg(val) {
             db = event.target.result;
             var ts = db.transaction(["photo"], "readwrite");
             var store = ts.objectStore("photo");
-            var request = store.put( {myvalue: val});
+            var request = store.put({ myvalue: val });
             request.onsuccess = function (event) {
                 resolve("success put img");
             }
