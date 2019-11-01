@@ -49,7 +49,8 @@ function takePhoto() {
         + '<button class="btn-square-shadow btn_fifty green_color" id="cancel">取り直し</button>');
     $("#ok").click(() => {
         getData("tempResult").then(clt => {
-            photo.index = clt.index;
+            var clt1 = JSON.parse(clt);
+            photo.index = clt1.index;
             console.log("photo index: " + photo.index);
             photo.img = img;
             saveImg(photo).then(() => {
