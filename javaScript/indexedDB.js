@@ -62,6 +62,42 @@ function getData(key) {
     });
 };
 
+function getPhoto(index) {
+    var canvas = $(".prevPhoto");
+    var results = {};
+    var i = 0;
+    return new Promise(function (resolve, reject) {
+        var db;
+        var request = indexedDB.open('fapPassport');
+        request.onsuccess = function (event) {
+            db = event.target.result;
+            var ts = db.transaction(["photo"], "readwrite");
+            var store = ts.objectStore("photo");
+            var requestName = store.openCursor();
+            requestName.onsuccess = function (event) {
+                var cursor = event.target.result;
+                if(cursor.myvalue.index == index){
+                    results[i] = cursor.myvalue;
+                    canvas.append('<canvas class="cnv" id="canvas"'+ i + ' style="display:none;"></canvas>');
+                    i++;
+                    cursor.continue();
+                }
+                if(!cursor){
+                    results.i = i;
+                    console.dir(results);
+                    console.log("end");
+                    resolve(results);
+                    return;
+                }
+            }
+        }
+        request.onerror = function () {
+            reject("写真の取得が失敗しました")
+            alert("インデックスDBのエラーが起こっています");
+        }
+    });
+};
+
 function save(key) {
     return new Promise((resolve, reject) => {
         var db;

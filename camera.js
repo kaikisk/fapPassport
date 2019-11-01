@@ -25,6 +25,8 @@ function gotStream(stream) {
 
 function takePhoto() {
     var photo = {}
+    photo.width = width;
+    photo.height = height;
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
     //videoの縦幅横幅を取得
@@ -40,7 +42,7 @@ function takePhoto() {
     canvas1.width = w;
     canvas1.height = h;
     var ctx1 = canvas1.getContext('2d');
-    var img1 = new Image;
+    var img1 = new Image();
     img1.onload = function () {
         ctx1.drawImage(img1, 0, 0); // Or at whatever offset you like
     };
@@ -70,18 +72,7 @@ function takePhoto() {
             .then(gotStream).catch(function (err) {
                 console.log("An error occured! " + err);
             });
-    })
-
-
-    // imageCapture.takePhoto().then(blob => {
-    //     console.log('Photo taken: ' + blob.type + ', ' + blob.size + 'B');
-    //     tempImage = blob;
-
-    //     console.log(tempImage);
-    //     var temp = $(".video").html()
-    //     $(".video").html(temp + '<img src="' + URL.createObjectURL(blob));
-    // })
-    // .catch(err => console.error('takePhoto() failed: ', err));
+    });
 }
 
 function saveImg(val) {
