@@ -93,7 +93,7 @@ function saveImg(val) {
             db = event.target.result;
             var ts = db.transaction(["photo"], "readwrite");
             var store = ts.objectStore("photo");
-            var request = store.put({ myvalue: val });
+            var request = store.add(val);
             request.onsuccess = function (event) {
                 resolve("success put img");
             }
