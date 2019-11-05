@@ -2,14 +2,12 @@ $(function () {
   getData("tempResult").then(rs => {
     temp = JSON.parse(rs);
     index = temp.index;
-    width = temp.width;
-    height = temp.height;
     getPhoto(index).then(results => {
-      for (var v = 0; v <= results.i; v++) {
+      for (var v = 0; v < results.i; v++) {
         var canvas = $("#canvas" + v)[0];
         $(canvas).css("display", "block");
-        canvas.width = width;
-        canvas.height = height
+        canvas.width = results[v].width;
+        canvas.height = results[v].height;
         var ctx = canvas.getContext('2d');
         var img = new Image();
         img.onload = () => {
