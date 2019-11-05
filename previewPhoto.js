@@ -1,16 +1,11 @@
-$(function() {
-  var temp;
-  var index;
-  var width;
-  var height;
-
+$(function () {
   getData("tempResult").then(rs => {
     temp = JSON.parse(rs);
     index = temp.index;
     width = temp.width;
     height = temp.height;
     getPhoto(index).then(results => {
-      for(var v=0; v <= results.i; v++){
+      for (var v = 0; v <= results.i; v++) {
         var canvas = $("#canvas" + v)[0];
         $(canvas).css("display", "block");
         canvas.width = width;
