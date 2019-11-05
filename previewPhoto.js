@@ -3,15 +3,17 @@ $(function () {
     temp = JSON.parse(rs);
     index = temp.index;
     getPhoto(index).then(results => {
+      var canvas = [];
+      var ctx = [];
       for (var v = 0; v < results.i; v++) {
-        var canvas = $("#canvas" + v)[0];
+        canvas[v] = $("#canvas" + v)[0];
         $(canvas).css("display", "block");
-        canvas.width = results[v].width;
-        canvas.height = results[v].height;
-        var ctx = canvas.getContext('2d');
+        canvas[v].width = results[v].width;
+        canvas[v].height = results[v].height;
+        ctx[v] = canvas.getContext('2d');
         var img = new Image();
         img.onload = () => {
-          ctx.drawImage(img, 0, 0);
+          ctx[v].drawImage(img, 0, 0);
         }
         img.src = results[v].img;
       }
