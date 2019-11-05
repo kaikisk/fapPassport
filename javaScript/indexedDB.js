@@ -15,7 +15,8 @@ $(function createDatabase() {
                 var store = db.createObjectStore("fapPass", { keyPath: "id" });
                 store.createIndex("myvalueIndex", "myvalue");
                 console.log("pass onupgradeneeded");
-                db.createObjectStore("photo", { keyPath: "id", autoIncrement: true});
+                var store1 = db.createObjectStore("photo", { keyPath: "id", autoIncrement: true});
+                store1.createIndex("myvalueIndex", "myvalue");
             }
 
 
@@ -72,7 +73,7 @@ function getPhoto(index) {
             console.dir(db)
             var ts = db.transaction(["photo"], "readwrite");
             var store = ts.objectStore("photo");
-            var requestName = store.openCursor();
+            var requestName = store.openCursor("null","nextunique");
             requestName.onsuccess = function (event) {
                 console.log("event: ");
                 console.dir(event);
