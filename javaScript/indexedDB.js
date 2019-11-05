@@ -74,20 +74,18 @@ function getPhoto(index) {
             var requestName = store.openCursor();
             requestName.onsuccess = function (event) {
                 var cursor = event.target.result;
-                console.log("cursor");
-                console.dir(cursor);
-                if(cursor.value.index == index){
-                    results[i] = cursor.value;
-                    canvas.append('<canvas class="cnv" id="canvas'+ i + '" style="display:none;"></canvas>');
-                    i++;
-                    cursor.continue();
-                }
                 if(!cursor){
                     results.i = i;
                     console.dir(results);
                     console.log("end");
                     resolve(results);
                     return;
+                }
+                if(cursor.value.index == index){
+                    results[i] = cursor.value;
+                    canvas.append('<canvas class="cnv" id="canvas'+ i + '" style="display:none;"></canvas>');
+                    i++;
+                    cursor.continue();
                 }
             }
         }
