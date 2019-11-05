@@ -7,10 +7,10 @@ $(function () {
       var ctx = [];
       for (var v = 0; v < results.i; v++) {
         canvas[v] = $("#canvas" + v)[0];
-        $(canvas).css("display", "block");
+        $(canvas[v]).css("display", "block");
         canvas[v].width = results[v].width;
         canvas[v].height = results[v].height;
-        ctx[v] = canvas.getContext('2d');
+        ctx[v] = canvas[v].getContext('2d');
         var img = new Image();
         img.onload = () => {
           ctx[v].drawImage(img, 0, 0);
