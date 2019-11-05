@@ -69,14 +69,10 @@ function getPhoto(index) {
         var request = indexedDB.open('fapPassport');
         request.onsuccess = function (event) {
             db = event.target.result;
-            console.log("db: ");
-            console.dir(db)
             var ts = db.transaction(["photo"], "readwrite");
             var store = ts.objectStore("photo");
-            var requestName = store.openCursor("null","nextunique");
+            var requestName = store.openCursor();
             requestName.onsuccess = function (event) {
-                console.log("event: ");
-                console.dir(event);
                 var cursor = event.target.result;
                 console.log("cursor");
                 console.dir(cursor);
