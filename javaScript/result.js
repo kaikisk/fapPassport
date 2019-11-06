@@ -13,7 +13,7 @@ $(function () {
         console.log("result: " + result);
         console.dir(result);
 
-        index = result.index;
+        Aindex = result.index;
         $('#txtDate').val(result.date);
         $('#txtdetail').val(result.detail);
         $('#RblExamination').val(result.val);
@@ -72,6 +72,7 @@ function resultRegistration() {
                     + "</td><td>" + results[i].resClient
                     + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
             }
+            deleteValue("fapPass", "tempResult");
         }).catch(() => alert("error saveReservation"));
     }).catch(err => {
         console.log(err);
@@ -83,8 +84,10 @@ function resultRegistration() {
                 '</td><td>' + results[0].valClient + '</td><td>' + results[0].detailClient
                 + "</td><td>" + results[0].resClient
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + 0 + ')">結果</button></td></tr>');
+            deleteValue("fapPass", "tempResult");
         }).catch(err => alert(err));
     });
+
     console.log("index" + index);
     if (index) {
         deleteAppointment(index);
@@ -110,9 +113,9 @@ function movePhoto() {
     var detail = $('#txtdetail').val();
     var val = $('#Examination').val();
     var res = $("#rblresult").val();
-    var index = $("#index").val();
-    console.log("index: " + index);
-    if (!index) {
+    // var Aindex = $("#index").val();
+    console.log("index: " + Aindex);
+    if (!Aindex) {
         getData("results").then(rs => {
             index = rs.length;
         }).catch(err => {
@@ -127,6 +130,7 @@ function movePhoto() {
         valClient: val,
         resClient: res,
         detailClient: detail,
+        Aindex: Aindex,
         index: index
     }
 
@@ -135,4 +139,8 @@ function movePhoto() {
         console.log("一時保存しました");
         location.href = "previewPhoto.html";
     }).catch(err => console.error(err));
+}
+
+function deleteAp(){
+    
 }

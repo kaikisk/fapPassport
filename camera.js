@@ -96,13 +96,3 @@ function saveImg(val) {
         }
     });
 }
-
-function changesize() {
-    var width = $(".video").width();
-    var height = $(".video").height();
-    console.log("width: " + width + ", height: " + height);
-
-    var video = $("#myvideo");
-    video.width = width;
-    video.height = height;
-}
