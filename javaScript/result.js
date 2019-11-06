@@ -136,33 +136,52 @@ function movePhoto() {
         if (!index) {
             getData("results").then(rs => {
                 index = rs.length;
+                saveTemp();
             }).catch(err => {
                 index = 0;
+                saveTemp();
             });
         }
 
-        console.log("index1: " + index);
+    //     console.log("index1: " + index);
 
-        var client = {
-            dateClient: date,
-            valClient: val,
-            resClient: res,
-            detailClient: detail,
-            Aindex: Aindex,
-            index: index
-        }
+    //     var client = {
+    //         dateClient: date,
+    //         valClient: val,
+    //         resClient: res,
+    //         detailClient: detail,
+    //         Aindex: Aindex,
+    //         index: index
+    //     }
 
-        var temp = JSON.stringify(client);
-        saveReservation("tempResult", temp).then(() => {
-            console.log("一時保存しました");
-            location.href = "previewPhoto.html";
-        }).catch(err => console.error(err));
-    })
+    //     var temp = JSON.stringify(client);
+    //     saveReservation("tempResult", temp).then(() => {
+    //         console.log("一時保存しました");
+    //         location.href = "previewPhoto.html";
+    //     }).catch(err => console.error(err));
+    // })
 }
 
 function deleteAp() {
     getData("tempResult").then(rs => {
         var res = JSON.parse(rs);
         deleteAppointment(res.Aindex);
+    }).catch(err => console.error(err));
+}
+
+function saveTemp(){
+    var client = {
+        dateClient: date,
+        valClient: val,
+        resClient: res,
+        detailClient: detail,
+        Aindex: Aindex,
+        index: index
+    }
+
+    var temp = JSON.stringify(client);
+    saveReservation("tempResult", temp).then(() => {
+        console.log("一時保存しました");
+        location.href = "previewPhoto.html";
     }).catch(err => console.error(err));
 }

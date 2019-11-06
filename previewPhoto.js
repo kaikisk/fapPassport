@@ -1,9 +1,11 @@
+var number;
+
 $(function () {
   getData("tempResult").then(rs => {
     temp = JSON.parse(rs);
     index = temp.index;
     getPhoto(index).then(results => {
-
+      number = results.i;
       for (var v = 0; v < results.i; v++) {
         var src = results[v].img;
         $("#img" + v).css("display", "block")
