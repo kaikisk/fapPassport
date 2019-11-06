@@ -159,7 +159,7 @@ function movePhoto() {
     //         console.log("一時保存しました");
     //         location.href = "previewPhoto.html";
     //     }).catch(err => console.error(err));
-    // })
+    })
 }
 
 function deleteAp() {
