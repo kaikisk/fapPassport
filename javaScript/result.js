@@ -1,3 +1,6 @@
+var Aindex;
+var index;
+
 $(function () {
     var queryStr = decodeURI(location.search);
     var result = {};
@@ -89,7 +92,7 @@ function resultRegistration() {
     });
 
     console.log("index" + index);
-    if (index) {
+    if (Aindex) {
         deleteAppointment(index);
     }
 }
@@ -115,7 +118,7 @@ function movePhoto() {
     var res = $("#rblresult").val();
     // var Aindex = $("#index").val();
     console.log("index: " + Aindex);
-    if (!Aindex) {
+    if (!index) {
         getData("results").then(rs => {
             index = rs.length;
         }).catch(err => {
