@@ -110,6 +110,7 @@ th {
   height: 80vh;
 }
 
-.prevPhoto{
-  max-width: 50%;
+.cnv{
+	margin:auto;
+	margin-bottom:30px;
 }
