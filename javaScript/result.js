@@ -30,7 +30,14 @@ $(function () {
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
     } else {
-        return;
+        getData("tempResult").then(rs => {
+            $('#txtDate').val(rs.dateClient);
+            $('#txtdetail').val(rs.detailClient);
+            $('#Examination').val(rs.valClient);
+            $('#rblresult').val(rs.resClient);
+        }).catch(err => {
+            return;
+        });
     }
 });
 
@@ -105,7 +112,7 @@ function movePhoto() {
     var res = $("#rblresult").val();
     var index = $("#index").val();
     console.log("index: " + index);
-    if(!index){
+    if (!index) {
         getData("results").then(rs => {
             index = rs.length;
         }).catch(err => {
