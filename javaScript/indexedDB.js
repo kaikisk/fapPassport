@@ -135,8 +135,10 @@ function load(key) {
             var request = store.get(key);
             request.onsuccess = function (event) {
                 if (event.target.result !== undefined) {
+                    var value = event.target.result.myvalue;
                     console.log("key: " + key + ", value: " + event.target.result.myvalue);
-                    resolve($("#" + key).val(event.target.result.myvalue));
+                    $("#" + key).val(value);
+                    resolve(value);
                 } else {
                     reject(key + "の取得の失敗");
                 }
