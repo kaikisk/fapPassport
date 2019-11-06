@@ -74,8 +74,6 @@ function getPhoto(index) {
             var requestName = store.openCursor();
             requestName.onsuccess = function (event) {
                 var cursor = event.target.result;
-                console.log("cursor");
-                console.log(cursor)
                 if (!cursor) {
                     results.i = i;
                     console.dir(results);
@@ -88,6 +86,8 @@ function getPhoto(index) {
                     canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>' +
                         '<br />');
                     i++;
+                    cursor.continue();
+                }else{
                     cursor.continue();
                 }
             }
