@@ -133,16 +133,44 @@ function load(key) {
         var store = ts.objectStore("fapPass");
         var request = store.get(key);
         request.onsuccess = function (event) {
-            var value = event.target.result.myvalue;
-            if (value !== undefined) {      
-                if (key != "bloodType") {
+            if (event.target.result !== undefined) {
+                var value = event.target.result.myvalue;
+                if (value !== undefined) {
                     console.log("key: " + key + ", value: " + value);
-                    $("#" + key).val(value);
                     $("#" + key).text(value);
                     return;
-                }else{
-                    $("#" + key).val(value);
-                    return value;
+
+                }
+            } else {
+                console.error(key + "の取得の失敗");
+            }
+        }
+        request.onerror = function (event) {
+            console.error("エラーが発生しました。");
+        }
+    }
+}
+
+function loadE(key) {
+    var db;
+    var request = indexedDB.open('fapPassport');
+    request.onsuccess = function (event) {
+        db = event.target.result;
+        var ts = db.transaction(["fapPass"], "readwrite");
+        var store = ts.objectStore("fapPass");
+        var request = store.get(key);
+        request.onsuccess = function (event) {
+            if (event.target.result !== undefined) {
+                var value = event.target.result.myvalue;
+                if (value !== undefined) {
+                    if (key != "bloodType") {
+                        console.log("key: " + key + ", value: " + value);
+                        $("#" + key).val(value);
+                        $("#" + key).text(value);
+                        return;
+                    } else {
+                        $("#" + key).val(value);
+                    }
                 }
             } else {
                 console.error(key + "の取得の失敗");

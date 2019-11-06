@@ -6,7 +6,7 @@ $(function() {
     var saveData = new Array();
     // var loadData = new Array();
     for(var i = 0; i < keys.length; i++) {
-        load(keys[i]);
+        loadE(keys[i]);
     }
 
     $('#update').click(function(e){

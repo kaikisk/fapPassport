@@ -5,7 +5,6 @@ $(function () {
         'txtName'];
 
     for (var i = 0; i < keys.length; i++) {
-        var value = load(keys[i]);
-        if(value) $("#" + keys[i]).text(value);
+        load(keys[i]);
     }
 });
