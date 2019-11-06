@@ -15,7 +15,7 @@ $(function createDatabase() {
                 var store = db.createObjectStore("fapPass", { keyPath: "id" });
                 store.createIndex("myvalueIndex", "myvalue");
                 console.log("pass onupgradeneeded");
-                var store1 = db.createObjectStore("photo", { keyPath: "id", autoIncrement:true});
+                var store1 = db.createObjectStore("photo", { keyPath: "id", autoIncrement: true });
                 store1.createIndex("myvalueIndex", "myvalue");
             }
 
@@ -74,16 +74,16 @@ function getPhoto(index) {
             var requestName = store.openCursor();
             requestName.onsuccess = function (event) {
                 var cursor = event.target.result;
-                if(!cursor){
+                if (!cursor) {
                     results.i = i;
                     console.dir(results);
                     console.log("end");
                     resolve(results);
                     return;
                 }
-                if(cursor.value.index == index){
+                if (cursor.value.index == index) {
                     results[i] = cursor.value;
-                    canvas.append('<img class="cnv" id="img'+ i + '" style="display:none;"></img>');
+                    canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>');
                     i++;
                     cursor.continue();
                 }
@@ -105,12 +105,14 @@ function save(key) {
             db = event.target.result;
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
-            var request = store.put({ id: key, myvalue: $('#' + key).val() });
-            request.onsuccess = function (event) {
-                resolve(key + " : " + $('#' + key).val());
-            }
-            request.onerror = function (event) {
-                reject("エラーが発生しました。");
+            if ($('#' + key).val() != "") {
+                var request = store.put({ id: key, myvalue: $('#' + key).val() });
+                request.onsuccess = function (event) {
+                    resolve(key + " : " + $('#' + key).val());
+                }
+                request.onerror = function (event) {
+                    reject("エラーが発生しました。");
+                }
             }
         }
         request.onerror = function () {
