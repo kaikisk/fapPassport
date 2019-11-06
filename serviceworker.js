@@ -3,38 +3,38 @@ var STATIC_CACHE_NAME = 'static_v1';
 console.log('ORIGIN : ' + ORIGIN);
 var STATIC_FILES = [
     ORIGIN + '/',
-    ORIGIN + '/appointment.html',
-    ORIGIN + '/checkAppointment.html',
-    ORIGIN + '/checkResult.html',
-    ORIGIN + '/clinicalData.html',
-    ORIGIN + '/editMyData.html',
-    ORIGIN + '/menu.html',
-    ORIGIN + '/myData.html',
+    ORIGIN + '/index.html',
     ORIGIN + '/newlogin.html',
+    ORIGIN + '/menu.html',
+    ORIGIN + '/apps.html',
+    ORIGIN + '/myData.html',
+    ORIGIN + '/editMyData.html',
+    ORIGIN + '/clinicalData.html',
+    ORIGIN + '/clinic1.html',
+    ORIGIN + '/appointment.html',
     ORIGIN + '/result.html',
     ORIGIN + '/previewPhoto.html',
     ORIGIN + '/takephoto.html',
-    ORIGIN + '/index.html',
+
     ORIGIN + '/ratchet.min.css',
-    ORIGIN + '/main.css',
-    ORIGIN + '/test.js',
-    ORIGIN + '/temp.txt',
+
     ORIGIN + '/Image/shikkan1.png',
-    ORIGIN + '/Image/sikkan2.png',
+    ORIGIN + '/Image/shikkan2.png',
     ORIGIN + '/Image/shikkan3.png',
+
+    ORIGIN + '/javaScript/indexedDB.js',
+    ORIGIN + '/javaScript/login.js',
+    ORIGIN + '/javaScript/newlogin.js',
+    ORIGIN + '/javaScript/myData.js',
+    ORIGIN + '/javaScript/editmydata.js',
     ORIGIN + '/previewPhoto.js',
     ORIGIN + '/camera.js',
-    ORIGIN + '/javaScript/indexedDB.js',
     ORIGIN + '/javaScript/appointment.js',
     ORIGIN + '/javaScript/checkAppointment.js',
-    ORIGIN + '/javaScript/checkResult.js',
-    ORIGIN + '/javaScript/editmydata.js',
-    ORIGIN + '/javaScript/notification.js',
-    ORIGIN + '/javaScript/confirmDate.js',
-    ORIGIN + '/javaScript/login.js',
-    ORIGIN + '/javaScript/myData.js',
-    ORIGIN + '/javaScript/newlogin.js',
     ORIGIN + '/javaScript/result.js',
+    ORIGIN + '/javaScript/checkResult.js',
+    // ORIGIN + '/javaScript/notification.js',
+    // ORIGIN + '/javaScript/confirmDate.js',
     ORIGIN + '/jquery-2.2.4.min.js',
 ];
 
@@ -69,7 +69,7 @@ self.addEventListener('fetch', function(event) {
   //回線が使えるときの処理
   if(online){
     event.respondWith(
-      caches.match(event.request)
+      caches.match(event.request, {ignoreSearch: true})
         .then(
         function (response) {
           if (response) {
@@ -148,28 +148,28 @@ self.addEventListener('activate', function(event) {
     );
 });
 
-self.addEventListener("push", function(event) {
-  console.log("Push Notification Recieved", event);
-  if (Notification.permission == "granted") {
-    event.waitUntil(
-      self.registration
-        .showNotification("受信しました", {
-          body: "1日前です。",
-          icon: "revealweb-144.png"
-        })
-        .then(
-          function(showEvent) {},
-          function(error) {
-            console.log(error);
-          }
-        )
-    );
-  }
-});
+// self.addEventListener("push", function(event) {
+//   console.log("Push Notification Recieved", event);
+//   if (Notification.permission == "granted") {
+//     event.waitUntil(
+//       self.registration
+//         .showNotification("受信しました", {
+//           body: "1日前です。",
+//           icon: "revealweb-144.png"
+//         })
+//         .then(
+//           function(showEvent) {},
+//           function(error) {
+//             console.log(error);
+//           }
+//         )
+//     );
+//   }
+// });
 
-self.addEventListener("notificationclick", function(event) {
-  event.notification.close();
-  event.waitUntil(
-    clients.openWindow("https://kaikisk.github.io/hhswa/checkAppointment.html")
-  );
-});
+// self.addEventListener("notificationclick", function(event) {
+//   event.notification.close();
+//   event.waitUntil(
+//     clients.openWindow("https://kaikisk.github.io/hhswa/checkAppointment.html")
+//   );
+// });
