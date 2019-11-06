@@ -6,6 +6,7 @@ $(function () {
 
       for (var v = 0; v < results.i; v++) {
         var src = results[v].img;
+        $("#img" + v).css("display", "block")
         $("#img" + v).attr("src", src);
       }
       //   canvas = $("#canvas" + v)[0];
