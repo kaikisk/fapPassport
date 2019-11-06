@@ -6,17 +6,39 @@ $(function () {
       var canvas = [];
       var ctx = [];
       for (var v = 0; v < results.i; v++) {
-        canvas[v] = $("#canvas" + v)[0];
-        $(canvas[v]).css("display", "block");
-        canvas[v].width = results[v].width;
-        canvas[v].height = results[v].height;
-        ctx[v] = canvas[v].getContext('2d');
+        canvas = $("#canvas" + v)[0];
+        $(canvas).css("display", "block");
+        canvas.width = results[v].width;
+        canvas.height = results[v].height;
+        ctx = canvas.getContext('2d');
         var img = new Image();
         img.onload = () => {
-          ctx[v].drawImage(img, 0, 0);
+          ctx.drawImage(img, 0, 0);
         }
         img.src = results[v].img;
       }
+      // var canvas = $("#canvas0")[0];
+      // $(canvas).css("display", "block");
+      // canvas.width = results[0].width;
+      // canvas.height = results[0].height;
+      // var ctx = canvas.getContext('2d');
+      // var img = new Image();
+      // img.onload = () => {
+      //   ctx.drawImage(img, 0, 0);
+      // }
+      // img.src = results[0].img;
+
+      // var canvas1 = $("#canvas1")[0];
+      // $(canvas1).css("display", "block");
+      // canvas1.width = results[1].width;
+      // canvas1.height = results[1].height;
+      // var ctx1 = canvas.getContext('2d');
+      // var img1 = new Image();
+      // img1.onload = () => {
+      //   ctx1.drawImage(img, 0, 0);
+      // }
+      // img1.src = results[1].img;
+
     }).catch(err => console.log(err));
   }).catch(err => console.log(err));
 })
