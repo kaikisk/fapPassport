@@ -37,6 +37,7 @@ $(function () {
             $('#txtdetail').val(results.detailClient);
             $('#Examination').val(results.valClient);
             $('#rblresult').val(results.resClient);
+            $("#index")
             index = results.index;
             Aindex = results.Aindex;
         }).catch(err => {

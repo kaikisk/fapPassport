@@ -261,7 +261,7 @@ function deleteValue(objectName ,key) {
         var requestName = store.delete(key);
 
         requestName.onsuccess = (evet) => {
-            console.log(削除しました)
+            console.log("削除しました");
         }
     }
 }
