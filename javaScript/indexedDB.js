@@ -83,7 +83,8 @@ function getPhoto(index) {
                 }
                 if (cursor.value.index == index) {
                     results[i] = cursor.value;
-                    canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>');
+                    canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>' + 
+                    '<br />');
                     i++;
                     cursor.continue();
                 }
@@ -113,6 +114,8 @@ function save(key) {
                 request.onerror = function (event) {
                     reject("エラーが発生しました。");
                 }
+            }else{
+                resolve(key + "が入力されていません");
             }
         }
         request.onerror = function () {
