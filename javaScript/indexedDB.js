@@ -125,29 +125,33 @@ function save(key) {
 }
 
 function load(key) {
-    return new Promise((resolve, reject) => {
-        var db;
-        var request = indexedDB.open('fapPassport');
+    var db;
+    var request = indexedDB.open('fapPassport');
+    request.onsuccess = function (event) {
+        db = event.target.result;
+        var ts = db.transaction(["fapPass"], "readwrite");
+        var store = ts.objectStore("fapPass");
+        var request = store.get(key);
         request.onsuccess = function (event) {
-            db = event.target.result;
-            var ts = db.transaction(["fapPass"], "readwrite");
-            var store = ts.objectStore("fapPass");
-            var request = store.get(key);
-            request.onsuccess = function (event) {
-                if (event.target.result !== undefined) {
-                    var value = event.target.result.myvalue;
-                    console.log("key: " + key + ", value: " + event.target.result.myvalue);
+            var value = event.target.result.myvalue;
+            if (value !== undefined) {      
+                if (key != "bloodType") {
+                    console.log("key: " + key + ", value: " + value);
                     $("#" + key).val(value);
-                    resolve(value);
-                } else {
-                    reject(key + "の取得の失敗");
+                    $("#" + key).text(value);
+                    return;
+                }else{
+                    $("#" + key).val(value);
+                    return value;
                 }
-            }
-            request.onerror = function (event) {
-                reject("エラーが発生しました。");
+            } else {
+                console.error(key + "の取得の失敗");
             }
         }
-    })
+        request.onerror = function (event) {
+            console.error("エラーが発生しました。");
+        }
+    }
 }
 
 function saveReservation(key, appoint) {
