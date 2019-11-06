@@ -83,8 +83,8 @@ function getPhoto(index) {
                 }
                 if (cursor.value.index == index) {
                     results[i] = cursor.value;
-                    canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>' + 
-                    '<br />');
+                    canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>' +
+                        '<br />');
                     i++;
                     cursor.continue();
                 }
@@ -114,7 +114,7 @@ function save(key) {
                 request.onerror = function (event) {
                     reject("エラーが発生しました。");
                 }
-            }else{
+            } else {
                 resolve(key + "が入力されていません");
             }
         }
@@ -125,26 +125,27 @@ function save(key) {
 }
 
 function load(key) {
-    var db;
-    var request = indexedDB.open('fapPassport');
-    request.onsuccess = function (event) {
-        db = event.target.result;
-        var ts = db.transaction(["fapPass"], "readwrite");
-        var store = ts.objectStore("fapPass");
-        var request = store.get(key);
+    return new Promise((resolve, reject) => {
+        var db;
+        var request = indexedDB.open('fapPassport');
         request.onsuccess = function (event) {
-            if (event.target.result !== undefined) {
-                console.log("key: " + key + ", value: " + event.target.result.myvalue);
-                $("#" + key).val(event.target.result.myvalue);
-                $("#" + key).text(event.target.result.myvalue);
-            } else {
-                console.error(key + "の取得の失敗");
+            db = event.target.result;
+            var ts = db.transaction(["fapPass"], "readwrite");
+            var store = ts.objectStore("fapPass");
+            var request = store.get(key);
+            request.onsuccess = function (event) {
+                if (event.target.result !== undefined) {
+                    console.log("key: " + key + ", value: " + event.target.result.myvalue);
+                    resolve($("#" + key).val(event.target.result.myvalue));
+                } else {
+                    reject(key + "の取得の失敗");
+                }
+            }
+            request.onerror = function (event) {
+                reject("エラーが発生しました。");
             }
         }
-        request.onerror = function (event) {
-            console.log("エラーが発生しました。");
-        }
-    }
+    })
 }
 
 function saveReservation(key, appoint) {
