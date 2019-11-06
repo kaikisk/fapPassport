@@ -38,6 +38,8 @@ $(function () {
             $('#txtdetail').val(results.detailClient);
             $('#Examination').val(results.valClient);
             $('#rblresult').val(results.resClient);
+            index = results.index;
+            Aindex = results.Aindex;
         }).catch(err => {
             return;
         });
@@ -54,7 +56,8 @@ function resultRegistration() {
         dateClient: date,
         valClient: val,
         resClient: res,
-        detailClient: detail
+        detailClient: detail,
+        index: index
     }
 
     var resultsString = getData("results");
@@ -93,7 +96,7 @@ function resultRegistration() {
 
     console.log("index" + index);
     if (Aindex) {
-        deleteAppointment(index);
+        deleteAppointment(Aindex);
     }
 }
 
@@ -116,34 +119,50 @@ function movePhoto() {
     var detail = $('#txtdetail').val();
     var val = $('#Examination').val();
     var res = $("#rblresult").val();
-    // var Aindex = $("#index").val();
-    console.log("index: " + Aindex);
-    if (!index) {
-        getData("results").then(rs => {
-            index = rs.length;
-        }).catch(err => {
-            index = 0;
-        });
-    }
 
-    console.log("index1: " + index);
 
-    var client = {
-        dateClient: date,
-        valClient: val,
-        resClient: res,
-        detailClient: detail,
-        Aindex: Aindex,
-        index: index
-    }
+    getData("tempResult").then(rs => {
+        var resString = JSON.parse(rs);
+        resString.dateClient = date;
+        resString.detailClient = detail;
+        resString.valClient = val;
+        resString.resClient = res;
+        var temp = JSON.stringify(resString);
+        saveReservation("tempResult", temp).then(() => {
+            console.log("一時保存しました");
+            location.href = "previewPhoto.html";
+        }).catch(err => console.error(err));
+    }).catch(err => {
+        if (!index) {
+            getData("results").then(rs => {
+                index = rs.length;
+            }).catch(err => {
+                index = 0;
+            });
+        }
 
-    var temp = JSON.stringify(client);
-    saveReservation("tempResult", temp).then(() => {
-        console.log("一時保存しました");
-        location.href = "previewPhoto.html";
-    }).catch(err => console.error(err));
+        console.log("index1: " + index);
+
+        var client = {
+            dateClient: date,
+            valClient: val,
+            resClient: res,
+            detailClient: detail,
+            Aindex: Aindex,
+            index: index
+        }
+
+        var temp = JSON.stringify(client);
+        saveReservation("tempResult", temp).then(() => {
+            console.log("一時保存しました");
+            location.href = "previewPhoto.html";
+        }).catch(err => console.error(err));
+    })
 }
 
-function deleteAp(){
-    
+function deleteAp() {
+    getData("tempResult").then(rs => {
+        var res = JSON.parse(rs);
+        deleteAppointment(res.Aindex);
+    }).catch(err => console.error(err));
 }
