@@ -25,8 +25,7 @@ $(function () {
             index = results.length;
             console.log("result index: " + index);
         }).catch(err => {
-            result.index = 0;
-            $("#index").val(result.index);
+            index = 0;
             console.log(err);
         });
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
