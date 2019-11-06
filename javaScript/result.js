@@ -19,9 +19,8 @@ $(function () {
         $('#RblExamination').val(result.val);
         getData("results").then(rs => {
             var results = JSON.parse(rs);
-            result.index = results.length;
-            $("#index").val(result.index);
-            console.log("result index: " + result.index);
+            index = results.length;
+            console.log("result index: " + index);
         }).catch(err => {
             result.index = 0;
             $("#index").val(result.index);
@@ -31,10 +30,11 @@ $(function () {
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
     } else {
         getData("tempResult").then(rs => {
-            $('#txtDate').val(rs.dateClient);
-            $('#txtdetail').val(rs.detailClient);
-            $('#Examination').val(rs.valClient);
-            $('#rblresult').val(rs.resClient);
+            var results = JSON.parse(rs);
+            $('#txtDate').val(results.dateClient);
+            $('#txtdetail').val(results.detailClient);
+            $('#Examination').val(results.valClient);
+            $('#rblresult').val(results.resClient);
         }).catch(err => {
             return;
         });
