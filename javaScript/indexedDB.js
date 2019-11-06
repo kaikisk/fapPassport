@@ -83,7 +83,7 @@ function getPhoto(index) {
                 }
                 if(cursor.value.index == index){
                     results[i] = cursor.value;
-                    canvas.append('<canvas class="cnv" id="canvas'+ i + '" style="display:none;"></canvas>');
+                    canvas.append('<img class="cnv" id="img'+ i + '" style="display:none;"></img>');
                     i++;
                     cursor.continue();
                 }
