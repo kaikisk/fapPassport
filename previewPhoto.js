@@ -23,5 +23,5 @@ function saveTemp(client) {
 }
 
 function deletImg(id) {
-
+  
 }

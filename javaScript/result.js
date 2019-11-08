@@ -20,7 +20,7 @@ $(function () {
         Aindex = result.index;
         $('#txtDate').val(result.date);
         $('#txtdetail').val(result.detail);
-        $('#RblExamination').val(result.val);
+        $('#Examination').val(result.val);
         $("#photoNumber").text("（" + number + "枚）");
         getData("results").then(rs => {
             var results = JSON.parse(rs);
