@@ -298,6 +298,7 @@ function deleteImg(id) {
         var requestName = store.delete(id);
 
         requestName.onsuccess = () => {
+            $(".prevPhoto").html("");
             console.log("画像の削除完了");
         }
     }   
