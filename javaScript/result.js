@@ -152,10 +152,12 @@ function movePhoto() {
         if (!index) {
             getData("results").then(rs => {
                 client.index = rs.length;
-                saveTemp(client);
+                var temp = JSON.stringify(client);
+                saveTemp(temp);
             }).catch(err => {
                 client.index = 0;
-                saveTemp(client);
+                var temp = JSON.stringify(client);
+                saveTemp(temp);
             });
         }
     });

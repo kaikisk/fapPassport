@@ -3,9 +3,10 @@ $(function () {
     temp = JSON.parse(rs);
     getPhoto(temp.index).then(results => {
       temp.number = results.i;
+
       for (var v = 0; v < results.i; v++) {
         var src = results[v].img;
-        $("#img" + v).css("display", "block")
+        $("#img" + v).css("display", "block");
         $("#img" + v).attr("src", src);
       }
 
@@ -18,7 +19,10 @@ $(function () {
 function saveTemp(client) {
   var temp = JSON.stringify(client);
   saveReservation("tempResult", temp).then(() => {
-    console.log("????????");
     location.href = "previewPhoto.html";
   }).catch(err => console.error(err));
+}
+
+function deletImg(id){
+ 
 }

@@ -41,13 +41,13 @@ function getData(key) {
             db = event.target.result;
             // console.log("confirm db: ");
             // console.dir(db);
-            console.log("key: " + key);
+            // console.log("key: " + key);
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
             requestName.onsuccess = function (event) {
                 if (event.target.result !== undefined) {
-                    console.log("key: " + key + ", value: " + event.target.result.myvalue);
+                    // console.log("key: " + key + ", value: " + event.target.result.myvalue);
                     resolve(event.target.result.myvalue);
                 } else {
                     reject(key + "の取得の失敗")
@@ -83,8 +83,9 @@ function getPhoto(index) {
                 }
                 if (cursor.value.index == index) {
                     results[i] = cursor.value;
-                    canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>' +
-                        '<br />');
+                    canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>' 
+                    + '<button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="deleteImg(' + index + ')">削除</button>'
+                    + '<br />');
                     i++;
                     cursor.continue();
                 }else{

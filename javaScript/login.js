@@ -3,23 +3,6 @@ $(function () {
     txtPass = getData("userPass");
     // ErrText = getUserData("txtAAA");
 
-    // ErrText.catch((err) => {
-    //     console.log("indexeddb is not" + err);
-    // });
-    txtName.catch((err) => {
-        console.log(err);
-    });
-    txtPass.catch((err) => {
-        console.log(err);
-    });
-
-    // console.log("txtName: " + txtName);
-    // console.dir(txtName);
-    // console.log("txtPass: " + txtPass);
-    // console.dir(txtPass);
-    // console.log("ErrText: " + ErrText);
-    // console.log("");
-
     txtName.then((name) => {
         txtPass.then((pass) => {
             console.log("name: " + name + ", pass: " + pass);
@@ -36,13 +19,6 @@ $(function () {
         document.getElementById("signin").style.display = "none";
         console.log("");
     });
-
-    // if (txtName == null && txtPass == null) {
-    //     document.getElementById("signin").style.display = "none";
-    //     console.log("")
-    // } else {
-    //     document.getElementById("signup").style.display = "none";
-    // }
 })
 
 function clickLoginButton() {
