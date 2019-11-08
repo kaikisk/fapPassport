@@ -6,8 +6,9 @@ $(function () {
 
       for (var v = 0; v < results.i; v++) {
         var src = results[v].img;
-        $("#img" + v).css("display", "block");
-        $("#img" + v).attr("src", src);
+        var id = results[v].id;
+        $("#img" + id).css("display", "block");
+        $("#img" + id).attr("src", src);
       }
 
       saveTemp1(temp);
