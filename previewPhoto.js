@@ -9,22 +9,20 @@ $(function () {
         $("#img" + v).css("display", "block");
         $("#img" + v).attr("src", src);
       }
-      
+
       saveTemp(temp);
     }).catch(err => console.log(err));
   }).catch(err => console.log(err));
 })
 
 function saveTemp(client) {
-  console.log("client: "+lient);
-    var temp = JSON.stringify(client);
-    console.log("temp: " +temp)
+  var temp = JSON.stringify(client);
   saveReservation("tempResult", temp).then(() => {
     console.log("一時保存しました");
     location.href = "previewPhoto.html";
   }).catch(err => console.error(err));
 }
 
-function deletImg(id){
- 
+function deletImg(id) {
+
 }

@@ -163,9 +163,7 @@ function deleteAp() {
 }
 
 function saveTemp(client) {
-    console.log("client: "+lient);
     var temp = JSON.stringify(client);
-    console.log("temp: " +temp)
     saveReservation("tempResult", temp).then(() => {
         console.log("一時保存しました");
         location.href = "previewPhoto.html";
