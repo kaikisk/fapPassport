@@ -102,7 +102,7 @@ function resultRegistration() {
 
     console.log("index" + index);
     if (Aindex) {
-        deleteAppointment(Aindex);
+        deleteAppointment1(Aindex);
     }
 }
 

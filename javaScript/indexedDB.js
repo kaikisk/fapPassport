@@ -232,6 +232,7 @@ function saveAppointment(appoint) {
     });
 }
 
+//検診予約の削除
 function deleteAppointment(index) {
     var appointmentsString = getData("appointments");
     appointmentsString.then(ap => {
@@ -243,6 +244,26 @@ function deleteAppointment(index) {
             var temp = JSON.stringify(appointments);
             saveAppointment(temp).then(() => {
                 $('#table' + index).remove();
+                console.log("削除成功");
+            }).catch(err => {
+                console.error("削除後のappointmentsの更新失敗");
+            });
+            console.log(temp);
+        }
+    })
+}
+
+//結果登録後のアポの削除
+function deleteAppointment1(index) {
+    var appointmentsString = getData("appointments");
+    appointmentsString.then(ap => {
+        if (ap) {
+            var appointments = JSON.parse(ap);
+            appointments.splice(index, 1);
+            console.log("削除後のappointments");
+            console.dir(appointments);
+            var temp = JSON.stringify(appointments);
+            saveAppointment(temp).then(() => {
                 console.log("削除成功");
             }).catch(err => {
                 console.error("削除後のappointmentsの更新失敗");
