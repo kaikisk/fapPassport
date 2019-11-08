@@ -9,16 +9,18 @@ $(function () {
         $("#img" + v).css("display", "block");
         $("#img" + v).attr("src", src);
       }
-
-      temp = JSON.stringify(temp);
+      
       saveTemp(temp);
     }).catch(err => console.log(err));
   }).catch(err => console.log(err));
 })
 
 function saveTemp(client) {
-  var temp = JSON.stringify(client);
+  console.log("client: "+lient);
+    var temp = JSON.stringify(client);
+    console.log("temp: " +temp)
   saveReservation("tempResult", temp).then(() => {
+    console.log("一時保存しました");
     location.href = "previewPhoto.html";
   }).catch(err => console.error(err));
 }

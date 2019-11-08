@@ -135,29 +135,21 @@ function movePhoto() {
         index: index
     }
 
-
-
     getData("tempResult").then(rs => {
         var resString = JSON.parse(rs);
         resString.dateClient = client.dateClient;
         resString.detailClient = client.detailClient;
         resString.valClient = client.valClient;
         resString.resClient = client.resClient;
-        var temp = JSON.stringify(resString);
-        saveReservation("tempResult", temp).then(() => {
-            console.log("一時保存しました");
-            location.href = "previewPhoto.html";
-        }).catch(err => console.error(err));
+        saveTemp(resString);
     }).catch(err => {
         if (!index) {
             getData("results").then(rs => {
                 client.index = rs.length;
-                var temp = JSON.stringify(client);
-                saveTemp(temp);
+                saveTemp(client);
             }).catch(err => {
                 client.index = 0;
-                var temp = JSON.stringify(client);
-                saveTemp(temp);
+                saveTemp(client);
             });
         }
     });
@@ -171,7 +163,9 @@ function deleteAp() {
 }
 
 function saveTemp(client) {
+    console.log("client: "+lient);
     var temp = JSON.stringify(client);
+    console.log("temp: " +temp)
     saveReservation("tempResult", temp).then(() => {
         console.log("一時保存しました");
         location.href = "previewPhoto.html";
