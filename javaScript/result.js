@@ -79,7 +79,7 @@ function resultRegistration() {
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
             alert("登録が完了しました");
-            var i = results.length;
+            var i = results.length - 1;
             $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
                 '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
                 + "</td><td>" + results[i].resClient
