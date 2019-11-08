@@ -194,7 +194,7 @@ function saveReservation(key, appoint) {
             db = event.target.result;
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
-            var request = store.add({ id: key, myvalue: appoint });
+            var request = store.put({ id: key, myvalue: appoint });
             request.onsuccess = function (event) {
                 resolve(key + " : " + $('#' + key).val());
             }
