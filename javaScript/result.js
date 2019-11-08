@@ -147,15 +147,14 @@ function movePhoto() {
         resString.resClient = client.resClient;
         saveTemp(resString);
     }).catch(err => {
-        if (!index) {
-            getData("results").then(rs => {
-                client.index = rs.length;
-                saveTemp(client);
-            }).catch(err => {
-                client.index = 0;
-                saveTemp(client);
-            });
-        }
+        getData("results").then(rs => {
+            client.index = rs.length;
+            saveTemp(client);
+        }).catch(err => {
+            client.index = 0;
+            saveTemp(client);
+        });
+
     });
 }
 
@@ -176,5 +175,5 @@ function saveTemp(client) {
 
 function returnMenu() {
     deleteValue("fapPass", "tempResult");
-    location.href="menu.html"
+    location.href = "menu.html"
 }
