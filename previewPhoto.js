@@ -10,18 +10,7 @@ $(function () {
         $("#img" + v).attr("src", src);
       }
 
-      saveTemp(temp);
+      saveTemp1(temp);
     }).catch(err => console.log(err));
   }).catch(err => console.log(err));
 })
-
-function saveTemp(client) {
-  var temp = JSON.stringify(client);
-  saveReservation("tempResult", temp).then(() => {
-    console.log("一時保存しました");
-  }).catch(err => console.error(err));
-}
-
-function deletImg(id) {
-  
-}

@@ -83,7 +83,7 @@ function getPhoto(index) {
                 }
                 if (cursor.value.index == index) {
                     results[i] = cursor.value;
-                    canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>' 
+                    canvas.append('<img class="cnv" id="img' + cursor.key + '" style="display:none;"></img>' 
                     + '<button id="takePhoto" class="btn-square-shadow btn_center red_color" onclick="deleteImg(' + cursor.key + ')">削除</button>'
                     + '<br />');
                     i++;
@@ -298,7 +298,12 @@ function deleteImg(id) {
         var requestName = store.delete(id);
 
         requestName.onsuccess = () => {
-            $(".prevPhoto").html("");
+            $("#img" + id).remove();
+            $("#delete" + id).remove();
+            getData("tempResult").then(rs => {
+                temp = JSON.parse(rs);
+                temp.number = temp.number - 1;
+            }).catch(err => console.error(err));
             console.log("画像の削除完了");
         }
     }   
