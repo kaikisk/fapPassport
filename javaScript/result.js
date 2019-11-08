@@ -85,6 +85,7 @@ function resultRegistration() {
                     + "</td><td>" + results[i].resClient
                     + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
             }
+            resetElement();
             deleteValue("fapPass", "tempResult");
         }).catch(() => alert("error saveReservation"));
     }).catch(err => {
@@ -97,6 +98,7 @@ function resultRegistration() {
                 '</td><td>' + results[0].valClient + '</td><td>' + results[0].detailClient
                 + "</td><td>" + results[0].resClient
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + 0 + ')">結果</button></td></tr>');
+                resetElement();
             deleteValue("fapPass", "tempResult");
         }).catch(err => alert(err));
     });
