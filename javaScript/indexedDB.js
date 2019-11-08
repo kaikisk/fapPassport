@@ -303,8 +303,16 @@ function deleteImg(id) {
             getData("tempResult").then(rs => {
                 temp = JSON.parse(rs);
                 temp.number = temp.number - 1;
+                saveTemp1(temp)
             }).catch(err => console.error(err));
             console.log("画像の削除完了");
         }
     }   
 }
+
+function saveTemp1(client) {
+    var temp = JSON.stringify(client);
+    saveReservation("tempResult", temp).then(() => {
+      console.log("一時保存しました");
+    }).catch(err => console.error(err));
+  }
