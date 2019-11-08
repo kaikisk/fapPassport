@@ -1,61 +1,24 @@
-var number;
-
 $(function () {
   getData("tempResult").then(rs => {
     temp = JSON.parse(rs);
-    index = temp.index;
-    getPhoto(index).then(results => {
-      number = results.i;
+    getPhoto(temp.index).then(results => {
+      temp.number = results.i;
       for (var v = 0; v < results.i; v++) {
         var src = results[v].img;
         $("#img" + v).css("display", "block")
         $("#img" + v).attr("src", src);
       }
-      //   canvas = $("#canvas" + v)[0];
-      //   $(canvas).css("display", "block");
-      //   canvas.width = results[v].width;
-      //   canvas.height = results[v].height;
-      //   ctx = canvas.getContext('2d');
-      //   var img = new Image();
-      //   img.onload = () => {
-      //     ctx.drawImage(img, 0, 0);
-      //   }
-      //   img.src = results[v].img;
-      // }
+
+      temp = JSON.stringify(temp);
+      saveTemp(temp);
     }).catch(err => console.log(err));
   }).catch(err => console.log(err));
 })
 
-// var db;
-// var i = 1;
-// var request = indexedDB.open('fapPassport');
-// request.onsuccess = function (event) {
-//   db = event.target.result;
-//   var ts = db.transaction(["photo"], "readonly");
-//   var store = ts.objectStore("photo");
-//   var request = store.openCursor();
-//   request.onsuccess = function (event) {
-//     if (event.target.result == null) {
-//       return;
-//     }
-//     var cursor = event.target.result;
-//     var data = cursor.value;
-//     image.src = URL.createObjectURL(data.mayvalue);
-//     cursor.continue();
-//   }
-// }
-
-// function getNowID() {
-//   return new Promise((resolve, reject) => {
-//     //????????????
-//     var key = "nowId";
-//     var db;
-//     var request = indexedDB.open('fapPassport');
-//     request.onsuccess = event => {
-//       db = event.target.result;
-//       var ts = db.transaction(["photo"], "readwrite");
-//       var store = ts.objectStore("photo");
-//       var requestName = store.get(key);
-//     }
-//   })
-// }
+function saveTemp(client) {
+  var temp = JSON.stringify(client);
+  saveReservation("tempResult", temp).then(() => {
+    console.log("????????");
+    location.href = "previewPhoto.html";
+  }).catch(err => console.error(err));
+}

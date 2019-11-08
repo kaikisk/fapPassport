@@ -1,5 +1,6 @@
 var Aindex;
 var index;
+var number = 0;
 
 $(function () {
     var queryStr = decodeURI(location.search);
@@ -20,6 +21,7 @@ $(function () {
         $('#txtDate').val(result.date);
         $('#txtdetail').val(result.detail);
         $('#RblExamination').val(result.val);
+        $("#photoNumber").text("（" + number + "枚）");
         getData("results").then(rs => {
             var results = JSON.parse(rs);
             index = results.length;
@@ -37,14 +39,17 @@ $(function () {
             $('#txtdetail').val(results.detailClient);
             $('#Examination').val(results.valClient);
             $('#rblresult').val(results.resClient);
-            $("#index")
+            $("#photoNumber").text("（" + results.number + "枚）");
             index = results.index;
             Aindex = results.Aindex;
+            if(number != 0) number = results.number;
         }).catch(err => {
             return;
         });
     }
 });
+
+//結果の登録
 
 function resultRegistration() {
     var date = $('#txtDate').val();
@@ -57,7 +62,8 @@ function resultRegistration() {
         valClient: val,
         resClient: res,
         detailClient: detail,
-        index: index
+        index: index,
+        number: number
     }
 
     var resultsString = getData("results");
@@ -111,7 +117,7 @@ $('#cancel').click(() => {
     resetElement();
     $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
     return;
-})
+});
 
 
 function movePhoto() {
@@ -120,56 +126,6 @@ function movePhoto() {
     var val = $('#Examination').val();
     var res = $("#rblresult").val();
 
-
-    getData("tempResult").then(rs => {
-        var resString = JSON.parse(rs);
-        resString.dateClient = date;
-        resString.detailClient = detail;
-        resString.valClient = val;
-        resString.resClient = res;
-        var temp = JSON.stringify(resString);
-        saveReservation("tempResult", temp).then(() => {
-            console.log("一時保存しました");
-            location.href = "previewPhoto.html";
-        }).catch(err => console.error(err));
-    }).catch(err => {
-        if (!index) {
-            getData("results").then(rs => {
-                index = rs.length;
-                saveTemp();
-            }).catch(err => {
-                index = 0;
-                saveTemp();
-            });
-        }
-
-    //     console.log("index1: " + index);
-
-    //     var client = {
-    //         dateClient: date,
-    //         valClient: val,
-    //         resClient: res,
-    //         detailClient: detail,
-    //         Aindex: Aindex,
-    //         index: index
-    //     }
-
-    //     var temp = JSON.stringify(client);
-    //     saveReservation("tempResult", temp).then(() => {
-    //         console.log("一時保存しました");
-    //         location.href = "previewPhoto.html";
-    //     }).catch(err => console.error(err));
-    })
-}
-
-function deleteAp() {
-    getData("tempResult").then(rs => {
-        var res = JSON.parse(rs);
-        deleteAppointment(res.Aindex);
-    }).catch(err => console.error(err));
-}
-
-function saveTemp(){
     var client = {
         dateClient: date,
         valClient: val,
@@ -179,6 +135,40 @@ function saveTemp(){
         index: index
     }
 
+
+
+    getData("tempResult").then(rs => {
+        var resString = JSON.parse(rs);
+        resString.dateClient = client.dateClient;
+        resString.detailClient = client.detailClient;
+        resString.valClient = client.valClient;
+        resString.resClient = client.resClient;
+        var temp = JSON.stringify(resString);
+        saveReservation("tempResult", temp).then(() => {
+            console.log("一時保存しました");
+            location.href = "previewPhoto.html";
+        }).catch(err => console.error(err));
+    }).catch(err => {
+        if (!index) {
+            getData("results").then(rs => {
+                client.index = rs.length;
+                saveTemp(client);
+            }).catch(err => {
+                client.index = 0;
+                saveTemp(client);
+            });
+        }
+    });
+}
+
+function deleteAp() {
+    getData("tempResult").then(rs => {
+        var res = JSON.parse(rs);
+        deleteAppointment(res.Aindex);
+    }).catch(err => console.error(err));
+}
+
+function saveTemp(client) {
     var temp = JSON.stringify(client);
     saveReservation("tempResult", temp).then(() => {
         console.log("一時保存しました");

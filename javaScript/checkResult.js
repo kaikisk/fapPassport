@@ -26,8 +26,9 @@ function clickResult1(index) {
         $('#txtdetail').val(target.detailClient);
         $('#Examination').val(target.valClient);
         $('#rblresult').val(target.resClient);
-        $('#btn_update').html('<button class="btn-square-shadow btn_left green_color" id="update">更新</button>'
-            + '<button class="btn-square-shadow btn_right yellow_color" id="cancel">キャンセル</button>');
+        $("#photoNumber").text("（" + target.number + "枚）");
+        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
+            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
         $('#update').click(() => {
             target.dateClient = $("#txtDate").val();
             target.detailClient = $('#txtdetail').val();

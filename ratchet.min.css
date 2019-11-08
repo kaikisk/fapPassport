@@ -114,3 +114,7 @@ th {
 	margin:auto;
 	margin-bottom:30px;
 }
+
+.photoNubmer{
+  display: inline-block;
+}
