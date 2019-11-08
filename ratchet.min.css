@@ -57,7 +57,7 @@
   margin-bottom: 3px;
   text-align: center;
   width: 60%;
-  display: block;
+  display: inline-block;
   overflow: hidden;
 }
 
@@ -67,6 +67,10 @@
 
 .yellow_color{
   background:  #ccc016 /*黄色*/;
+}
+
+.red_color{
+  background:  #f50303 /*黄色*/;
 }
 
 table , td, th {
@@ -115,6 +119,7 @@ th {
 	margin-bottom:30px;
 }
 
-.photoNubmer{
+.photoNumber{
   display: inline-block;
+  font-size: 120%;
 }
