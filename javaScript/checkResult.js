@@ -32,8 +32,8 @@ function clickResult1(index) {
         $('#update').click(() => {
             target.dateClient = $("#txtDate").val();
             target.detailClient = $('#txtdetail').val();
-            target.valClient = $('#RblExamination').val();
-            target.resClient = $("#RblResult").val();
+            target.valClient = $('#Examination').val();
+            target.resClient = $("#rblresult").val();
             target.index = index;
             results[index] = target;
             var temp = JSON.stringify(results);
