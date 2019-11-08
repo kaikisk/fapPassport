@@ -115,7 +115,7 @@ function resetElement() {
 
 $('#cancel').click(() => {
     resetElement();
-    $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
+    $('#btn_update').html('<button class="btn-square-shadow btn_temp green_color" id="submit" onclick="resultRegistration()">登録</button>');
     return;
 });
 
