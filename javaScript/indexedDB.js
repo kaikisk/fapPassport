@@ -288,7 +288,7 @@ function deleteValue(objectName ,key) {
     }
 }
 
-function deletImg(id) {
+function deleteImg(id) {
     var db;
     var request = indexedDB.open('fapPassport');
     request.onsuccess = function (event) {
