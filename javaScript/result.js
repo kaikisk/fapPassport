@@ -114,6 +114,8 @@ function resetElement() {
     $('#txtdetail').val("");
     $('#Examination').val("");
     $('#rblresult').val("");
+    number = 0;
+    $("#photoNumber").text("（" + number + "枚）");
 }
 
 $('#cancel').click(() => {
