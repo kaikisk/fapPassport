@@ -42,7 +42,7 @@ $(function () {
             $("#photoNumber").text("（" + results.number + "枚）");
             index = results.index;
             Aindex = results.Aindex;
-            if(number != 0) number = results.number;
+            if (number != 0) number = results.number;
         }).catch(err => {
             $("#photoNumber").text("（" + number + "枚）");
             return;
@@ -79,12 +79,11 @@ function resultRegistration() {
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
             alert("登録が完了しました");
-            for (var i = 0; i < results.length; i++) {
-                $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
-                    '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
-                    + "</td><td>" + results[i].resClient
-                    + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
-            }
+            var i = results.length;
+            $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
+                '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
+                + "</td><td>" + results[i].resClient
+                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
             resetElement();
             deleteValue("fapPass", "tempResult");
         }).catch(() => alert("error saveReservation"));
@@ -98,7 +97,7 @@ function resultRegistration() {
                 '</td><td>' + results[0].valClient + '</td><td>' + results[0].detailClient
                 + "</td><td>" + results[0].resClient
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + 0 + ')">結果</button></td></tr>');
-                resetElement();
+            resetElement();
             deleteValue("fapPass", "tempResult");
         }).catch(err => alert(err));
     });
@@ -113,7 +112,7 @@ function resetElement() {
     $('#txtDate').val("");
     $('#txtdetail').val("");
     $('#Examination').val("");
-    $('#rblresult').val("");
+    $('#rblresult').val("OK");
     number = 0;
     $("#photoNumber").text("（" + number + "枚）");
 }

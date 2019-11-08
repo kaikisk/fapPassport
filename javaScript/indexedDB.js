@@ -84,7 +84,7 @@ function getPhoto(index) {
                 if (cursor.value.index == index) {
                     results[i] = cursor.value;
                     canvas.append('<img class="cnv" id="img' + i + '" style="display:none;"></img>' 
-                    + '<button id="takePhoto" class="btn-square-shadow btn_center red_color" onclick="deleteImg(' + cursor.pri + ')">削除</button>'
+                    + '<button id="takePhoto" class="btn-square-shadow btn_center red_color" onclick="deleteImg(' + cursor.Key + ')">削除</button>'
                     + '<br />');
                     i++;
                     cursor.continue();
@@ -286,4 +286,19 @@ function deleteValue(objectName ,key) {
             console.log("削除しました");
         }
     }
+}
+
+function deletImg(id) {
+    var db;
+    var request = indexedDB.open('fapPassport');
+    request.onsuccess = function (event) {
+        db = event.target.result;
+        var ts = db.transaction(["photo"], "readwrite");
+        var store = ts.objectStore("photo");
+        var requestName = store.delete(id);
+
+        requestName.onsuccess = () => {
+            console.log("画像の削除完了");
+        }
+    }   
 }
