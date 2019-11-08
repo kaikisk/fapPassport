@@ -176,4 +176,5 @@ function saveTemp(client) {
 
 function returnMenu() {
     deleteValue("fapPass", "tempResult");
+    location.href="menu.html"
 }
