@@ -17,8 +17,6 @@ function gotStream(stream) {
     const track = stream.getVideoTracks()[0];
     // console.log(track);
     imageCapture = new ImageCapture(track);
-
-    alert("succsess");
 }
 
 
