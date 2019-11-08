@@ -44,6 +44,7 @@ $(function () {
             Aindex = results.Aindex;
             if(number != 0) number = results.number;
         }).catch(err => {
+            $("#photoNumber").text("（" + number + "枚）");
             return;
         });
     }
