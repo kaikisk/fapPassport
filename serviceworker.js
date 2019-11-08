@@ -72,6 +72,7 @@ self.addEventListener('fetch', function(event) {
       caches.match(event.request, {ignoreSearch: true})
         .then(
         function (response) {
+          console.log("response: " + response);
           if (response) {
             return response;
           }
