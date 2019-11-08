@@ -173,3 +173,7 @@ function saveTemp(client) {
         location.href = "previewPhoto.html";
     }).catch(err => console.error(err));
 }
+
+function returnMenu() {
+    deleteValue("fapPass", "tempResult");
+}
