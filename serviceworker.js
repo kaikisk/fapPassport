@@ -108,9 +108,9 @@ self.addEventListener('fetch', function(event) {
     );
   }else{
     console.log("offline!!!");
-    //オフラインのときの制御, {ignoreSearch: true}
+    //オフラインのときの制御
     event.respondWith(
-      caches.match(event.request)
+      caches.match(event.request, {ignoreSearch: true})
         .then(function(response) {
           // キャッシュがあったのでそのレスポンスを返す
           if (response) {
