@@ -12,7 +12,7 @@ $(function () {
         var keys = ['userID', 'userPass'];
         Promise.all([save(keys[0]), save(keys[1])]).then(values => {
             console.log(values);
-            alert(values);
+            // alert(values);
             location.href = "menu.html";
         }).catch(errs => {
             console.log(errs);

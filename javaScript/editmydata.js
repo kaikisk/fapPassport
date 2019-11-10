@@ -14,7 +14,8 @@ $(function() {
             saveData.push(save(keys[i]));
         }
         Promise.all(saveData).then(values =>{
-            alert(values);
+            console.log(values);
+            // alert(values);
             location.href="myData.html";
         }).catch(errs => {
             alert(errs);
