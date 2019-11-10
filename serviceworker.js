@@ -33,8 +33,6 @@ var STATIC_FILES = [
     ORIGIN + '/javaScript/checkAppointment.js',
     ORIGIN + '/javaScript/result.js',
     ORIGIN + '/javaScript/checkResult.js',
-    // ORIGIN + '/javaScript/notification.js',
-    // ORIGIN + '/javaScript/confirmDate.js',
     ORIGIN + '/jquery-2.2.4.min.js',
 ];
 
@@ -65,7 +63,7 @@ self.addEventListener('fetch', function(event){});
 self.addEventListener('fetch', function(event) {
   //ブラウザが回線に接続しているかをboolで返してくれる
   var online = navigator.onLine;
-  console.log("judge online: " + online);
+  // console.log("judge online: " + online);
 
   //回線が使えるときの処理
   if(online){
@@ -108,9 +106,9 @@ self.addEventListener('fetch', function(event) {
         })
     );
   }else{
-    //オフラインのときの制御
+    //オフラインのときの制御, {ignoreSearch: true}
     event.respondWith(
-      caches.match(event.request, {ignoreSearch: true})
+      caches.match(event.request)
         .then(function(response) {
           // キャッシュがあったのでそのレスポンスを返す
           if (response) {
