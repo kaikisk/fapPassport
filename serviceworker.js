@@ -48,22 +48,10 @@ self.addEventListener('install', function(event){
         })
     )
 })
-/*
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request).then(function(response) {
-                return response || fetch(event.request)
-        })
-    );
-});
-
-self.addEventListener('fetch', function(event){});
-*/
 
 self.addEventListener('fetch', function(event) {
   //ブラウザが回線に接続しているかをboolで返してくれる
   var online = navigator.onLine;
-  // console.log("judge online: " + online);
 
   //回線が使えるときの処理
   if(online){
@@ -148,29 +136,3 @@ self.addEventListener('activate', function(event) {
             })
     );
 });
-
-// self.addEventListener("push", function(event) {
-//   console.log("Push Notification Recieved", event);
-//   if (Notification.permission == "granted") {
-//     event.waitUntil(
-//       self.registration
-//         .showNotification("受信しました", {
-//           body: "1日前です。",
-//           icon: "revealweb-144.png"
-//         })
-//         .then(
-//           function(showEvent) {},
-//           function(error) {
-//             console.log(error);
-//           }
-//         )
-//     );
-//   }
-// });
-
-// self.addEventListener("notificationclick", function(event) {
-//   event.notification.close();
-//   event.waitUntil(
-//     clients.openWindow("https://kaikisk.github.io/hhswa/checkAppointment.html")
-//   );
-// });

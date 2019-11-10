@@ -3,8 +3,7 @@ var tempImage;
 var width = $(".video").width();
 var height = $(".video").height();
 var video = document.getElementById("myVideo"); // 適当にvideoタグのオブジェクトを取得
-var constrains = { video:{facingMode: "environment", width: width, height: height}, audio: false }; // 映像・音声を取得するかの設定
-// var constrains = { video: { width: width, height: height }, audio: false }; // 映像・音声を取得するかの設定
+var constrains = { video:{facingMode: "environment", width: width, height: height}, audio: false }; // 映像・音声を取得するかの設定, リアカメラ設定
 
 navigator.mediaDevices.getUserMedia(constrains)
     .then(gotStream).catch(function (err) {
@@ -15,7 +14,6 @@ function gotStream(stream) {
     video.srcObject = stream; // streamはユーザーのカメラとマイクの情報で、これをvideoの入力ソースにする
 
     const track = stream.getVideoTracks()[0];
-    // console.log(track);
     imageCapture = new ImageCapture(track);
 }
 

@@ -33,15 +33,13 @@ $(function createDatabase() {
     })
 });
 
+//fapPassのデータの取得
 function getData(key) {
     return new Promise(function (resolve, reject) {
         var db;
         var request = indexedDB.open('fapPassport');
         request.onsuccess = function (event) {
             db = event.target.result;
-            // console.log("confirm db: ");
-            // console.dir(db);
-            // console.log("key: " + key);
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
             var requestName = store.get(key);
@@ -60,6 +58,7 @@ function getData(key) {
     });
 };
 
+//写真の取得
 function getPhoto(index) {
     var canvas = $(".prevPhoto");
     var results = {};
@@ -76,8 +75,8 @@ function getPhoto(index) {
                 var cursor = event.target.result;
                 if (!cursor) {
                     results.i = i;
-                    console.dir(results);
-                    console.log("end");
+                    // console.dir(results);
+                    // console.log("end");
                     resolve(results);
                     return;
                 }
@@ -106,7 +105,7 @@ function save(key) {
         var db;
         var request = indexedDB.open("fapPassport");
         request.onsuccess = function (event) {
-            console.log("indexedDB.open pass onsuccess");
+            // console.log("indexedDB.open pass onsuccess");
             db = event.target.result;
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
@@ -140,7 +139,7 @@ function load(key) {
             if (event.target.result !== undefined) {
                 var value = event.target.result.myvalue;
                 if (value !== undefined) {
-                    console.log("key: " + key + ", value: " + value);
+                    // console.log("key: " + key + ", value: " + value);
                     $("#" + key).text(value);
                     return;
 
@@ -168,7 +167,7 @@ function loadE(key) {
                 var value = event.target.result.myvalue;
                 if (value !== undefined) {
                     if (key != "bloodType") {
-                        console.log("key: " + key + ", value: " + value);
+                        // console.log("key: " + key + ", value: " + value);
                         $("#" + key).val(value);
                         $("#" + key).text(value);
                         return;
@@ -215,7 +214,7 @@ function saveAppointment(appoint) {
         var db;
         var request = indexedDB.open("fapPassport");
         request.onsuccess = function (event) {
-            console.log("pass onsuccess");
+            // console.log("pass onsuccess");
             db = event.target.result;
             var ts = db.transaction(["fapPass"], "readwrite");
             var store = ts.objectStore("fapPass");
@@ -240,8 +239,8 @@ function deleteAppointment(index) {
         if (ap) {
             var appointments = JSON.parse(ap);
             appointments.splice(index, 1);
-            console.log("削除後のappointments");
-            console.dir(appointments);
+            // console.log("削除後のappointments");
+            // console.dir(appointments);
             var temp = JSON.stringify(appointments);
             saveAppointment(temp).then(() => {
                 $('#table' + index).remove();
@@ -261,8 +260,8 @@ function deleteAppointment1(index) {
         if (ap) {
             var appointments = JSON.parse(ap);
             appointments.splice(index, 1);
-            console.log("削除後のappointments");
-            console.dir(appointments);
+            // console.log("削除後のappointments");
+            // console.dir(appointments);
             var temp = JSON.stringify(appointments);
             saveAppointment(temp).then(() => {
                 console.log("削除成功");

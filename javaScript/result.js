@@ -30,8 +30,6 @@ $(function () {
             index = 0;
             console.log(err);
         });
-        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
-            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
     } else {
         getData("tempResult").then(rs => {
             var results = JSON.parse(rs);
@@ -47,6 +45,10 @@ $(function () {
             $("#photoNumber").text("（" + number + "枚）");
             return;
         });
+    }
+    if(Aindex) {
+        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
+            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
     }
 });
 
