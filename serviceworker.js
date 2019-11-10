@@ -67,6 +67,7 @@ self.addEventListener('fetch', function(event) {
 
   //回線が使えるときの処理
   if(online){
+    console.log("online!!!");
     event.respondWith(
       caches.match(event.request)
         .then(
@@ -106,6 +107,7 @@ self.addEventListener('fetch', function(event) {
         })
     );
   }else{
+    console.log("offline!!!");
     //オフラインのときの制御, {ignoreSearch: true}
     event.respondWith(
       caches.match(event.request)
