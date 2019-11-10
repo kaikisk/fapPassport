@@ -30,6 +30,8 @@ $(function () {
             index = 0;
             console.log(err);
         });
+        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
+            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
     } else {
         getData("tempResult").then(rs => {
             var results = JSON.parse(rs);
@@ -46,10 +48,6 @@ $(function () {
             return;
         });
     }
-    if(Aindex) {
-        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
-            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
-    }
 });
 
 //結果の登録
@@ -60,6 +58,14 @@ function resultRegistration() {
     var val = $('#Examination').val();
     var res = $("#rblresult").val();
 
+    /*
+    dateClient: 受診日
+    valClient: 検査項目
+    resClient: 結果
+    detailClient: 詳細
+    index: 
+    Aindex: 変更する受診予約が何番にあるかの番号
+    */
     var client = {
         dateClient: date,
         valClient: val,
