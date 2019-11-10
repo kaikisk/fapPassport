@@ -65,14 +65,14 @@ self.addEventListener('fetch', function(event){});
 self.addEventListener('fetch', function(event) {
   //ブラウザが回線に接続しているかをboolで返してくれる
   var online = navigator.onLine;
+  console.log("judge online: " + online);
 
   //回線が使えるときの処理
   if(online){
     event.respondWith(
-      caches.match(event.request, {ignoreSearch: true})
+      caches.match(event.request)
         .then(
         function (response) {
-          console.log("response: " + response);
           if (response) {
             return response;
           }
@@ -110,7 +110,7 @@ self.addEventListener('fetch', function(event) {
   }else{
     //オフラインのときの制御
     event.respondWith(
-      caches.match(event.request)
+      caches.match(event.request, {ignoreSearch: true})
         .then(function(response) {
           // キャッシュがあったのでそのレスポンスを返す
           if (response) {
