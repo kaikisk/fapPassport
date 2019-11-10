@@ -42,7 +42,7 @@ $(function () {
             $("#photoNumber").text("（" + results.number + "枚）");
             index = results.index;
             Aindex = results.Aindex;
-            if (number != 0) number = results.number;
+            number = results.number;
             if (Aindex) {
                 $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
                     + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
