@@ -18,7 +18,7 @@ function clickResult1(index) {
     var resultsString = getData("results");
 
     resultsString.then(result => {
-        
+
         var results = JSON.parse(result);
         var target = results[index];
         $('#txtDate').val(target.dateClient);
@@ -33,10 +33,14 @@ function clickResult1(index) {
 
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
-        
+
         $("#movePhoto").off();
 
-        $(document).on('click', '#movePhoto' , () => {
+        $(document).on('click', '#movePhoto', () => {
+            target.dateClient = $('#txtDate').val();
+            target.detailClient = $('#txtdetail').val();
+            target.valClient = $('#Examination').val();
+            target.resClient = $('#rblresult').val();
             console.log("target: ");
             console.dir(target);
             saveTemp(target);
@@ -56,7 +60,7 @@ function clickResult1(index) {
                     '</td><td>' + results[index].valClient + '</td><td>' + results[index].detailClient
                     + '</td><td>' + results[index].resClient
                     + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + index + ')">結果</button></td>');
-                    
+
                 $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
             }).catch((err) => alert(err));
         });
