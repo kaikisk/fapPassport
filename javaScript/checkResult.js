@@ -33,7 +33,7 @@ function clickResult1(index) {
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
         
-        $("#movePhoto").on('click', () => {
+        $(document).on('click', '#movePhoto' , () => {
             console.log("target: ");
             console.dir(target);
             saveTemp(target);
