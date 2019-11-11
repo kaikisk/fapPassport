@@ -159,11 +159,17 @@ function resetElement() {
     $("#photoNumber").text("（" + number + "枚）");
 }
 
-$('#cancel').click(() => {
+$("#cancel").on("click", () =>{
     resetElement();
     $('#btn_update').html('<button class="btn-square-shadow btn_temp green_color" id="submit" onclick="resultRegistration()">登録</button>');
     return;
-});
+})
+
+// $('#cancel').click(() => {
+//     resetElement();
+//     $('#btn_update').html('<button class="btn-square-shadow btn_temp green_color" id="submit" onclick="resultRegistration()">登録</button>');
+//     return;
+// });
 
 
 function movePhoto() {
