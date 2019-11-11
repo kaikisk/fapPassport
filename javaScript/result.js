@@ -214,58 +214,6 @@ function resetElement() {
     $("#photoNumber").text("（" + number + "枚）");
 }
 
-// $("#cancel").on("click", () =>{
-//     resetElement();
-//     $('#btn_update').html('<button class="btn-square-shadow btn_temp green_color" id="submit" onclick="resultRegistration()">登録</button>');
-//     return;
-// })
-
-// $('#cancel').click(() => {
-//     resetElement();
-//     $('#btn_update').html('<button class="btn-square-shadow btn_temp green_color" id="submit" onclick="resultRegistration()">登録</button>');
-//     return;
-// });
-
-// function movePhoto() {
-//     var date = $('#txtDate').val();
-//     var detail = $('#txtdetail').val();
-//     var val = $('#Examination').val();
-//     var res = $("#rblresult").val();
-
-
-//     var client = {
-//         dateClient: date,
-//         valClient: val,
-//         resClient: res,
-//         detailClient: detail,
-//         Aindex: Aindex,
-//         photoIndex: photoIndex
-//     }
-
-//     getData("tempResult").then(rs => {
-//         var resString = JSON.parse(rs);
-//         resString.dateClient = client.dateClient;
-//         resString.detailClient = client.detailClient;
-//         resString.valClient = client.valClient;
-//         resString.resClient = client.resClient;
-//         resString.photoIndex = client.photoIndex;
-//         saveTemp(resString);
-//     }).catch(err => {
-//         getData("results").then(rs => {
-//             var result = JSON.parse(rs);
-//             var L = result.length - 1;
-//             client.photoIndex = result[L].photoIndex + 1;
-//             // client.photoIndex = rs.length;
-
-//             saveTemp(client);
-//         }).catch(err => {
-//             client.photoIndex = 0;
-//             saveTemp(client);
-//         });
-
-//     });
-// }
-
 function deleteAp() {
     getData("tempResult").then(rs => {
         var res = JSON.parse(rs);
