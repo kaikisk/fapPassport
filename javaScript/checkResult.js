@@ -28,6 +28,8 @@ function clickResult1(index) {
         $("#photoNumber").text("（" + target.number + "枚）");
         console.log("photoIndex: " + photoIndex);
         target.index = index;
+        index = index;
+        photoIndex = target.photoIndex;
         $("#movePhoto").attr('onclick', '');
 
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
