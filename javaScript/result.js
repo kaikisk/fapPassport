@@ -1,5 +1,5 @@
 var Aindex;
-photoIndex;
+var photoIndex;
 var number = 0;
 
 $(function () {
