@@ -28,7 +28,8 @@ function clickResult1(index) {
         $("#photoNumber").text("（" + target.number + "枚）");
         console.log("photoIndex: " + photoIndex);
         target.index = index;
-        $("#movePhoto").html('<button id="movePhoto" class="btn-square-shadow btn_sixty green_color">写真の添付</button>')
+        $("#movePhoto").attr('onclick', '');
+        
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
         
