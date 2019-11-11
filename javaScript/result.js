@@ -26,7 +26,8 @@ $(function () {
             var results = JSON.parse(rs);
             var L = results.length - 1;
             photoIndex = results[L].photoIndex + 1;
-            console.log("result photoIndex: " + photoIndex);
+            console.log("results: ");
+            console.dir(results);
         }).catch(err => {
             photoIndex = 0;
             console.log(err);
@@ -48,13 +49,16 @@ $(function () {
                 $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
                     + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
             }
+            console.log("results: ");
+            console.dir(results);
         }).catch(err => {
             $("#photoNumber").text("（" + number + "枚）");
             getData("results").then(rs => {
                 var results = JSON.parse(rs);
                 var L = results.length - 1;
                 photoIndex = results[L].photoIndex + 1;
-                console.log("result photoIndex: " + photoIndex);
+                console.log("results: ");
+                console.dir(results);
             }).catch(err => {
                 photoIndex = 0;
                 console.log(err);
