@@ -80,7 +80,7 @@ function getPhoto(index) {
                     resolve(results);
                     return;
                 }
-                if (cursor.value.index == index) {
+                if (cursor.value.photoIndex == index) {
                     results[i] = cursor.value;
                     results[i].id = cursor.key;
                     canvas.append('<img class="cnv" id="img' + cursor.key + '" style="display:none;"></img>' 
