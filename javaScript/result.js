@@ -110,7 +110,6 @@ $(function () {
                 var result = JSON.parse(rs);
                 var L = result.length - 1;
                 client.photoIndex = result[L].photoIndex + 1;
-                // client.photoIndex = rs.length;
     
                 saveTemp(client);
             }).catch(err => {

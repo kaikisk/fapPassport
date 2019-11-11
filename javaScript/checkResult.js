@@ -29,11 +29,11 @@ function clickResult1(index) {
         console.log("photoIndex: " + photoIndex);
         target.index = index;
         $("#movePhoto").attr('onclick', '');
-        
+
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
         
-        $("#movePhoto").click(() => {
+        $("#movePhoto").on('click', () => {
             saveTemp(target);
         });
 
