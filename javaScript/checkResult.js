@@ -30,16 +30,9 @@ function clickResult1(index) {
         target.index = index;
         index = index;
         photoIndex = target.photoIndex;
-        $("#movePhoto").attr('onclick', '');
 
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
-        
-        $(document).on('click', '#movePhoto' , () => {
-            console.log("target: ");
-            console.dir(target);
-            saveTemp(target);
-        });
 
         $('#update').click(() => {
             target.dateClient = $("#txtDate").val();
