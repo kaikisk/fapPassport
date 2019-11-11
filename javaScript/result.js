@@ -105,6 +105,7 @@ function resultRegistration() {
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
             alert("登録が完了しました");
+            $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
             var i = results.length - 1;
             $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
                 '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
@@ -120,6 +121,7 @@ function resultRegistration() {
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
             alert("登録が完了しました");
+            $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
             $('#Table1').append('<tr id=table' + 0 + '><td>' + results[0].dateClient +
                 '</td><td>' + results[0].valClient + '</td><td>' + results[0].detailClient
                 + "</td><td>" + results[0].resClient
@@ -133,6 +135,7 @@ function resultRegistration() {
     if (Aindex) {
         deleteAppointment1(Aindex);
     }
+    
 }
 
 function resetElement() {
