@@ -34,6 +34,8 @@ function clickResult1(index) {
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
         
         $("#movePhoto").on('click', () => {
+            console.log("target: ");
+            console.dir(target);
             saveTemp(target);
         });
 

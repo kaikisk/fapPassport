@@ -271,6 +271,8 @@ function deleteAp() {
 }
 
 function saveTemp(client) {
+    console.log("client: ");
+    console.log(client);
     var temp = JSON.stringify(client);
     saveReservation("tempResult", temp).then(() => {
         console.log("一時保存しました");
