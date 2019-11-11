@@ -1,7 +1,7 @@
 $(function () {
   getData("tempResult").then(rs => {
     temp = JSON.parse(rs);
-    getPhoto(temp.index).then(results => {
+    getPhoto(temp.photoIndex).then(results => {
       temp.number = results.i;
 
       for (var v = 0; v < results.i; v++) {
