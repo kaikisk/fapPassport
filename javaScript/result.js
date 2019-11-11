@@ -54,7 +54,7 @@ $(function () {
             number = results.number;
             index = results.index;
             console.log("index: " + index);
-            if (Aindex || index) {
+            if (Aindex || index==0 || index) {
                 console.log("success!!!");
                 $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
                     + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
@@ -106,7 +106,7 @@ $(function () {
             resString.valClient = client.valClient;
             resString.resClient = client.resClient;
             resString.photoIndex = client.photoIndex;
-            if(index) resString.index = index;
+            if(index==0 || index) resString.index = index;
             saveTemp(resString);
         }).catch(err => {
             getData("results").then(rs => {
@@ -153,7 +153,7 @@ function resultRegistration() {
 
     resultsString.then(result => {
         var results = JSON.parse(result);
-        if (index) {
+        if (index==0 || index) {
             results[index] = client;
         }
         else {
@@ -167,7 +167,7 @@ function resultRegistration() {
             alert("登録が完了しました");
             $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
             var i = results.length - 1;
-            if (index) {
+            if (index==0 || index) {
                 $('#table' + index).html('<td>' + results[index].dateClient +
                     '</td><td>' + results[index].valClient + '</td><td>' + results[index].detailClient
                     + '</td><td>' + results[index].resClient
