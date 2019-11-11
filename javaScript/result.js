@@ -115,6 +115,7 @@ function resultRegistration() {
         var results = [client];
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
+            alert("登録が完了しました");
             $('#Table1').append('<tr id=table' + 0 + '><td>' + results[0].dateClient +
                 '</td><td>' + results[0].valClient + '</td><td>' + results[0].detailClient
                 + "</td><td>" + results[0].resClient

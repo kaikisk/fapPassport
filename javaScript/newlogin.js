@@ -13,6 +13,7 @@ $(function () {
         Promise.all([save(keys[0]), save(keys[1])]).then(values => {
             console.log(values);
             // alert(values);
+            alert("ユーザー登録をしました");
             location.href = "menu.html";
         }).catch(errs => {
             console.log(errs);
