@@ -42,6 +42,7 @@ function clickRegister(index) {
             var temp = JSON.stringify(appointments);
             console.log(temp);
             saveAppointment(temp).then(() => {
+                $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="appointmentRegistration()">登録</button>');
                 resetElement();
                 $('#table' + index).html('<td>' + appointments[index].dateClient +
                     '</td><td>' + appointments[index].valClient + '</td><td>' + appointments[index].detailClient
