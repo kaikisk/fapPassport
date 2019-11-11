@@ -1,6 +1,6 @@
 $(function () {
     var resultsString = getData("results");
-    
+
     resultsString.then(result => {
         var results = JSON.parse(result);
         console.log("pass results");
@@ -10,7 +10,7 @@ $(function () {
                 + "</td><td>" + results[i].resClient
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' +
                 i + ')">結果</button></td></tr>');
-                console.log("pass for results : " + + results[i].dateClient);
+            console.log("pass for results : " + + results[i].dateClient);
         }
     }).catch(() => console.log("診察予約、結果が登録されていません"));
 })
@@ -34,7 +34,6 @@ function clickResult1(index) {
             target.detailClient = $('#txtdetail').val();
             target.valClient = $('#Examination').val();
             target.resClient = $("#rblresult").val();
-            target.index = index;
             results[index] = target;
             var temp = JSON.stringify(results);
             saveReservation("results", temp).then(() => {
@@ -42,7 +41,9 @@ function clickResult1(index) {
                     '</td><td>' + results[index].valClient + '</td><td>' + results[index].detailClient
                     + '</td><td>' + results[index].resClient
                     + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + index + ')">結果</button></td>');
-            })
+                    
+                $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
+            }).catch((err) => alert(err));
         });
         $('#cancel').click(() => {
             resetElement();
