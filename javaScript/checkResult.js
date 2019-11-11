@@ -37,6 +37,8 @@ function clickResult1(index) {
             results[index] = target;
             var temp = JSON.stringify(results);
             saveReservation("results", temp).then(() => {
+                alert("更新しました");
+                resetElement();
                 $('#table' + index).html('<td>' + results[index].dateClient +
                     '</td><td>' + results[index].valClient + '</td><td>' + results[index].detailClient
                     + '</td><td>' + results[index].resClient
