@@ -106,6 +106,7 @@ $(function () {
             resString.valClient = client.valClient;
             resString.resClient = client.resClient;
             resString.photoIndex = client.photoIndex;
+            if(index) resString.index = index;
             saveTemp(resString);
         }).catch(err => {
             getData("results").then(rs => {
