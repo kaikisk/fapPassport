@@ -54,6 +54,7 @@ $(function () {
             number = results.number;
             index = results.index;
             if (Aindex || index) {
+                console.log("success!!!");
                 $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
                     + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
             }
@@ -274,7 +275,9 @@ function saveTemp(client) {
     console.log("client: ");
     console.log(client);
     var temp = JSON.stringify(client);
+    console.log(temp);
     saveReservation("tempResult", temp).then(() => {
+        
         console.log("一時保存しました");
         location.href = "previewPhoto.html";
     }).catch(err => console.error(err));
