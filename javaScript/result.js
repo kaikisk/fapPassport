@@ -80,6 +80,46 @@ $(function () {
         $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" onclick="resultRegistration()">登録</button>');
         return;
     });
+
+    $("#movePhoto").on('click', () => {
+        var date = $('#txtDate').val();
+        var detail = $('#txtdetail').val();
+        var val = $('#Examination').val();
+        var res = $("#rblresult").val();
+    
+    
+        var client = {
+            dateClient: date,
+            valClient: val,
+            resClient: res,
+            detailClient: detail,
+            Aindex: Aindex,
+            photoIndex: photoIndex
+        }
+    
+        getData("tempResult").then(rs => {
+            var resString = JSON.parse(rs);
+            resString.dateClient = client.dateClient;
+            resString.detailClient = client.detailClient;
+            resString.valClient = client.valClient;
+            resString.resClient = client.resClient;
+            resString.photoIndex = client.photoIndex;
+            saveTemp(resString);
+        }).catch(err => {
+            getData("results").then(rs => {
+                var result = JSON.parse(rs);
+                var L = result.length - 1;
+                client.photoIndex = result[L].photoIndex + 1;
+                // client.photoIndex = rs.length;
+    
+                saveTemp(client);
+            }).catch(err => {
+                client.photoIndex = 0;
+                saveTemp(client);
+            });
+    
+        });
+    })
 });
 
 //結果の登録
@@ -183,45 +223,6 @@ function resetElement() {
 //     $('#btn_update').html('<button class="btn-square-shadow btn_temp green_color" id="submit" onclick="resultRegistration()">登録</button>');
 //     return;
 // });
-$("#movePhoto").on('click', () => {
-    var date = $('#txtDate').val();
-    var detail = $('#txtdetail').val();
-    var val = $('#Examination').val();
-    var res = $("#rblresult").val();
-
-
-    var client = {
-        dateClient: date,
-        valClient: val,
-        resClient: res,
-        detailClient: detail,
-        Aindex: Aindex,
-        photoIndex: photoIndex
-    }
-
-    getData("tempResult").then(rs => {
-        var resString = JSON.parse(rs);
-        resString.dateClient = client.dateClient;
-        resString.detailClient = client.detailClient;
-        resString.valClient = client.valClient;
-        resString.resClient = client.resClient;
-        resString.photoIndex = client.photoIndex;
-        saveTemp(resString);
-    }).catch(err => {
-        getData("results").then(rs => {
-            var result = JSON.parse(rs);
-            var L = result.length - 1;
-            client.photoIndex = result[L].photoIndex + 1;
-            // client.photoIndex = rs.length;
-
-            saveTemp(client);
-        }).catch(err => {
-            client.photoIndex = 0;
-            saveTemp(client);
-        });
-
-    });
-})
 
 // function movePhoto() {
 //     var date = $('#txtDate').val();
