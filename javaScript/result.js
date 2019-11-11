@@ -53,6 +53,7 @@ $(function () {
             Aindex = results.Aindex;
             number = results.number;
             index = results.index;
+            console.log("index: " + index);
             if (Aindex || index) {
                 console.log("success!!!");
                 $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
