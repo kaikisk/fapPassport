@@ -41,12 +41,6 @@ $(function () {
         });
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
-
-        $('#cancel').click(() => {
-            resetElement();
-            $('#btn_update').html('<button class="btn-square-shadow btn_temp green_color" id="submit" onclick="resultRegistration()">登録</button>');
-            return;
-        });
     } else {
         getData("tempResult").then(rs => {
             var results = JSON.parse(rs);
@@ -80,6 +74,12 @@ $(function () {
             return;
         });
     }
+    
+    $('#cancel').click(() => {
+        resetElement();
+        $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" onclick="resultRegistration()">登録</button>');
+        return;
+    });
 });
 
 //結果の登録
@@ -125,16 +125,16 @@ function resultRegistration() {
             alert("登録が完了しました");
             $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
             var i = results.length - 1;
-            if(index){
+            if (index) {
                 $('#table' + index).html('<td>' + results[index].dateClient +
                     '</td><td>' + results[index].valClient + '</td><td>' + results[index].detailClient
                     + '</td><td>' + results[index].resClient
                     + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + index + ')">結果</button></td>');
-            }else{
+            } else {
                 $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
-                '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
-                + "</td><td>" + results[i].resClient
-                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
+                    '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
+                    + "</td><td>" + results[i].resClient
+                    + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
             }
             resetElement();
             deleteValue("fapPass", "tempResult");
