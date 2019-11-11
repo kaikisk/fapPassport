@@ -1,5 +1,5 @@
 var Aindex;
-var index;
+photoIndex;
 var number = 0;
 
 $(function () {
@@ -17,17 +17,18 @@ $(function () {
         console.log("result: " + result);
         console.dir(result);
 
-        Aindex = result.index;
+        Aindex = result.Aindex;
         $('#txtDate').val(result.date);
         $('#txtdetail').val(result.detail);
         $('#Examination').val(result.val);
         $("#photoNumber").text("（" + number + "枚）");
         getData("results").then(rs => {
             var results = JSON.parse(rs);
-            index = results.length;
-            console.log("result index: " + index);
+            var L = results.length - 1;
+            photoIndex = results[L].photoIndex + 1;
+            console.log("result photoIndex: " + photoIndex);
         }).catch(err => {
-            index = 0;
+            photoIndex = 0;
             console.log(err);
         });
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
@@ -40,7 +41,7 @@ $(function () {
             $('#Examination').val(results.valClient);
             $('#rblresult').val(results.resClient);
             $("#photoNumber").text("（" + results.number + "枚）");
-            index = results.index;
+            photoIndex = results.photoIndex;
             Aindex = results.Aindex;
             number = results.number;
             if (Aindex) {
@@ -67,7 +68,7 @@ function resultRegistration() {
     valClient: 検査項目
     resClient: 結果
     detailClient: 詳細
-    index: 
+    photoIndex: 写真番号
     Aindex: 変更する受診予約が何番にあるかの番号
     */
     var client = {
@@ -75,7 +76,7 @@ function resultRegistration() {
         valClient: val,
         resClient: res,
         detailClient: detail,
-        index: index,
+        photoIndex: photoIndex,
         number: number
     }
 
@@ -84,7 +85,7 @@ function resultRegistration() {
     resultsString.then(result => {
         var results = JSON.parse(result);
         var L = results.length;
-        client.index = L;
+        client.photoIndex = photoIndex;
         results[L] = client;
         console.log("client: ");
         console.dir(client);
@@ -101,7 +102,7 @@ function resultRegistration() {
         }).catch(() => alert("error saveReservation"));
     }).catch(err => {
         console.log(err);
-        client.index = 0;
+        client.photoIndex = 0;
         var results = [client];
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
@@ -114,7 +115,7 @@ function resultRegistration() {
         }).catch(err => alert(err));
     });
 
-    console.log("index" + index);
+    console.log("photoIndex" + photoIndex);
     if (Aindex) {
         deleteAppointment1(Aindex);
     }
@@ -148,7 +149,7 @@ function movePhoto() {
         resClient: res,
         detailClient: detail,
         Aindex: Aindex,
-        index: index
+        photoIndex: photoIndex
     }
 
     getData("tempResult").then(rs => {
@@ -157,13 +158,18 @@ function movePhoto() {
         resString.detailClient = client.detailClient;
         resString.valClient = client.valClient;
         resString.resClient = client.resClient;
+        resString.photoIndex = client.photoIndex;
         saveTemp(resString);
     }).catch(err => {
         getData("results").then(rs => {
-            client.index = rs.length;
+            var result = JSON.parse(rs);
+            var L = result.length - 1;
+            client.photoIndex = result[L].photoIndex + 1;
+            // client.photoIndex = rs.length;
+
             saveTemp(client);
         }).catch(err => {
-            client.index = 0;
+            client.photoIndex = 0;
             saveTemp(client);
         });
 

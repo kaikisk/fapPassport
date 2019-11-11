@@ -66,7 +66,7 @@ function clickResult(index) {
         var target = appointments[index];
         var resultPage = "result.html" + "?date=" + target.dateClient
             + "&detail=" + target.detailClient + "&val=" + target.valClient
-            + "&index=" + index;
+            + "&Aindex=" + index;
 
         resultPage = encodeURI(resultPage);
         location.href = resultPage;

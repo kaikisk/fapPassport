@@ -47,7 +47,7 @@ function takePhoto() {
     $("#ok").click(() => {
         getData("tempResult").then(clt => {
             var clt1 = JSON.parse(clt);
-            photo.index = clt1.index;
+            photo.photoIndex = clt1.photoIndex;
             console.log("photo index: " + photo.index);
             photo.img = img;
             saveImg(photo).then(() => {
