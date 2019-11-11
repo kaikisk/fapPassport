@@ -1,6 +1,13 @@
+/*
+Aindex: 受診予約の番号
+photoIndex: 写真の番号
+number: 写真枚数
+index: 結果を更新するときの予約番号
+*/
 var Aindex;
 var photoIndex;
 var number = 0;
+var index;
 
 $(function () {
     var queryStr = decodeURI(location.search);
@@ -45,6 +52,7 @@ $(function () {
             photoIndex = results.photoIndex;
             Aindex = results.Aindex;
             number = results.number;
+            index = results.index;
             if (Aindex) {
                 $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
                     + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
@@ -98,8 +106,12 @@ function resultRegistration() {
     resultsString.then(result => {
         var results = JSON.parse(result);
         var L = results.length;
-        client.photoIndex = photoIndex;
-        results[L] = client;
+        if (index) {
+            results[index] = client;
+        }
+        else {
+            results[L] = client;
+        }
         console.log("client: ");
         console.dir(client);
         var temp = JSON.stringify(results);
@@ -135,7 +147,7 @@ function resultRegistration() {
     if (Aindex) {
         deleteAppointment1(Aindex);
     }
-    
+
 }
 
 function resetElement() {
@@ -159,6 +171,7 @@ function movePhoto() {
     var detail = $('#txtdetail').val();
     var val = $('#Examination').val();
     var res = $("#rblresult").val();
+
 
     var client = {
         dateClient: date,

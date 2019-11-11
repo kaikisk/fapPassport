@@ -10,7 +10,6 @@ $(function () {
                 + "</td><td>" + results[i].resClient
                 + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' +
                 i + ')">結果</button></td></tr>');
-            console.log("pass for results : " + + results[i].dateClient);
         }
     }).catch(() => console.log("診察予約、結果が登録されていません"));
 })
@@ -19,7 +18,7 @@ function clickResult1(index) {
     var resultsString = getData("results");
 
     resultsString.then(result => {
-        $("#index").val(index);
+        
         var results = JSON.parse(result);
         var target = results[index];
         $('#txtDate').val(target.dateClient);
@@ -27,6 +26,8 @@ function clickResult1(index) {
         $('#Examination').val(target.valClient);
         $('#rblresult').val(target.resClient);
         $("#photoNumber").text("（" + target.number + "枚）");
+        target.index = index;
+        $("#movePhoto").html('<button id="movePhoto" class="btn-square-shadow btn_sixty green_color" onclick="saveTemp(' + target + ')">写真の添付</button>')
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
         $('#update').click(() => {
@@ -54,3 +55,4 @@ function clickResult1(index) {
         })
     }).catch((err) => alert(err));
 }
+
