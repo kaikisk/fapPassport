@@ -28,9 +28,14 @@ function clickResult1(index) {
         $("#photoNumber").text("（" + target.number + "枚）");
         console.log("photoIndex: " + photoIndex);
         target.index = index;
-        $("#movePhoto").html('<button id="movePhoto" class="btn-square-shadow btn_sixty green_color" onclick="saveTemp(' + target + ')">写真の添付</button>')
+        $("#movePhoto").html('<button id="movePhoto" class="btn-square-shadow btn_sixty green_color">写真の添付</button>')
         $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
             + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
+        
+        $("#movePhoto").click(() => {
+            saveTemp(target);
+        });
+
         $('#update').click(() => {
             target.dateClient = $("#txtDate").val();
             target.detailClient = $('#txtdetail').val();
@@ -49,6 +54,7 @@ function clickResult1(index) {
                 $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
             }).catch((err) => alert(err));
         });
+
         $('#cancel').click(() => {
             resetElement();
             $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
@@ -56,4 +62,3 @@ function clickResult1(index) {
         })
     }).catch((err) => alert(err));
 }
-

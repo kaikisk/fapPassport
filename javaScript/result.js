@@ -105,11 +105,11 @@ function resultRegistration() {
 
     resultsString.then(result => {
         var results = JSON.parse(result);
-        var L = results.length;
         if (index) {
             results[index] = client;
         }
         else {
+            var L = results.length;
             results[L] = client;
         }
         console.log("client: ");
