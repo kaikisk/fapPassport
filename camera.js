@@ -48,7 +48,7 @@ function takePhoto() {
         getData("tempResult").then(clt => {
             var clt1 = JSON.parse(clt);
             photo.photoIndex = clt1.photoIndex;
-            console.log("photo index: " + photo.index);
+            console.log("photo index: " + photo.photoIndex);
             photo.img = img;
             saveImg(photo).then(() => {
                 console.log("写真を保存しました");

@@ -50,6 +50,15 @@ $(function () {
             }
         }).catch(err => {
             $("#photoNumber").text("（" + number + "枚）");
+            getData("results").then(rs => {
+                var results = JSON.parse(rs);
+                var L = results.length - 1;
+                photoIndex = results[L].photoIndex + 1;
+                console.log("result photoIndex: " + photoIndex);
+            }).catch(err => {
+                photoIndex = 0;
+                console.log(err);
+            });
             return;
         });
     }
