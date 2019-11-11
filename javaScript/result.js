@@ -53,7 +53,7 @@ $(function () {
             Aindex = results.Aindex;
             number = results.number;
             index = results.index;
-            if (Aindex) {
+            if (Aindex || index) {
                 $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
                     + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
             }
