@@ -12,6 +12,7 @@ navigator.mediaDevices.getUserMedia(constrains)
 
 function gotStream(stream) {
     video.srcObject = stream; // streamはユーザーのカメラとマイクの情報で、これをvideoの入力ソースにする
+    alert(constrains);
 
     const track = stream.getVideoTracks()[0];
     imageCapture = new ImageCapture(track);
@@ -27,6 +28,7 @@ function takePhoto() {
     //videoの縦幅横幅を取得
     var w = video.offsetWidth;
     var h = video.offsetHeight;
+    alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
     canvas.setAttribute("width", w);
     canvas.setAttribute("height", h);
     ctx.drawImage(video, 0, 0, w, h);
