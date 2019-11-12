@@ -29,7 +29,7 @@ function takePhoto() {
     // var w = video.offsetWidth;
     // var h = video.offsetHeight;
     // alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
-    
+    alert(", videoWidth: " + width + ", videoHeight: " + height);
     canvas.setAttribute("width", width);
     canvas.setAttribute("height", height);
     ctx.drawImage(video, 0, 0, width, height);
