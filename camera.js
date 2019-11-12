@@ -12,7 +12,7 @@ navigator.mediaDevices.getUserMedia(constrains)
 
 function gotStream(stream) {
     video.srcObject = stream; // streamはユーザーのカメラとマイクの情報で、これをvideoの入力ソースにする
-    alert(constrains);
+    // alert(constrains);
 
     const track = stream.getVideoTracks()[0];
     imageCapture = new ImageCapture(track);
@@ -26,18 +26,18 @@ function takePhoto() {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
     //videoの縦幅横幅を取得
-    var w = video.offsetWidth;
-    var h = video.offsetHeight;
-    alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
-    canvas.setAttribute("width", w);
-    canvas.setAttribute("height", h);
-    ctx.drawImage(video, 0, 0, w, h);
+    // var w = video.offsetWidth;
+    // var h = video.offsetHeight;
+    // alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
+    canvas.setAttribute("width", width);
+    canvas.setAttribute("height", height);
+    ctx.drawImage(video, 0, 0, width, height);
     var img = canvas.toDataURL('image/jpeg');
     console.log(img);
     $(".video").html('<canvas id="canvas1"></canvas>');
     var canvas1 = document.getElementById('canvas1');
-    canvas1.width = w;
-    canvas1.height = h;
+    canvas1.width = width;
+    canvas1.height = height;
     var ctx1 = canvas1.getContext('2d');
     var img1 = new Image();
     img1.onload = function () {
