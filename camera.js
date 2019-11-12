@@ -3,6 +3,9 @@ var tempImage;
 $(function () {
     var width = $(".video").width();
     var height = $(".video").height();
+    var w = $(".myvideo").width();
+    var h = $(".myvideo").height();
+    alert("width:" + width +  ", height:" + height +  ", myVideoW:" + w +  ", myvideoH:" + h)
 })
 // var width = $(".video").width();
 // var height = $(".video").height();
