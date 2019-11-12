@@ -1,14 +1,7 @@
 var imageCapture;
 var tempImage;
-$(function () {
-    var width = $(".video").width();
-    var height = $(".video").height();
-    var w = $(".myvideo").width();
-    var h = $(".myvideo").height();
-    alert("width:" + width +  ", height:" + height +  ", myVideoW:" + w +  ", myvideoH:" + h)
-})
-// var width = $(".video").width();
-// var height = $(".video").height();
+var width = $(".video").width();
+var height = $(".video").height();
 var video = document.getElementById("myVideo"); // 適当にvideoタグのオブジェクトを取得
 var constrains = { video: { facingMode: "environment", width: width, height: height }, audio: false }; // 映像・音声を取得するかの設定, リアカメラ設定
 
