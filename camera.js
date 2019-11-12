@@ -28,21 +28,21 @@ function takePhoto() {
     //videoの縦幅横幅を取得
     var w = video.offsetWidth;
     var h = video.offsetHeight;
-    alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
+    // alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
     // alert(", videoWidth: " + width + ", videoHeight: " + height);
     canvas.setAttribute("width", width);
     canvas.setAttribute("height", height);
-    // ctx.drawImage(video, 0, 0, width, height);
+    ctx.drawImage(video, 0, 0, width, height);
     var img = canvas.toDataURL('image/jpeg');
     console.log(img);
     $(".video").html('<canvas id="canvas1"></canvas>');
     var canvas1 = document.getElementById('canvas1');
     canvas1.setAttribute("width", width);
     canvas1.setAttribute("height", height);
-    // var ctx1 = canvas1.getContext('2d');
+    var ctx1 = canvas1.getContext('2d');
     var img1 = new Image();
     img1.onload = function () {
-        ctx.drawImage(img1, 0, 0); // Or at whatever offset you like
+        ctx1.drawImage(img1, 0, 0); // Or at whatever offset you like
         alert("横：" + img1.width + "高さ：" + img1.height + ", videoWidth: " + width + ", videoHeight: " + height);
     };
     img1.src = img;
