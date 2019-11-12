@@ -1,7 +1,7 @@
 var imageCapture;
 var tempImage;
-var width = $(".video").width();
-var height = $(".video").height();
+var width = $(".video").videoWidth();
+var height = $(".video").videoHeight();
 var video = document.getElementById("myVideo"); // 適当にvideoタグのオブジェクトを取得
 var constrains = { video:{facingMode: "environment", width: width, height: height}, audio: false }; // 映像・音声を取得するかの設定, リアカメラ設定
 
@@ -29,6 +29,7 @@ function takePhoto() {
     // var w = video.offsetWidth;
     // var h = video.offsetHeight;
     // alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
+    
     canvas.setAttribute("width", width);
     canvas.setAttribute("height", height);
     ctx.drawImage(video, 0, 0, width, height);
