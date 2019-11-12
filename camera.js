@@ -43,8 +43,7 @@ function takePhoto() {
     var img1 = new Image();
     img1.onload = function () {
         ctx.drawImage(img1, 0, 0); // Or at whatever offset you like
-        alert("横：" + img1.width);
-        alert("高さ：" + img1.height);
+        alert("横：" + img1.width + "高さ：" + img1.height + ", videoWidth: " + width + ", videoHeight: " + height);
     };
     img1.src = img;
     $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="ok">OK</button>'
