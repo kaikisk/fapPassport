@@ -29,12 +29,12 @@ function takePhoto() {
     // var w = video.offsetWidth;
     // var h = video.offsetHeight;
     // alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
-    alert(", videoWidth: " + width + ", videoHeight: " + height);
-    canvas.setAttribute("width", width);
-    canvas.setAttribute("height", height);
-    ctx.drawImage(video, 0, 0, width, height);
-    var img = canvas.toDataURL('image/jpeg');
-    console.log(img);
+    // alert(", videoWidth: " + width + ", videoHeight: " + height);
+    // canvas.setAttribute("width", width);
+    // canvas.setAttribute("height", height);
+    // ctx.drawImage(video, 0, 0, width, height);
+    // var img = canvas.toDataURL('image/jpeg');
+    // console.log(img);
     $(".video").html('<canvas id="canvas1"></canvas>');
     var canvas1 = document.getElementById('canvas1');
     canvas1.setAttribute("width", width);
