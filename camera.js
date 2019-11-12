@@ -28,7 +28,7 @@ function takePhoto() {
     //videoの縦幅横幅を取得
     // var w = video.offsetWidth;
     // var h = video.offsetHeight;
-    alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
+    // alert("width: " + w + ", height: " + h + ", videoWidth: " + width + ", videoHeight: " + height);
     canvas.setAttribute("width", width);
     canvas.setAttribute("height", height);
     ctx.drawImage(video, 0, 0, width, height);
