@@ -32,17 +32,17 @@ function takePhoto() {
     // alert(", videoWidth: " + width + ", videoHeight: " + height);
     canvas.setAttribute("width", width);
     canvas.setAttribute("height", height);
-    ctx.drawImage(video, 0, 0, width, height);
+    // ctx.drawImage(video, 0, 0, width, height);
     var img = canvas.toDataURL('image/jpeg');
     console.log(img);
     $(".video").html('<canvas id="canvas1"></canvas>');
     var canvas1 = document.getElementById('canvas1');
     canvas1.setAttribute("width", width);
     canvas1.setAttribute("height", height);
-    var ctx1 = canvas1.getContext('2d');
+    // var ctx1 = canvas1.getContext('2d');
     var img1 = new Image();
     img1.onload = function () {
-        ctx1.drawImage(img1, 0, 0); // Or at whatever offset you like
+        ctx.drawImage(img1, 0, 0); // Or at whatever offset you like
     };
     img1.src = img;
     $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="ok">OK</button>'
