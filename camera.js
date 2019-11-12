@@ -1,9 +1,13 @@
 var imageCapture;
 var tempImage;
-var width = $(".video").width();
-var height = $(".video").height();
+$(function () {
+    var width = $(".video").width();
+    var height = $(".video").height();
+})
+// var width = $(".video").width();
+// var height = $(".video").height();
 var video = document.getElementById("myVideo"); // 適当にvideoタグのオブジェクトを取得
-var constrains = { video:{facingMode: "environment", width: width, height: height}, audio: false }; // 映像・音声を取得するかの設定, リアカメラ設定
+var constrains = { video: { facingMode: "environment", width: width, height: height }, audio: false }; // 映像・音声を取得するかの設定, リアカメラ設定
 
 navigator.mediaDevices.getUserMedia(constrains)
     .then(gotStream).catch(function (err) {
