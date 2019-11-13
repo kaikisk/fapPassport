@@ -4,7 +4,7 @@ var width = $(".video").width();
 var height = $(".video").height();
 var video = document.getElementById("myVideo"); // 適当にvideoタグのオブジェクトを取得
 // var constrains = { video: { facingMode: "environment", width: width, height: height }, audio: false }; // 映像・音声を取得するかの設定, リアカメラ設定
-var constrains = { video: { facingMode: "environment"}, audio: false }; // 映像・音声を取得するかの設定, リアカメラ設定
+var constrains = { video: { facingMode: "environment" }, audio: false }; // 映像・音声を取得するかの設定, リアカメラ設定
 
 navigator.mediaDevices.getUserMedia(constrains)
     .then(gotStream).catch(function (err) {
@@ -49,6 +49,7 @@ function takePhoto() {
     img1.src = img;
     $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="ok">OK</button>'
         + '<button class="btn-square-shadow btn_fifty green_color" id="cancel">取り直し</button>');
+    //OKボタンを押した時
     $("#ok").click(() => {
         getData("tempResult").then(clt => {
             var clt1 = JSON.parse(clt);
@@ -64,10 +65,13 @@ function takePhoto() {
 
     });
     $("#cancel").click(() => {
-        $(".video").html('<video class="myVideo" id="myVideo" width="720" autoplay="1"></video>'
+        $(".video").html('<video class="myVideo" id="myVideo" autoplay="1"></video>'
             + '<script type="text/javascript" src="camera.js"></script>'
             + '<canvas id="canvas" style="display:none;"></canvas>');
         $('#btn_update').html('<button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="takePhoto()">写真撮影</button>');
+        window.stream.getTracks().forEach(function (track) {
+            track.stop();
+        });
         navigator.mediaDevices.getUserMedia(constrains)
             .then(gotStream).catch(function (err) {
                 console.log("An error occured! " + err);
