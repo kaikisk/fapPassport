@@ -1,4 +1,3 @@
-var imageCapture;
 var tempImage;
 var width = $(".video").width();
 var height = $(".video").height();
@@ -16,7 +15,6 @@ function gotStream(stream) {
     // alert(constrains);
 
     const track = stream.getVideoTracks()[0];
-    imageCapture = new ImageCapture(track);
 }
 
 
@@ -44,7 +42,7 @@ function takePhoto() {
     var img1 = new Image();
     img1.onload = function () {
         ctx1.drawImage(img1, 0, 0); // Or at whatever offset you like
-        // alert("横：" + img1.width + "高さ：" + img1.height + ", videoWidth: " + width + ", videoHeight: " + height);
+        alert("画像横：" + img1.width + "画像高さ：" + img1.height + ", videoWidth: " + width + ", videoHeight: " + height);
     };
     img1.src = img;
     $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="ok">OK</button>'
