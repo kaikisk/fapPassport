@@ -30,12 +30,20 @@
     <br />
     <br />
     <br />
-    <div>ユーザーID
+    <div class="form-group">
+        <label for="InputUserID">ユーザーID(お名前ではありません)</label>
+        <input type="text" id="txtUserID" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="InputUserPass">パスワード</label>
+        <input type="text" id="txtPass" class="form-control">
+    </div>
+    <!-- <div>ユーザーID(お名前ではありません)
         <input type="text" id="txtUserID" class="txt">
     </div>
     <div>パスワード
         <input type="password" id="txtPass" class="txt">
-    </div>
+    </div> -->
     <button id="signin" class="btn btn-primary btn-lg btn-block" onclick="clickLoginButton()">ログイン</button>
     <button id="signup" class="btn btn-primary btn-lg btn-block" onclick="location.href='newlogin.html'">新規登録</button>
     <div>
