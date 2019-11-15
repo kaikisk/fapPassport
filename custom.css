@@ -2,6 +2,10 @@ body {
   padding: 1.5%;
 }
 
+.btn{
+  padding:1%;
+}
+
 img {
   width: 100%;
 }
