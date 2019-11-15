@@ -13,6 +13,12 @@ img {
   overflow: hidden;
 }
 
+table , td, th {
+	border: 1px solid #595959;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
 .green_color {
   background: #5cb85c; /*緑*/
 }
