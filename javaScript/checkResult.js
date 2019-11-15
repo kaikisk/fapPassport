@@ -8,7 +8,7 @@ $(function () {
             $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
                 '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
                 + "</td><td>" + results[i].resClient
-                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' +
+                + '</td><td><button type="button" class="btn btn-primary" onclick="clickResult1(' +
                 i + ')">結果</button></td></tr>');
         }
     }).catch(() => console.log("診察予約、結果が登録されていません"));
@@ -31,8 +31,8 @@ function clickResult1(index) {
         index = index;
         photoIndex = target.photoIndex;
 
-        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
-            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
+        $('#btn_update').html('<button class="btn btn-primary btn_fifty" id="update">更新</button>'
+            + '<button class="btn btn-primary btn_fifty yellow_color" id="cancel">キャンセル</button>');
 
         $("#movePhoto").off();
 
@@ -59,15 +59,15 @@ function clickResult1(index) {
                 $('#table' + index).html('<td>' + results[index].dateClient +
                     '</td><td>' + results[index].valClient + '</td><td>' + results[index].detailClient
                     + '</td><td>' + results[index].resClient
-                    + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + index + ')">結果</button></td>');
+                    + '<td><button type="button" class="btn btn-primary" onclick="clickResult1(' + index + ')">結果</button></td>');
 
-                $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
+                $('#btn_update').html('<button class="btn btn-primary btn-lg btn-block" id="submit" onclick="resultRegistration()">登録</button>');
             }).catch((err) => alert(err));
         });
 
         $('#cancel').click(() => {
             resetElement();
-            $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
+            $('#btn_update').html('<button class="btn btn-primary btn-lg btn-block" id="submit" onclick="resultRegistration()">登録</button>');
             return;
         })
     }).catch((err) => alert(err));

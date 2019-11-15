@@ -42,11 +42,11 @@ function takePhoto() {
     var img1 = new Image();
     img1.onload = function () {
         ctx1.drawImage(img1, 0, 0); // Or at whatever offset you like
-        alert("画像横：" + img1.width + "画像高さ：" + img1.height + ", videoWidth: " + width + ", videoHeight: " + height);
+        // alert("画像横：" + img1.width + "画像高さ：" + img1.height + ", videoWidth: " + width + ", videoHeight: " + height);
     };
     img1.src = img;
-    $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="ok">OK</button>'
-        + '<button class="btn-square-shadow btn_fifty green_color" id="cancel">取り直し</button>');
+    $('#btn_update').html('<button class="btn btn-primary btn_fifty" id="ok">OK</button>'
+        + '<button class="btn btn-primary btn_fifty" id="cancel">取り直し</button>');
     //OKボタンを押した時
     $("#ok").click(() => {
         getData("tempResult").then(clt => {
@@ -66,7 +66,7 @@ function takePhoto() {
         $(".video").html('<video class="myVideo" id="myVideo" autoplay="1"></video>'
             + '<script type="text/javascript" src="camera.js"></script>'
             + '<canvas id="canvas" style="display:none;"></canvas>');
-        $('#btn_update').html('<button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="takePhoto()">写真撮影</button>');
+        $('#btn_update').html('<button id="takePhoto" class="btn btn-primary btn-lg btn-block" onclick="takePhoto()">写真撮影</button>');
         window.stream.getTracks().forEach(function (track) {
             track.stop();
         });

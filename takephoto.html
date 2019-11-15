@@ -4,7 +4,9 @@
 <head>
     <meta http-equiv="content-type" ; charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="ratchet.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="ratchet.min.css" /> -->
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="custom.css" />
     <title>FAP Passport</title>
     <script src="./jquery-2.2.4.min.js"></script>
     <script src="./javaScript/indexedDB.js"></script>
@@ -24,7 +26,7 @@
     </header>
 
     <br /><br /><br />
-    <button class="btn-square-shadow btn_center" onclick="location.href='previewPhoto.html'">戻る</button>
+    <button class="btn btn-primary btn-lg btn-block" onclick="location.href='previewPhoto.html'">戻る</button>
     <br>
     <div class="video">
         <video class="myVideo" id="myVideo" autoplay="1"></video>
@@ -33,7 +35,7 @@
     </div>
     
     <div id="btn_update">
-        <button id="takePhoto" class="btn-square-shadow btn_center green_color" onclick="takePhoto()">写真撮影</button>
+        <button id="takePhoto" class="btn btn-primary btn-lg btn-block onclick="takePhoto()">写真撮影</button>
     </div>
     <br />
 </body>

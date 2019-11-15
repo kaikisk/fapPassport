@@ -84,7 +84,7 @@ function getPhoto(index) {
                     results[i] = cursor.value;
                     results[i].id = cursor.key;
                     canvas.append('<img class="cnv" id="img' + cursor.key + '" style="display:none;"></img>' 
-                    + '<button id="delete' + cursor.key + '" class="btn-square-shadow btn_center red_color" onclick="deleteImg(' + cursor.key + ')">削除</button>'
+                    + '<button id="delete' + cursor.key + '" class="btn btn-primary btn-lg btn-block" onclick="deleteImg(' + cursor.key + ')">削除</button>'
                     + '<br />');
                     i++;
                     cursor.continue();
