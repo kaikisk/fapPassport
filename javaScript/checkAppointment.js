@@ -37,7 +37,6 @@ function clickRegister(index) {
                 }
             }
 
-            console.dir()
             appointments[index] = target;
             var temp = JSON.stringify(appointments);
             console.log(temp);
