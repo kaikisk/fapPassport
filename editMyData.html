@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!-- <link rel="stylesheet" type="text/css" href="ratchet.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
-    <title>健康手帳(HealthHandbook)</title>
+    <title>FAP Passport</title>
     <script src="./jquery-2.2.4.min.js"></script>
     <script src="./javaScript/indexedDB.js"></script>
     <script src="./javaScript/editmydata.js"></script>
@@ -20,39 +20,39 @@
     <br />
     <br />
 
-    <button class="btn-square-shadow btn_center" onclick="location.href='myData.html'">キャンセル</button>
+    <button class="btn btn-primary btn-lg btn-block" onclick="location.href='myData.html'">キャンセル</button>
 
 
-    <table>
+    <table class="table table-hover">
         <tbody>
             <tr>
                 <td>自分の情報</td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="家族の緊急連絡先" id="telFam">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="家族の緊急連絡先" id="telFam">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="主治医の緊急連絡先" id="telAtten">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="主治医の緊急連絡先" id="telAtten">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="名前" id="txtName">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="名前" id="txtName">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <select name="blood" id="bloodType" size="1">
+                    <div class="form-group">
+                        <select class="form-control" name="blood" id="bloodType">
                             <option value='' disabled selected style='display:none;'>血液型を選択してください</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
@@ -64,64 +64,64 @@
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="身長" id="height">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="身長" id="height">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="体重" id="weight">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="体重" id="weight">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="服用している薬1" id="medi1">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="服用している薬1" id="medi1">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="服用している薬2" id="medi1">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="服用している薬2" id="medi1">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="服用している薬3" id="medi1">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="服用している薬3" id="medi1">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="病歴1" id="anam">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="病歴1" id="anam">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="病歴2" id="anam3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="病歴2" id="anam3">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="input-row">
-                        <input type="text" placeholder="病歴3" id="anam3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="病歴3" id="anam3">
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
     
-    <button class="btn-square-shadow btn_center" id="update">登録</button>
+    <button class="btn btn-primary btn-lg btn-block" id="update">登録</button>
 
 </body>
 
