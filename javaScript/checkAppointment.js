@@ -7,9 +7,9 @@ $(function () {
             console.log(i + " : " + appointments[i])
             $('#Table1').append('<tr id=table' + i + '><td>' + appointments[i].dateClient +
                 '</td><td>' + appointments[i].valClient + '</td><td>' + appointments[i].detailClient
-                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + i + ')">更新</button>'
-                + '<button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + i + ')">結果</button>'
-                + '<button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' + i + ')">削除</button></td></tr>');
+                + '</td><td><button type="button" class="btn btn-secondary" onclick="clickRegister(' + i + ')">更新</button>'
+                + '<button type="button" class="btn btn-success" onclick="clickResult(' + i + ')">結果</button>'
+                + '<button type="button" class="btn btn-danger" onclick="deleteAppointment(' + i + ')">削除</button></td></tr>');
         }
     }).catch(err => console.log("検診予約が登録されていません"));
 })
@@ -24,8 +24,8 @@ function clickRegister(index) {
         $('#txtDate').val(target.dateClient);
         $('#txtdetail').val(target.detailClient);
         $('select[name="type"]').val(target.valClient);
-        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update">更新</button>'
-            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
+        $('#btn_update').html('<button class="btn btn-primary btn_fifty btn-block" id="update">更新</button>'
+            + '<button class="btn btn-warning btn_fifty btn-block" id="cancel">キャンセル</button>');
         $('#update').click(() => {
             target.dateClient = $('#txtDate').val();
             target.detailClient = $('#txtdetail').val();
@@ -42,19 +42,19 @@ function clickRegister(index) {
             var temp = JSON.stringify(appointments);
             console.log(temp);
             saveAppointment(temp).then(() => {
-                $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="appointmentRegistration()">登録</button>');
+                $('#btn_update').html('<button class="btn btn-primary btn-lg btn-block" id="submit" onclick="appointmentRegistration()">登録</button>');
                 resetElement();
                 $('#table' + index).html('<td>' + appointments[index].dateClient +
                     '</td><td>' + appointments[index].valClient + '</td><td>' + appointments[index].detailClient
-                    + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickRegister(' + index + ')">更新</button>'
-                    + '<button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult(' + index + ')">結果</button>'
-                    + '<button type="button" class="btn-square-shadow btn_delAndup" onclick="deleteAppointment(' + index + ')">削除</button></td></tr>');
+                    + '</td><td><button type="button" class="btn btn-secondary" onclick="clickRegister(' + index + ')">更新</button>'
+                    + '<button type="button" class="btn btn-success" onclick="clickResult(' + index + ')">結果</button>'
+                    + '<button type="button" class="btn btn-danger" onclick="deleteAppointment(' + index + ')">削除</button></td></tr>');
                 console.log("更新が成功しました");
             }).catch(err => console.error("更新が失敗しました"));
         });
         $('#cancel').click(() => {
             resetElement();
-            $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="appointmentRegistration()">登録</button>');
+            $('#btn_update').html('<button class="btn btn-primary btn-lg btn-block" id="submit" onclick="appointmentRegistration()">登録</button>');
             return;
         })
     }).catch(err => console.error(err));
