@@ -16,7 +16,9 @@ var STATIC_FILES = [
     ORIGIN + '/previewPhoto.html',
     ORIGIN + '/takephoto.html',
 
-    ORIGIN + '/ratchet.min.css',
+    // ORIGIN + '/ratchet.min.css',
+    ORIGIN + '/bootstrap.min.css',
+    ORIGIN + '/custom.css',
 
     ORIGIN + '/Image/shikkan1.png',
     ORIGIN + '/Image/shikkan2.png',
