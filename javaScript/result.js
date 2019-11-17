@@ -40,7 +40,7 @@ $(function () {
             console.log(err);
         });
         $('#btn_update').html('<button class="btn btn-primary btn_fifty" id="update" onclick="resultRegistration()">更新</button>'
-            + '<button class="btn btn-danger btn_fifty" id="cancel">キャンセル</button>');
+            + '<button class="btn btn-warning btn_fifty" id="cancel">キャンセル</button>');
     } else {
         getData("tempResult").then(rs => {
             var results = JSON.parse(rs);
@@ -57,7 +57,7 @@ $(function () {
             if (Aindex || index==0 || index) {
                 console.log("success!!!");
                 $('#btn_update').html('<button class="btn btn-primary btn_fifty" id="update" onclick="resultRegistration()">更新</button>'
-                    + '<button class="btn btn-danger btn_fifty" id="cancel">キャンセル</button>');
+                    + '<button class="btn btn-warning btn_fifty" id="cancel">キャンセル</button>');
             }
             console.log("results: ");
             console.dir(results);
