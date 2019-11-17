@@ -17,6 +17,16 @@ img {
   overflow: hidden;
 }
 
+.btn_sixty{
+  padding: 2%;
+  margin-left: 10%;
+  margin-bottom: 3px;
+  text-align: center;
+  width: 60%;
+  display: inline-block;
+  overflow: hidden;
+}
+
 table , td, th {
   border: 1px solid #595959;
   border-collapse: collapse;
