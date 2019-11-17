@@ -79,7 +79,7 @@ $(function () {
 
     $('#cancel').click(() => {
         resetElement();
-        $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" onclick="resultRegistration()">登録</button>');
+        $('#btn_update').html('<button class="btn btn-primary btn-lg btn-block" onclick="resultRegistration()">登録</button>');
         return;
     });
 
@@ -171,12 +171,12 @@ function resultRegistration() {
                 $('#table' + index).html('<td>' + results[index].dateClient +
                     '</td><td>' + results[index].valClient + '</td><td>' + results[index].detailClient
                     + '</td><td>' + results[index].resClient
-                    + '<td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + index + ')">結果</button></td>');
+                    + '<td><button type="button" class="btn btn-primary" onclick="clickResult1(' + index + ')">結果</button></td>');
             } else {
                 $('#Table1').append('<tr id=table' + i + '><td>' + results[i].dateClient +
                     '</td><td>' + results[i].valClient + '</td><td>' + results[i].detailClient
                     + "</td><td>" + results[i].resClient
-                    + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
+                    + '</td><td><button type="button" class="btn btn-primary" onclick="clickResult1(' + L + ')">結果</button></td></tr>');
             }
             resetElement();
             deleteValue("fapPass", "tempResult");
@@ -188,11 +188,11 @@ function resultRegistration() {
         var temp = JSON.stringify(results);
         saveReservation("results", temp).then(() => {
             alert("登録が完了しました");
-            $('#btn_update').html('<button class="btn-square-shadow btn_center green_color" id="submit" onclick="resultRegistration()">登録</button>');
+            $('#btn_update').html('<button class="btn btn-primary btn-lg btn-block" id="submit" onclick="resultRegistration()">登録</button>');
             $('#Table1').append('<tr id=table' + 0 + '><td>' + results[0].dateClient +
                 '</td><td>' + results[0].valClient + '</td><td>' + results[0].detailClient
                 + "</td><td>" + results[0].resClient
-                + '</td><td><button type="button" class="btn-square-shadow btn_delAndup" onclick="clickResult1(' + 0 + ')">結果</button></td></tr>');
+                + '</td><td><button type="button" class="btn btn-primary" onclick="clickResult1(' + 0 + ')">結果</button></td></tr>');
             resetElement();
             deleteValue("fapPass", "tempResult");
         }).catch(err => alert(err));
