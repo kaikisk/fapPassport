@@ -40,7 +40,7 @@ $(function () {
             console.log(err);
         });
         $('#btn_update').html('<button class="btn btn-primary btn_fifty" id="update" onclick="resultRegistration()">更新</button>'
-            + '<button class="bbtn btn-primary btn_fifty yellow_color" id="cancel">キャンセル</button>');
+            + '<button class="btn btn-danger btn_fifty" id="cancel">キャンセル</button>');
     } else {
         getData("tempResult").then(rs => {
             var results = JSON.parse(rs);
@@ -56,8 +56,8 @@ $(function () {
             console.log("index: " + index);
             if (Aindex || index==0 || index) {
                 console.log("success!!!");
-                $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
-                    + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
+                $('#btn_update').html('<button class="btn btn-primary btn_fifty" id="update" onclick="resultRegistration()">更新</button>'
+                    + '<button class="btn btn-danger btn_fifty" id="cancel">キャンセル</button>');
             }
             console.log("results: ");
             console.dir(results);
