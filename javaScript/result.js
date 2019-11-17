@@ -39,8 +39,8 @@ $(function () {
             photoIndex = 0;
             console.log(err);
         });
-        $('#btn_update').html('<button class="btn-square-shadow btn_fifty green_color" id="update" onclick="resultRegistration()">更新</button>'
-            + '<button class="btn-square-shadow btn_fifty yellow_color" id="cancel">キャンセル</button>');
+        $('#btn_update').html('<button class="btn btn-primary btn_fifty" id="update" onclick="resultRegistration()">更新</button>'
+            + '<button class="bbtn btn-primary btn_fifty yellow_color" id="cancel">キャンセル</button>');
     } else {
         getData("tempResult").then(rs => {
             var results = JSON.parse(rs);
