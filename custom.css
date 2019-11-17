@@ -33,6 +33,14 @@ table , td, th {
   table-layout: fixed;
 }
 
+.table th{
+  border-top: 1px solid #595959;
+}
+
+.table td {
+  border-top: 1px solid #595959;
+}
+
 .green_color {
   background: #5cb85c; /*緑*/
 }
