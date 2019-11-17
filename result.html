@@ -43,13 +43,13 @@
                     </select>
                 </div>
                 <div class="form-group col-lg-6" id="RblResult">
-                        受信結果<br>
-                        <select class="form-control" id="rblresult" name="type" size="1">
-                            <option id="RblResult1" value="OK">OK</option>
-                            <option id="RblResult2" value="要治療">要治療</option>
-                            <option id="RblResult3" value="その他">その他</option>
-                        </select>
-                    </div>
+                    受信結果<br>
+                    <select class="form-control" id="rblresult" name="type" size="1">
+                        <option id="RblResult1" value="OK">OK</option>
+                        <option id="RblResult2" value="要治療">要治療</option>
+                        <option id="RblResult3" value="その他">その他</option>
+                    </select>
+                </div>
                 <div class="form-group col-lg-8">
                     備考
                     <input type="text" id="txtdetail" class="form-control" />
@@ -57,74 +57,31 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-12">
-                        <button id="movePhoto" class="btn btn-primary btn_sixty">写真の添付</button>
-                        <!-- </div> -->
-                        <div id="photoNumber" class="photoNumber"></div>
-                        <div id="btn_update">
-                            <button class="btn btn-primary btn-lg btn-block" onclick="resultRegistration()">登録</button>
-                        </div>
+                    <button id="movePhoto" class="btn btn-primary btn_sixty">写真の添付</button>
+                    <!-- </div> -->
+                    <div id="photoNumber" class="photoNumber"></div>
+                    <div id="btn_update">
+                        <button class="btn btn-primary btn-lg btn-block" onclick="resultRegistration()">登録</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-            <p style="text-align: center">検診結果</p> <br />
-            予定日<br>
-            <input type="date" id="txtDate" class="txt" /><br />
+    </div>
+    <br />
 
-            <br /><br />
-            <div id="RblExamination">
-                受信科目<br>
-                <select id="Examination" name="type" size="1">
-                    <option id="RblExamination1" value="胃(食道)カメラ">胃(食道)カメラ</option>
-                    <option id="RblExamination2" value="大腸カメラ">大腸カメラ</option>
-                    <option id="RblExamination3" value="腹部エコー">腹部エコー</option>
-                    <option id="RblExamination4" value="腹部CT">腹部CT</option>
-                    <option id="RblExamination5" value="マンモグラフィー">マンモグラフィー</option>
-                    <option id="RblExamination6" value="腎エコー">腎エコー</option>
-                    <option id="RblExamination7" value="その他">その他</option>
-                </select>
-            </div>
-
-            <div id="RblResult">
-                受信結果<br>
-                <select id="rblresult" name="type" size="1">
-                    <option id="RblResult1" value="OK">OK</option>
-                    <option id="RblResult2" value="要治療">要治療</option>
-                    <option id="RblResult3" value="その他">その他</option>
-                </select>
-            </div>
-
-
-            <br /> 備考(Detail)
-            <br />
-            <input type="text" id="txtdetail" class="txt" />
-            <br />
-            <br />
-
-            <div id="movePhoto" class="movePhoto"></div>
-            <button id="movePhoto" class="btn-square-shadow btn_sixty green_color">写真の添付</button>
-            </div>
-            <div id="photoNumber" class="photoNumber"></div>
-            <div id="btn_update">
-                <button class="btn-square-shadow btn_center green_color" onclick="resultRegistration()">登録</button>
-            </div>
-            <br />
-        </div> -->
-        <br />
-
-        <form>
-            <div>
-                <table id="Table1" class="table">
-                    <tr>
-                        <th>日付</th>
-                        <th>検査項目</th>
-                        <th>備考</th>
-                        <th>結果</th>
-                        <th></th>
-                    </tr>
-                </table>
-            </div>
-        </form>
+    <form>
+        <div>
+            <table id="Table1" class="table">
+                <tr>
+                    <th>日付</th>
+                    <th>検査項目</th>
+                    <th>備考</th>
+                    <th>結果</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+    </form>
 </body>
 
 </html>
