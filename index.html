@@ -16,6 +16,7 @@
     <script src="./jquery-2.2.4.min.js"></script>
     <script src="./javaScript/indexedDB.js"></script>
     <script src="./javaScript/login.js"></script>
+    <script src="./javaScript/download.js"></script>
     <script>
         console.log('loading serviceworker');
         if ('serviceWorker' in navigator) {
@@ -54,6 +55,11 @@
         <p>
             <textarea rows="5" style="width:100%">- 更新予定 - </textarea>
         </p>
+    </div>
+    <br >
+    <a id="download" href="#" download="test.json" onclick="handle()">ダウンロード</a>
+    <div id="indexedDBhyouji">
+        
     </div>
 </body>
 

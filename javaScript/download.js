@@ -1,16 +1,18 @@
-function handle(){
-    let key = 
+async function handle(){
+    let keysd = ['telFam', 'telAtten','bloodType','height','weight',
+    'medi1','medi2','medi3',
+    'anam','anam2','anam3',
+    'txtName', 'userID', 'userPass',
+    'appointments', 'results'];
+
     const jsonData = {};
-    for(var name of storageName){
+    for(var key of keys){
         console.log("name: " + name);
-        if(localStorage.getItem(name) != null){
-            jsonData[name] = localStorage.getItem(name);
-            console.log(jsonData[name]);
-        }
-        else {
-            console.log("no item");
-        }
+        jsonData[key] = await getData(key);
+        // console.log(jsonData[key]);
     }
+
+    $("#indexedDBhyouji").text(jsonData);
 
     const blob = new Blob([JSON.stringify(jsonData, null, '')], {type: 'application/json'});
 
