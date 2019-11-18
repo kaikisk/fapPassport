@@ -9,10 +9,10 @@ async function handle(){
     for(var key of keys){
         console.log("name: " + name);
         jsonData[key] = await getData(key);
-        // console.log(jsonData[key]);
+        console.log(jsonData[key]);
     }
 
-    $("#indexedDBhyouji").text(jsonData);
+    // $("#indexedDBhyouji").text(jsonData);
 
     const blob = new Blob([JSON.stringify(jsonData, null, '')], {type: 'application/json'});
 
