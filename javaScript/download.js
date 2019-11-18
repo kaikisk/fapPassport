@@ -13,6 +13,8 @@ async function handle(){
     }
 
     // $("#indexedDBhyouji").text(jsonData);
+    
+    console.dir(JSON.stringify(jsonData, null, ''));
 
     const blob = new Blob([JSON.stringify(jsonData, null, '')], {type: 'application/json'});
 
