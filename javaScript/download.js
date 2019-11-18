@@ -1,5 +1,5 @@
 async function handle(){
-    let keysd = ['telFam', 'telAtten','bloodType','height','weight',
+    let keys = ['telFam', 'telAtten','bloodType','height','weight',
     'medi1','medi2','medi3',
     'anam','anam2','anam3',
     'txtName', 'userID', 'userPass',
